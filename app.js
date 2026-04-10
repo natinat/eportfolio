@@ -485,7 +485,7 @@ function renderAcademicCard(item) {
 }
 
 function renderPreviewMedia(item) {
-  const previewImage = item.previewMediaUrl || ACADEMIC_PREVIEW_PLACEHOLDER;
+  const previewImage = normalizeRenderableUrl(item.previewMediaUrl || ACADEMIC_PREVIEW_PLACEHOLDER);
   return `<div class="media-frame preview-media"><img src="${escapeHtml(previewImage)}" alt="${escapeHtml(item.title)}" /></div>`;
 }
 
@@ -548,19 +548,21 @@ function renderArtifactSection(artifact, section) {
 function renderSectionBody(section) {
   if (section.type === "text") return renderFormattedText(section.body);
   if (section.type === "image") {
-    return `<div class="media-frame artifact-media"><img src="${escapeHtml(section.url)}" alt="${escapeHtml(section.title || "Artifact image")}" /></div>`;
+    return `<div class="media-frame artifact-media"><img src="${escapeHtml(normalizeRenderableUrl(section.url))}" alt="${escapeHtml(section.title || "Artifact image")}" /></div>`;
   }
   if (section.type === "video") {
-    if (isDirectVideoFile(section.url)) {
-      return `<div class="media-frame artifact-media"><video controls preload="metadata" src="${escapeHtml(section.url)}"></video></div>`;
+    const videoUrl = normalizeRenderableUrl(section.url);
+    if (isDirectVideoFile(videoUrl)) {
+      return `<div class="media-frame artifact-media"><video controls preload="metadata" src="${escapeHtml(videoUrl)}"></video></div>`;
     }
-    return `<div class="media-frame artifact-media"><iframe src="${escapeHtml(section.url)}" title="${escapeHtml(section.title || "Artifact video")}" allowfullscreen></iframe></div>`;
+    return `<div class="media-frame artifact-media"><iframe src="${escapeHtml(videoUrl)}" title="${escapeHtml(section.title || "Artifact video")}" allowfullscreen></iframe></div>`;
   }
   if (section.type === "code") {
     return `<pre class="code-block artifact-code"><code>${escapeHtml(section.code)}</code></pre>`;
   }
   if (section.type === "link") {
-    return `<a class="inline-link artifact-link" href="${escapeHtml(section.url)}" target="_blank" rel="noreferrer">${escapeHtml(section.body || section.url)}</a>`;
+    const linkUrl = normalizeRenderableUrl(section.url);
+    return `<a class="inline-link artifact-link" href="${escapeHtml(linkUrl)}" target="_blank" rel="noreferrer">${escapeHtml(section.body || section.url)}</a>`;
   }
   return "";
 }
@@ -652,7 +654,7 @@ function renderBlogCard(item) {
 }
 
 function getBlogImageUrl(item) {
-  return item.imageUrl || buildBlogPlaceholder(item.platform || "Article", item.title || "Blog post");
+  return normalizeRenderableUrl(item.imageUrl || buildBlogPlaceholder(item.platform || "Article", item.title || "Blog post"));
 }
 
 function buildBlogPlaceholder(platform, title) {
@@ -793,8 +795,8 @@ function renderNestedList(items) {
 function formatInlineText(text = "") {
   let formatted = escapeHtml(text);
   formatted = formatted.replace(
-    /\[([^\]]+)\]\(((?:https?:\/\/|\.{0,2}\/|assets\/|images\/|videos\/)[^\s)]+)\)/g,
-    '<a class="inline-link" href="$2" target="_blank" rel="noreferrer">$1</a>'
+    /\[([^\]]+)\]\(((?:https?:\/\/|\.{0,2}\/|~\/|\/|assets\/|images\/|videos\/)[^)]+)\)/g,
+    (_, label, url) => `<a class="inline-link" href="${escapeHtml(normalizeRenderableUrl(url.trim()))}" target="_blank" rel="noreferrer">${label}</a>`
   );
   formatted = formatted.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   formatted = formatted.replace(/\*([^*]+)\*/g, "<em>$1</em>");
@@ -808,7 +810,26 @@ function isDirectVideoFile(url = "") {
 function getAboutImageUrl() {
   const candidate = state?.site?.aboutImage?.trim();
   if (!candidate || candidate === DEFAULT_ABOUT_IMAGE) return LOCAL_PROFILE_IMAGE;
-  return candidate;
+  return normalizeRenderableUrl(candidate);
+}
+
+function normalizeRenderableUrl(url = "") {
+  const trimmed = String(url).trim();
+  if (!trimmed) return "";
+  if (/^(data:|https?:\/\/|mailto:|tel:|#)/i.test(trimmed)) return trimmed;
+
+  let normalized = trimmed.replace(/^~\//, "").replace(/^\.?\//, (match) => (match === "./" ? "" : match));
+
+  const projectMarker = "/eportfolio/";
+  if (normalized.includes(projectMarker)) {
+    normalized = normalized.split(projectMarker)[1];
+  }
+
+  if (normalized.startsWith("/")) {
+    normalized = normalized.slice(1);
+  }
+
+  return encodeURI(normalized);
 }
 
 function getArtifactUrl(item) {
