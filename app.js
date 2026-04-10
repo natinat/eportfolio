@@ -1,6 +1,7 @@
-const STORAGE_KEY = "eportfolio-content-v1";
+const STORAGE_KEY = "eportfolio-content-v2";
 const EDIT_SESSION_KEY = "eportfolio-edit-unlocked";
 const OWNER_PASSCODE = "portfolio-admin";
+
 const DEFAULT_ABOUT_IMAGE =
   "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80";
 const LOCAL_PROFILE_IMAGE = "images/natalie-halimi.png";
@@ -20,58 +21,47 @@ const seedData = {
     aboutTitle: "Designing a career through inquiry, practice, and public work",
     aboutImage: LOCAL_PROFILE_IMAGE,
     aboutText:
-      "I am a multidisciplinary professional with a strong interest in connecting ideas across research, design, communication, and execution. My work is shaped by curiosity, careful analysis, and a desire to create outputs that are useful to real people. This portfolio is where I document that journey, share what I have built, and reflect on how each experience informs the next.",
+      "I am a multidisciplinary professional with a strong interest in connecting ideas across research, design, communication, and execution.\n\nMy work is shaped by curiosity, careful analysis, and a desire to create outputs that are useful to real people.\n\nThis portfolio is where I document that journey, share what I have built, and reflect on how each experience informs the next.",
     academicTitle: "Academic artifacts",
     academicDescription:
       "Projects, papers, presentations, prototypes, and discussions developed as part of my studies at the University of Essex.",
-    academicTags: ["All", "Intro to Computing", "Intro to AI"],
-    stats: [
-      { label: "Focus areas", value: "Academic, professional, writing" },
-      { label: "Portfolio mode", value: "Editable by owner" },
-      { label: "Experience style", value: "Minimal, clear, intentional" }
-    ]
+    academicTags: ["All", "Intro to Computing", "Intro to AI"]
   },
   academicItems: [
     {
       id: crypto.randomUUID(),
       slug: "capstone-research-project",
+      sortOrder: 0,
       title: "Capstone research project",
       description:
         "A long-form academic investigation combining literature review, field observations, and final recommendations. This entry shows how image, text, and tagged metadata can be combined for a rich portfolio artifact.",
-      tags: ["Research", "Capstone", "Qualitative"],
+      tags: ["All", "Research", "Capstone", "Qualitative"],
       previewMediaType: "image",
-      previewMediaUrl:
-        "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+      previewMediaUrl: "images/Glowing-CPU-on-circuit-board.png",
       sections: [
         {
           id: crypto.randomUUID(),
           type: "text",
           title: "Overview",
           body:
-            "A long-form academic investigation combining literature review, field observations, and final recommendations. This artifact shows how written analysis, visual documentation, and supporting material can sit together on one page."
+            "# Overview\n\nA long-form academic investigation combining literature review, field observations, and final recommendations.\n\n## Focus areas\n\n- Qualitative analysis\n- Field observations\n- Final recommendations"
         },
         {
           id: crypto.randomUUID(),
           type: "image",
           title: "Research visual",
-          url: "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80"
-        },
-        {
-          id: crypto.randomUUID(),
-          type: "code",
-          title: "Sample analysis logic",
-          code:
-            "def summarize_findings(notes):\n    themes = extract_themes(notes)\n    return {'themes': themes, 'count': len(themes)}"
+          url: "images/Glowing-CPU-on-circuit-board.png"
         }
       ]
     },
     {
       id: crypto.randomUUID(),
       slug: "course-presentation-recording",
+      sortOrder: 1,
       title: "Course presentation recording",
       description:
         "A presentation that translates a complex topic into a clear visual narrative. Video embeds can be used here for talks, demonstrations, or defenses.",
-      tags: ["Presentation", "Video", "Communication"],
+      tags: ["All", "Presentation", "Video", "Communication"],
       previewMediaType: "image",
       previewMediaUrl: ACADEMIC_PREVIEW_PLACEHOLDER,
       sections: [
@@ -80,7 +70,7 @@ const seedData = {
           type: "text",
           title: "Context",
           body:
-            "A presentation that translates a complex topic into a clear visual narrative. This page can hold the recording alongside supporting notes, slides, and reflection."
+            "## Context\n\nA presentation that translates a complex topic into a clear visual narrative."
         },
         {
           id: crypto.randomUUID(),
@@ -93,10 +83,11 @@ const seedData = {
     {
       id: crypto.randomUUID(),
       slug: "the-impact-of-artificial-intelligence-on-the-online-travel-industry",
+      sortOrder: 2,
       title: "The Impact of Artificial Intelligence on the Online Travel Industry",
       description:
         "A video presentation exploring how artificial intelligence is reshaping the online travel industry through automation, personalization, and changing customer expectations.",
-      tags: ["Artificial Intelligence", "Travel", "Video"],
+      tags: ["All", "Artificial Intelligence", "Travel", "Video"],
       previewMediaType: "image",
       previewMediaUrl: LOCAL_TRAVEL_AI_PREVIEW_IMAGE,
       sections: [
@@ -105,7 +96,7 @@ const seedData = {
           type: "text",
           title: "Overview",
           body:
-            "A video presentation exploring how artificial intelligence is reshaping the online travel industry through automation, personalization, and changing customer expectations."
+            "# Overview\n\nA video presentation exploring how artificial intelligence is reshaping the online travel industry through automation, personalization, and changing customer expectations."
         },
         {
           id: crypto.randomUUID(),
@@ -123,8 +114,7 @@ const seedData = {
       role: "Current role or milestone",
       organization: "Organization or initiative",
       summary:
-        "Describe the current position, scope of work, key responsibilities, and impact.",
-      resumeLink: "https://example.com/resume.pdf"
+        "## Current focus\n\nDescribe the current position, scope of work, key responsibilities, and impact."
     },
     {
       id: crypto.randomUUID(),
@@ -132,8 +122,7 @@ const seedData = {
       role: "Earlier professional experience",
       organization: "Previous team or institution",
       summary:
-        "Highlight what you built, learned, improved, or led during this phase of your career.",
-      resumeLink: "https://example.com/resume.pdf"
+        "## Previous experience\n\nHighlight what you built, learned, improved, or led during this phase of your career."
     }
   ],
   blogLinks: [
@@ -141,17 +130,21 @@ const seedData = {
       id: crypto.randomUUID(),
       title: "Article title from another platform",
       platform: "Medium",
+      publishedOn: "2026-01-12",
       description:
         "Use the blog page to point readers to writing published elsewhere while keeping the portfolio itself streamlined.",
-      url: "https://example.com/article"
+      url: "https://example.com/article",
+      imageUrl: ""
     },
     {
       id: crypto.randomUUID(),
       title: "Professional reflection or essay",
       platform: "LinkedIn",
+      publishedOn: "2025-11-03",
       description:
         "This section works well for external essays, newsletters, guest posts, or professional thought pieces.",
-      url: "https://example.com/post"
+      url: "https://example.com/post",
+      imageUrl: ""
     }
   ]
 };
@@ -194,14 +187,16 @@ const currentPage = document.body.dataset.page || "home";
 const searchParams = new URLSearchParams(window.location.search);
 const currentArtifactSlug = searchParams.get("artifact") || searchParams.get("id");
 const currentAcademicTag = searchParams.get("tag");
+
 const app = document.querySelector("#app");
 const footerMessage = document.querySelector("#footerMessage");
-const editToggle = document.querySelector("#editToggle");
+const footerEditToggle = document.querySelector("#footerEditToggle");
 const editorDialog = document.querySelector("#editorDialog");
 const editorFields = document.querySelector("#editorFields");
 const editorForm = document.querySelector("#editorForm");
 const dialogTitle = document.querySelector("#dialogTitle");
 const deleteButton = document.querySelector("#deleteButton");
+const dialogCloseButton = document.querySelector('.icon-button[value="cancel"]');
 const siteShell = document.querySelector(".site-shell");
 
 function loadState() {
@@ -209,79 +204,26 @@ function loadState() {
     const saved = localStorage.getItem(STORAGE_KEY);
     const nextState = saved ? JSON.parse(saved) : structuredClone(seedData);
 
-    if (nextState?.site?.aboutImage === DEFAULT_ABOUT_IMAGE) {
+    nextState.site = {
+      ...seedData.site,
+      ...(nextState.site || {})
+    };
+
+    if (!nextState.site.aboutImage || nextState.site.aboutImage === DEFAULT_ABOUT_IMAGE || /natalie-halimi\.(jpg|jpeg)$/i.test(nextState.site.aboutImage)) {
       nextState.site.aboutImage = LOCAL_PROFILE_IMAGE;
     }
 
-    if (
-      !nextState?.site?.aboutImage ||
-      /natalie-halimi\.(jpeg|jpg)$/i.test(nextState.site.aboutImage)
-    ) {
-      nextState.site.aboutImage = LOCAL_PROFILE_IMAGE;
-    }
+    nextState.site.academicTags = ensureAllTag(nextState.site.academicTags || seedData.site.academicTags);
+    nextState.academicItems = assignAcademicSortOrder((nextState.academicItems || []).map(normalizeAcademicItem));
+    nextState.timelineItems = (nextState.timelineItems || []).map(normalizeTimelineItem);
+    nextState.blogLinks = (nextState.blogLinks || []).map(normalizeBlogItem);
 
-    if (!nextState?.site?.academicTitle) {
-      nextState.site.academicTitle = seedData.site.academicTitle;
-    }
-
-    if (!nextState?.site?.academicDescription) {
-      nextState.site.academicDescription = seedData.site.academicDescription;
-    }
-
-    if (!Array.isArray(nextState?.site?.academicTags) || nextState.site.academicTags.length === 0) {
-      nextState.site.academicTags = [...seedData.site.academicTags];
-    }
-
-    if (!nextState.site.academicTags.some((tag) => tag.toLowerCase() === "all")) {
-      nextState.site.academicTags.unshift("All");
-    }
-
-    nextState.academicItems = (nextState.academicItems || []).map(normalizeAcademicItem);
-
-    const hasTravelAiVideo = nextState.academicItems.some(
-      (item) => item.previewMediaUrl === LOCAL_TRAVEL_AI_VIDEO || item.title === "The Impact of Artificial Intelligence on the Online Travel Industry"
-    );
-
-    if (!hasTravelAiVideo) {
-      nextState.academicItems.unshift(
-        normalizeAcademicItem({
-          title: "The Impact of Artificial Intelligence on the Online Travel Industry",
-          description:
-            "A video presentation exploring how artificial intelligence is reshaping the online travel industry through automation, personalization, and changing customer expectations.",
-          tags: ["Artificial Intelligence", "Travel", "Video"],
-          previewMediaType: "image",
-          previewMediaUrl: LOCAL_TRAVEL_AI_PREVIEW_IMAGE,
-          sections: [
-            {
-              type: "text",
-              title: "Overview",
-              body:
-                "A video presentation exploring how artificial intelligence is reshaping the online travel industry through automation, personalization, and changing customer expectations."
-            },
-            {
-              type: "video",
-              title: "Presentation video",
-              url: LOCAL_TRAVEL_AI_VIDEO
-            }
-          ]
-        })
+    if (!nextState.academicItems.some((item) => item.slug === "the-impact-of-artificial-intelligence-on-the-online-travel-industry")) {
+      nextState.academicItems.push(
+        normalizeAcademicItem(seedData.academicItems[2])
       );
+      nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
     }
-
-    nextState.academicItems = nextState.academicItems.map((item) => {
-      if (item.title !== "The Impact of Artificial Intelligence on the Online Travel Industry") {
-        return item;
-      }
-
-      return normalizeAcademicItem({
-        ...item,
-        previewMediaType: "image",
-        previewMediaUrl:
-          !item.previewMediaUrl || item.previewMediaUrl === ACADEMIC_PREVIEW_PLACEHOLDER
-            ? LOCAL_TRAVEL_AI_PREVIEW_IMAGE
-            : item.previewMediaUrl
-      });
-    });
 
     return nextState;
   } catch (error) {
@@ -291,21 +233,20 @@ function loadState() {
 }
 
 function normalizeAcademicItem(item) {
-  const tags = ensureAllTag(Array.isArray(item.tags) ? item.tags : []);
   const normalized = {
     id: item.id || crypto.randomUUID(),
     slug: item.slug || slugify(item.title || "artifact"),
-    title: item.title || "Untitled artifact",
+    sortOrder: Number.isFinite(Number(item.sortOrder)) ? Number(item.sortOrder) : 0,
+    title: item.title || "",
     description: item.description || "",
-    tags,
+    tags: ensureAllTag(Array.isArray(item.tags) ? item.tags : []),
     previewMediaType: "image",
-    previewMediaUrl: item.previewMediaType === "image" && item.previewMediaUrl ? item.previewMediaUrl : item.previewImageUrl || "",
-    sections: Array.isArray(item.sections) ? item.sections.map(normalizeSection) : []
+    previewMediaUrl:
+      item.previewMediaType === "image" && item.previewMediaUrl
+        ? item.previewMediaUrl
+        : item.previewImageUrl || "",
+    sections: Array.isArray(item.sections) ? item.sections.map(normalizeSection) : buildLegacySections(item)
   };
-
-  if (!normalized.sections.length) {
-    normalized.sections = buildLegacySections(item);
-  }
 
   return normalized;
 }
@@ -326,7 +267,7 @@ function buildLegacySections(item) {
     sections.push({
       id: crypto.randomUUID(),
       type: item.mediaType,
-      title: item.mediaType === "video" ? "Media" : "Preview image",
+      title: item.mediaType === "video" ? "Media" : "Image",
       url: item.mediaUrl
     });
   }
@@ -354,6 +295,28 @@ function normalizeSection(section) {
   };
 }
 
+function normalizeTimelineItem(item) {
+  return {
+    id: item.id || crypto.randomUUID(),
+    year: item.year || "",
+    role: item.role || "",
+    organization: item.organization || "",
+    summary: item.summary || ""
+  };
+}
+
+function normalizeBlogItem(item) {
+  return {
+    id: item.id || crypto.randomUUID(),
+    title: item.title || "",
+    platform: item.platform || "",
+    publishedOn: item.publishedOn || "",
+    description: item.description || "",
+    url: item.url || "",
+    imageUrl: item.imageUrl || ""
+  };
+}
+
 function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
@@ -368,13 +331,10 @@ function escapeHtml(text = "") {
 
 function render() {
   const config = pageConfig[currentPage] || pageConfig.home;
-
   document.title = config.title(state.site);
   footerMessage.textContent = state.site.footerMessage;
-  editToggle.textContent = editMode ? "Disable edit mode" : "Enable edit mode";
   siteShell.classList.toggle("editing", editMode);
   app.innerHTML = config.render();
-
   updateActiveNavigation();
   attachInteractiveHandlers();
 }
@@ -389,9 +349,8 @@ function updateActiveNavigation() {
     blog: "blog.html"
   }[currentPage];
 
-  document.querySelectorAll(".site-nav a, .footer-links a").forEach((link) => {
-    const isCurrent = link.getAttribute("href") === pageHref;
-    if (isCurrent) {
+  document.querySelectorAll(".site-nav a").forEach((link) => {
+    if (link.getAttribute("href") === pageHref) {
       link.setAttribute("aria-current", "page");
     } else {
       link.removeAttribute("aria-current");
@@ -401,130 +360,46 @@ function updateActiveNavigation() {
 
 function renderHomePage() {
   return `
-    <section class="panel hero">
+    <section class="panel hero hero-single">
       <div class="hero-copy">
         <div>
           <p class="pill">Online Portfolio</p>
-          <h1 class="hero-title">${escapeHtml(state.site.owner)}<br /><span>${escapeHtml(
-            state.site.role
-          )}</span></h1>
+          <h1 class="hero-title">${escapeHtml(state.site.owner)}<br /><span>${escapeHtml(state.site.role)}</span></h1>
         </div>
         <p class="hero-intro">${escapeHtml(state.site.intro)}</p>
         <div class="button-row">
-          <a class="primary-button" href="academic.html">Explore work</a>
+          <a class="primary-button" href="academic.html">Explore academic work</a>
+          <a class="ghost-button" href="professional.html">Explore professional background</a>
           <a class="ghost-button" href="about.html">Read my story</a>
           <button class="editor-button editor-only" type="button" data-editor="site">Edit hero</button>
         </div>
-      </div>
-      <div class="panel hero-card edit-highlight">
-        <div>
-          <p class="pill">Portfolio snapshot</p>
-          <div class="hero-stat-grid">
-            ${state.site.stats
-              .map(
-                (stat) => `
-                  <article class="stat-card">
-                    <p class="pill">${escapeHtml(stat.label)}</p>
-                    <p class="stat-value">${escapeHtml(stat.value)}</p>
-                  </article>
-                `
-              )
-              .join("")}
-          </div>
-        </div>
-        <div class="editor-toolbar editor-only">
-          <span class="editor-badge">Viewers can browse, only you can unlock edits on this browser.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" aria-labelledby="home-overview-title">
-      <div class="section-header">
-        <div>
-          <p class="pill">Home</p>
-          <h2 id="home-overview-title" class="section-title">A clear map of the entire portfolio</h2>
-        </div>
-        <button class="editor-button editor-only" type="button" data-editor="site">Edit overview</button>
-      </div>
-      <p class="section-copy">
-        The home page gives visitors a high-level sense of what this website contains, then guides them to the areas most relevant to their interests.
-      </p>
-      <div class="home-grid">
-        ${[
-          {
-            href: "about.html",
-            title: "About Me",
-            copy: "Biography, profile image, and the narrative that connects your work.",
-            label: "Story"
-          },
-          {
-            href: "academic.html",
-            title: "Academic Work",
-            copy: "Tagged research outputs, visual media, written analysis, and code samples.",
-            label: "Scholarship"
-          },
-          {
-            href: "professional.html",
-            title: "Professional Work",
-            copy: "A timeline-driven view of your experience, growth, and resume context.",
-            label: "Career"
-          },
-          {
-            href: "blog.html",
-            title: "Blog",
-            copy: "A curated list of articles and essays hosted on other websites.",
-            label: "Writing"
-          }
-        ]
-          .map(
-            (item) => `
-              <a class="home-card" href="${item.href}">
-                <div>
-                  <p class="pill">${escapeHtml(item.label)}</p>
-                  <h3 class="card-title">${escapeHtml(item.title)}</h3>
-                </div>
-                <div>
-                  <p class="card-copy">${escapeHtml(item.copy)}</p>
-                  <span class="card-link">Open page</span>
-                </div>
-              </a>
-            `
-          )
-          .join("")}
       </div>
     </section>
   `;
 }
 
 function renderAboutPage() {
-  const aboutImage = getAboutImageUrl();
-  const aboutParagraphs = renderParagraphs(state.site.aboutText, "about-text");
-
   return `
     <section class="panel page-intro">
       <div class="section-header">
         <div>
           <p class="pill">About Me</p>
-          <h1 class="section-title">${escapeHtml(state.site.aboutTitle)}</h1>
         </div>
         <button class="editor-button editor-only" type="button" data-editor="about">Edit about</button>
       </div>
-      <p class="section-copy">
-        This page expands on the perspective, values, and experiences that connect the rest of the portfolio.
-      </p>
     </section>
 
     <section class="panel">
       <div class="about-layout">
         <div class="about-image edit-highlight">
           <img
-            src="${escapeHtml(aboutImage)}"
+            src="${escapeHtml(getAboutImageUrl())}"
             alt="Portrait or representative profile image"
             onerror="this.onerror=null;this.src='${LOCAL_PROFILE_IMAGE}'"
           />
         </div>
         <article class="about-card edit-highlight">
-          ${aboutParagraphs}
+          ${renderParagraphs(state.site.aboutText, "about-text")}
         </article>
       </div>
     </section>
@@ -535,42 +410,29 @@ function renderAcademicPage() {
   const activeTag = currentAcademicTag ? decodeURIComponent(currentAcademicTag) : "";
   const activeTagLabel = getTagLabelFromParam(activeTag);
   const isAllFilter = !activeTag || activeTag === "all";
+  const orderedAcademicItems = [...state.academicItems].sort((a, b) => a.sortOrder - b.sortOrder);
   const filteredItems = isAllFilter
-    ? state.academicItems
-    : state.academicItems.filter((item) => item.tags.some((tag) => slugify(tag) === activeTag));
+    ? orderedAcademicItems
+    : orderedAcademicItems.filter((item) => item.tags.some((tag) => slugify(tag) === activeTag));
 
   return `
     <section class="panel page-intro">
       <div class="section-header">
         <div>
           <p class="pill">Academic Work</p>
-          <h1 class="section-title">${escapeHtml(state.site.academicTitle || "Academic artifacts")}</h1>
+          <h1 class="section-title">${escapeHtml(state.site.academicTitle)}</h1>
         </div>
         <div class="editor-toolbar editor-only">
           <button class="ghost-button" type="button" data-editor="academic-page">Edit page</button>
           <button class="editor-button" type="button" data-editor="academic-new">Add academic item</button>
         </div>
       </div>
-      <p class="section-copy">
-        ${escapeHtml(state.site.academicDescription || "")}
-      </p>
-      ${
-        state.site.academicTags?.length
-          ? `
-            <div class="tag-list page-tag-list">
-              ${state.site.academicTags
-                .map(
-                  (tag) => `
-                    <a class="page-tag ${((isAllFilter && tag.toLowerCase() === "all") || activeTag === slugify(tag)) ? "page-tag-active" : ""}" href="${getAcademicTagUrl(tag)}">
-                      ${escapeHtml(tag)}
-                    </a>
-                  `
-                )
-                .join("")}
-            </div>
-          `
-          : ""
-      }
+      <p class="section-copy">${escapeHtml(state.site.academicDescription)}</p>
+      <div class="tag-list page-tag-list">
+        ${state.site.academicTags
+          .map((tag) => `<a class="page-tag ${((isAllFilter && tag.toLowerCase() === "all") || activeTag === slugify(tag)) ? "page-tag-active" : ""}" href="${getAcademicTagUrl(tag)}">${escapeHtml(tag)}</a>`)
+          .join("")}
+      </div>
     </section>
 
     <section class="panel">
@@ -604,6 +466,29 @@ function renderAcademicPage() {
   `;
 }
 
+function renderAcademicCard(item) {
+  return `
+    <article class="academic-card academic-card-preview edit-highlight">
+      <button class="academic-widget-button academic-edit-button editor-only" type="button" data-editor="academic-edit" data-id="${item.id}" aria-label="Edit academic item">Edit</button>
+      <div class="academic-card-link" data-artifact-url="${getArtifactUrl(item)}" role="link" tabindex="0" aria-label="Open artifact ${escapeHtml(item.title)}">
+        ${renderPreviewMedia(item)}
+        <div class="academic-card-copy">
+          <h3 class="card-title">${escapeHtml(item.title)}</h3>
+          <p class="card-copy">${escapeHtml(truncateWords(item.description, 40))}</p>
+          <div class="tag-list">
+            ${item.tags.map((tag) => `<a class="tag artifact-tag-link" href="${getAcademicTagUrl(tag)}">${escapeHtml(tag)}</a>`).join("")}
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderPreviewMedia(item) {
+  const previewImage = item.previewMediaUrl || ACADEMIC_PREVIEW_PLACEHOLDER;
+  return `<div class="media-frame preview-media"><img src="${escapeHtml(previewImage)}" alt="${escapeHtml(item.title)}" /></div>`;
+}
+
 function renderArtifactPage() {
   const artifact = getCurrentArtifact();
 
@@ -621,21 +506,19 @@ function renderArtifactPage() {
   return `
     <section class="panel page-intro">
       <a class="inline-link artifact-back-link" href="academic.html">Back to Academic Work</a>
-      <div class="section-header artifact-header">
+      <div class="artifact-header">
         <div>
           <p class="pill">Academic Artifact</p>
           <h1 class="section-title">${escapeHtml(artifact.title)}</h1>
           <p class="section-copy">${escapeHtml(artifact.description)}</p>
-        </div>
-        <div class="editor-toolbar editor-only">
-          <button class="ghost-button" type="button" data-editor="academic-edit" data-id="${artifact.id}">Edit artifact</button>
-          <button class="editor-button" type="button" data-editor="artifact-section-new" data-id="${artifact.id}">Add section</button>
+          <div class="editor-toolbar artifact-header-actions">
+            <button class="ghost-button editor-only" type="button" data-editor="academic-edit" data-id="${artifact.id}">Edit artifact</button>
+            <button class="editor-button editor-only" type="button" data-editor="artifact-section-new" data-id="${artifact.id}">Add section</button>
+          </div>
         </div>
       </div>
       <div class="tag-list">
-        ${artifact.tags
-          .map((tag) => `<a class="tag artifact-tag-link" href="${getAcademicTagUrl(tag)}">${escapeHtml(tag)}</a>`)
-          .join("")}
+        ${artifact.tags.map((tag) => `<a class="tag artifact-tag-link" href="${getAcademicTagUrl(tag)}">${escapeHtml(tag)}</a>`).join("")}
       </div>
     </section>
 
@@ -645,103 +528,13 @@ function renderArtifactPage() {
   `;
 }
 
-function renderProfessionalPage() {
-  return `
-    <section class="panel page-intro">
-      <div class="section-header">
-        <div>
-          <p class="pill">Professional Work</p>
-          <h1 class="section-title">A resume timeline with context</h1>
-        </div>
-        <div class="editor-toolbar editor-only">
-          <button class="editor-button" type="button" data-editor="timeline-new">Add timeline item</button>
-        </div>
-      </div>
-      <p class="section-copy">
-        This page frames experience as a narrative, pairing timeline milestones with a direct route to a formal resume.
-      </p>
-    </section>
-
-    <section class="panel">
-      <div class="resume-layout">
-        <div class="timeline">
-          ${state.timelineItems.map(renderTimelineCard).join("")}
-        </div>
-        <aside class="resume-card edit-highlight">
-          <p class="pill">Resume</p>
-          <h3 class="card-title">Link your latest CV or resume</h3>
-          <p class="resume-summary">
-            This panel gives visitors a quick way to access a formal resume while the timeline provides the fuller narrative behind each experience.
-          </p>
-          <a class="resume-link" href="${escapeHtml(
-            state.timelineItems[0]?.resumeLink || "#"
-          )}" target="_blank" rel="noreferrer">Open latest resume</a>
-        </aside>
-      </div>
-    </section>
-  `;
-}
-
-function renderBlogPage() {
-  return `
-    <section class="panel page-intro">
-      <div class="section-header">
-        <div>
-          <p class="pill">Blog</p>
-          <h1 class="section-title">Writing published beyond this website</h1>
-        </div>
-        <div class="editor-toolbar editor-only">
-          <button class="editor-button" type="button" data-editor="blog-new">Add blog link</button>
-        </div>
-      </div>
-      <p class="section-copy">
-        Use this space to connect readers to your external articles, thought pieces, and essays without duplicating content across platforms.
-      </p>
-    </section>
-
-    <section class="panel">
-      <div class="blog-grid">
-        ${state.blogLinks.map(renderBlogCard).join("")}
-      </div>
-    </section>
-  `;
-}
-
-function renderAcademicCard(item) {
-  const artifactUrl = getArtifactUrl(item);
-  return `
-    <article class="academic-card academic-card-preview edit-highlight">
-      <button class="ghost-button academic-edit-button editor-only" type="button" data-editor="academic-edit" data-id="${item.id}" aria-label="Edit academic item">Edit</button>
-      <div class="academic-card-link" data-artifact-url="${artifactUrl}" role="link" tabindex="0" aria-label="Open artifact ${escapeHtml(item.title)}">
-        ${renderPreviewMedia(item)}
-        <div class="academic-card-copy">
-          <h3 class="card-title">${escapeHtml(item.title)}</h3>
-          <p class="card-copy">${escapeHtml(truncateWords(item.description, 40))}</p>
-          <div class="tag-list">
-            ${item.tags
-              .map((tag) => `<a class="tag artifact-tag-link" href="${getAcademicTagUrl(tag)}">${escapeHtml(tag)}</a>`)
-              .join("")}
-          </div>
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function renderPreviewMedia(item) {
-  const previewImage = item.previewMediaUrl || ACADEMIC_PREVIEW_PLACEHOLDER;
-  return `<div class="media-frame preview-media"><img src="${escapeHtml(previewImage)}" alt="${escapeHtml(
-    item.title
-  )}" /></div>`;
-}
-
 function renderArtifactSection(artifact, section) {
   return `
     <article class="panel artifact-section edit-highlight">
       <div class="section-header">
         <div>
           <p class="pill">${escapeHtml(section.type)}</p>
-          <h2 class="card-title artifact-section-title">${escapeHtml(section.title || "Section")}</h2>
+          ${section.title ? `<h2 class="card-title artifact-section-title">${escapeHtml(section.title)}</h2>` : ""}
         </div>
         <div class="editor-toolbar editor-only">
           <button class="ghost-button" type="button" data-editor="artifact-section-edit" data-id="${artifact.id}" data-section-id="${section.id}">Edit section</button>
@@ -753,170 +546,47 @@ function renderArtifactSection(artifact, section) {
 }
 
 function renderSectionBody(section) {
-  if (section.type === "text") {
-    return renderFormattedText(section.body);
-  }
-
+  if (section.type === "text") return renderFormattedText(section.body);
   if (section.type === "image") {
-    return `<div class="media-frame artifact-media"><img src="${escapeHtml(section.url)}" alt="${escapeHtml(
-      section.title || "Artifact image"
-    )}" /></div>`;
+    return `<div class="media-frame artifact-media"><img src="${escapeHtml(section.url)}" alt="${escapeHtml(section.title || "Artifact image")}" /></div>`;
   }
-
   if (section.type === "video") {
     if (isDirectVideoFile(section.url)) {
-      return `<div class="media-frame artifact-media"><video controls preload="metadata" src="${escapeHtml(
-        section.url
-      )}"></video></div>`;
+      return `<div class="media-frame artifact-media"><video controls preload="metadata" src="${escapeHtml(section.url)}"></video></div>`;
     }
-
-    return `<div class="media-frame artifact-media"><iframe src="${escapeHtml(
-      section.url
-    )}" title="${escapeHtml(section.title || "Artifact video")}" allowfullscreen></iframe></div>`;
+    return `<div class="media-frame artifact-media"><iframe src="${escapeHtml(section.url)}" title="${escapeHtml(section.title || "Artifact video")}" allowfullscreen></iframe></div>`;
   }
-
   if (section.type === "code") {
     return `<pre class="code-block artifact-code"><code>${escapeHtml(section.code)}</code></pre>`;
   }
-
   if (section.type === "link") {
-    return `<a class="inline-link artifact-link" href="${escapeHtml(section.url)}" target="_blank" rel="noreferrer">${
-      escapeHtml(section.body || section.url)
-    }</a>`;
+    return `<a class="inline-link artifact-link" href="${escapeHtml(section.url)}" target="_blank" rel="noreferrer">${escapeHtml(section.body || section.url)}</a>`;
   }
-
   return "";
 }
 
-function isDirectVideoFile(url = "") {
-  return /\.(mp4|webm|ogg)$/i.test(url);
-}
+function renderProfessionalPage() {
+  const orderedTimelineItems = [...state.timelineItems].sort(compareTimelineItemsDesc);
+  return `
+    <section class="panel page-intro">
+      <div class="section-header">
+        <div>
+          <p class="pill">Professional Work</p>
+          <h1 class="section-title">A resume timeline with context</h1>
+        </div>
+        <div class="editor-toolbar editor-only">
+          <button class="editor-button" type="button" data-editor="timeline-new">Add timeline item</button>
+        </div>
+      </div>
+      <p class="section-copy">This page frames experience as a narrative, pairing timeline milestones with a broader professional story.</p>
+    </section>
 
-function getAboutImageUrl() {
-  const candidate = state?.site?.aboutImage?.trim();
-  if (!candidate || candidate === DEFAULT_ABOUT_IMAGE) {
-    return LOCAL_PROFILE_IMAGE;
-  }
-  return candidate;
-}
-
-function renderParagraphs(text = "", className) {
-  return text
-    .split(/\n\s*\n/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean)
-    .map((paragraph) => `<p class="${className}">${escapeHtml(paragraph)}</p>`)
-    .join("");
-}
-
-function renderFormattedText(text = "") {
-  const blocks = text
-    .split(/\n\s*\n/)
-    .map((block) => block.trim())
-    .filter(Boolean);
-
-  return blocks
-    .map(renderFormattedBlock)
-    .join("");
-}
-
-function renderFormattedBlock(block) {
-  const lines = block.split("\n").map((line) => line.trim()).filter(Boolean);
-  const fragments = [];
-  let paragraphLines = [];
-  let listItems = [];
-
-  function flushParagraph() {
-    if (!paragraphLines.length) return;
-    fragments.push(`<p class="artifact-text">${formatInlineText(paragraphLines.join(" "))}</p>`);
-    paragraphLines = [];
-  }
-
-  function flushList() {
-    if (!listItems.length) return;
-    fragments.push(`<ul class="artifact-list">${listItems
-      .map((item) => `<li>${formatInlineText(item)}</li>`)
-      .join("")}</ul>`);
-    listItems = [];
-  }
-
-  lines.forEach((line) => {
-    if (line.startsWith("- ")) {
-      flushParagraph();
-      listItems.push(line.slice(2));
-      return;
-    }
-
-    flushList();
-
-    if (line.startsWith("#### ")) {
-      flushParagraph();
-      fragments.push(`<h5 class="artifact-heading artifact-heading-xs">${formatInlineText(line.slice(5))}</h5>`);
-      return;
-    }
-
-    if (line.startsWith("### ")) {
-      flushParagraph();
-      fragments.push(`<h4 class="artifact-heading artifact-heading-sm">${formatInlineText(line.slice(4))}</h4>`);
-      return;
-    }
-
-    if (line.startsWith("## ")) {
-      flushParagraph();
-      fragments.push(`<h3 class="artifact-heading artifact-heading-md">${formatInlineText(line.slice(3))}</h3>`);
-      return;
-    }
-
-    if (line.startsWith("# ")) {
-      flushParagraph();
-      fragments.push(`<h2 class="artifact-heading artifact-heading-lg">${formatInlineText(line.slice(2))}</h2>`);
-      return;
-    }
-
-    paragraphLines.push(line);
-  });
-
-  flushList();
-  flushParagraph();
-
-  return fragments.join("");
-}
-
-function formatInlineText(text = "") {
-  let formatted = escapeHtml(text);
-
-  formatted = formatted.replace(
-    /\[([^\]]+)\]\(((?:https?:\/\/|\.{0,2}\/|assets\/|images\/|videos\/)[^\s)]+)\)/g,
-    '<a class="inline-link" href="$2" target="_blank" rel="noreferrer">$1</a>'
-  );
-  formatted = formatted.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-  formatted = formatted.replace(/\*([^*]+)\*/g, "<em>$1</em>");
-
-  return formatted;
-}
-
-function getArtifactUrl(item) {
-  return `artifact.html?artifact=${encodeURIComponent(item.slug)}`;
-}
-
-function getAcademicTagUrl(tag) {
-  return tag.toLowerCase() === "all" ? "academic.html" : `academic.html?tag=${encodeURIComponent(slugify(tag))}`;
-}
-
-function getTagLabelFromParam(param) {
-  if (!param || param === "all") return "All";
-
-  const knownTags = [
-    ...(state.site.academicTags || []),
-    ...state.academicItems.flatMap((item) => item.tags || [])
-  ];
-
-  return knownTags.find((tag) => slugify(tag) === param) || param;
-}
-
-function getCurrentArtifact() {
-  if (!currentArtifactSlug) return null;
-  return state.academicItems.find((item) => item.slug === currentArtifactSlug || item.id === currentArtifactSlug) || null;
+    <section class="panel">
+      <div class="timeline timeline-full">
+        ${orderedTimelineItems.map(renderTimelineCard).join("")}
+      </div>
+    </section>
+  `;
 }
 
 function renderTimelineCard(item) {
@@ -930,18 +600,47 @@ function renderTimelineCard(item) {
         <button class="ghost-button editor-only" type="button" data-editor="timeline-edit" data-id="${item.id}" aria-label="Edit timeline item">Edit</button>
       </div>
       <p class="pill">${escapeHtml(item.organization)}</p>
-      <p class="card-copy">${escapeHtml(item.summary)}</p>
-      <a class="inline-link" href="${escapeHtml(item.resumeLink)}" target="_blank" rel="noreferrer">Resume link</a>
+      <div class="timeline-summary">${renderFormattedText(item.summary)}</div>
     </article>
+  `;
+}
+
+function renderBlogPage() {
+  const orderedBlogLinks = [...state.blogLinks].sort(compareBlogDatesDesc);
+  return `
+    <section class="panel page-intro">
+      <div class="section-header">
+        <div>
+          <p class="pill">Blog</p>
+          <h1 class="section-title">Writing published beyond this website</h1>
+        </div>
+        <div class="editor-toolbar editor-only">
+          <button class="editor-button" type="button" data-editor="blog-new">Add blog link</button>
+        </div>
+      </div>
+      <p class="section-copy">Use this space to connect readers to your external articles, thought pieces, and essays without duplicating content across platforms.</p>
+    </section>
+
+    <section class="panel">
+      <div class="blog-grid">
+        ${orderedBlogLinks.map(renderBlogCard).join("")}
+      </div>
+    </section>
   `;
 }
 
 function renderBlogCard(item) {
   return `
     <article class="blog-card edit-highlight">
+      <div class="media-frame blog-image-frame">
+        <img src="${escapeHtml(getBlogImageUrl(item))}" alt="${escapeHtml(item.title)}" />
+      </div>
       <div class="card-header">
         <div>
-          <p class="pill">${escapeHtml(item.platform)}</p>
+          <div class="blog-meta-row">
+            <p class="pill">${escapeHtml(item.platform)}</p>
+            ${item.publishedOn ? `<p class="pill blog-date">${escapeHtml(formatDisplayDate(item.publishedOn))}</p>` : ""}
+          </div>
           <h3 class="blog-title">${escapeHtml(item.title)}</h3>
         </div>
         <button class="ghost-button editor-only" type="button" data-editor="blog-edit" data-id="${item.id}" aria-label="Edit blog link">Edit</button>
@@ -952,13 +651,191 @@ function renderBlogCard(item) {
   `;
 }
 
+function getBlogImageUrl(item) {
+  return item.imageUrl || buildBlogPlaceholder(item.platform || "Article", item.title || "Blog post");
+}
+
+function buildBlogPlaceholder(platform, title) {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720">
+      <rect width="1200" height="720" fill="#f3ede3"/>
+      <rect x="88" y="88" width="240" height="44" rx="22" fill="#d65c31" fill-opacity=".18"/>
+      <rect x="88" y="464" width="1024" height="148" rx="30" fill="#ffffff" fill-opacity=".45"/>
+      <text x="88" y="118" font-family="Open Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="#d65c31">${escapeSvgText(platform)}</text>
+      <text x="88" y="214" font-family="Open Sans, Arial, sans-serif" font-size="38" font-weight="700" fill="#1e1f1b">${escapeSvgText(title.slice(0, 44))}</text>
+    </svg>
+  `;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+function escapeSvgText(text = "") {
+  return String(text).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+}
+
+function renderParagraphs(text = "", className) {
+  return text
+    .split(/\n\s*\n/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+    .map((paragraph) => `<p class="${className}">${escapeHtml(paragraph)}</p>`)
+    .join("");
+}
+
+function renderFormattedText(text = "") {
+  return text
+    .split(/\n\s*\n/)
+    .map((block) => block.trim())
+    .filter(Boolean)
+    .map(renderFormattedBlock)
+    .join("");
+}
+
+function renderFormattedBlock(block) {
+  const lines = block
+    .split("\n")
+    .map((line) => line.replace(/\t/g, "  "))
+    .map((line) => ({ raw: line, trimmed: line.trim() }))
+    .filter((line) => line.trimmed);
+
+  const fragments = [];
+  let paragraphLines = [];
+  let listItems = [];
+
+  function flushParagraph() {
+    if (!paragraphLines.length) return;
+    fragments.push(`<p class="artifact-text">${formatInlineText(paragraphLines.join(" "))}</p>`);
+    paragraphLines = [];
+  }
+
+  function flushList() {
+    if (!listItems.length) return;
+    fragments.push(renderNestedList(listItems));
+    listItems = [];
+  }
+
+  lines.forEach(({ raw, trimmed }) => {
+    if (/^\s*-\s+/.test(raw)) {
+      flushParagraph();
+      listItems.push({
+        depth: Math.floor((raw.match(/^\s*/)?.[0].length || 0) / 2),
+        text: trimmed.slice(2)
+      });
+      return;
+    }
+
+    flushList();
+
+    if (trimmed.startsWith("#### ")) {
+      flushParagraph();
+      fragments.push(`<h5 class="artifact-heading artifact-heading-xs">${formatInlineText(trimmed.slice(5))}</h5>`);
+      return;
+    }
+    if (trimmed.startsWith("### ")) {
+      flushParagraph();
+      fragments.push(`<h4 class="artifact-heading artifact-heading-sm">${formatInlineText(trimmed.slice(4))}</h4>`);
+      return;
+    }
+    if (trimmed.startsWith("## ")) {
+      flushParagraph();
+      fragments.push(`<h3 class="artifact-heading artifact-heading-md">${formatInlineText(trimmed.slice(3))}</h3>`);
+      return;
+    }
+    if (trimmed.startsWith("# ")) {
+      flushParagraph();
+      fragments.push(`<h2 class="artifact-heading artifact-heading-lg">${formatInlineText(trimmed.slice(2))}</h2>`);
+      return;
+    }
+
+    paragraphLines.push(trimmed);
+  });
+
+  flushList();
+  flushParagraph();
+  return fragments.join("");
+}
+
+function renderNestedList(items) {
+  const normalizedItems = items.map((item) => ({
+    ...item,
+    depth: Math.max(0, item.depth)
+  }));
+
+  function buildList(startIndex, depth) {
+    let html = `<ul class="${depth === 0 ? "artifact-list" : "artifact-list artifact-sublist"}">`;
+    let index = startIndex;
+
+    while (index < normalizedItems.length) {
+      const item = normalizedItems[index];
+      if (item.depth < depth) break;
+      if (item.depth > depth) {
+        index += 1;
+        continue;
+      }
+
+      html += `<li>${formatInlineText(item.text)}`;
+      if (normalizedItems[index + 1] && normalizedItems[index + 1].depth > depth) {
+        const nested = buildList(index + 1, normalizedItems[index + 1].depth);
+        html += nested.html;
+        index = nested.index;
+      } else {
+        index += 1;
+      }
+      html += "</li>";
+    }
+
+    html += "</ul>";
+    return { html, index };
+  }
+
+  return buildList(0, 0).html;
+}
+
+function formatInlineText(text = "") {
+  let formatted = escapeHtml(text);
+  formatted = formatted.replace(
+    /\[([^\]]+)\]\(((?:https?:\/\/|\.{0,2}\/|assets\/|images\/|videos\/)[^\s)]+)\)/g,
+    '<a class="inline-link" href="$2" target="_blank" rel="noreferrer">$1</a>'
+  );
+  formatted = formatted.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  formatted = formatted.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+  return formatted;
+}
+
+function isDirectVideoFile(url = "") {
+  return /\.(mp4|webm|ogg)$/i.test(url);
+}
+
+function getAboutImageUrl() {
+  const candidate = state?.site?.aboutImage?.trim();
+  if (!candidate || candidate === DEFAULT_ABOUT_IMAGE) return LOCAL_PROFILE_IMAGE;
+  return candidate;
+}
+
+function getArtifactUrl(item) {
+  return `artifact.html?artifact=${encodeURIComponent(item.slug)}`;
+}
+
+function getAcademicTagUrl(tag) {
+  return tag.toLowerCase() === "all" ? "academic.html" : `academic.html?tag=${encodeURIComponent(slugify(tag))}`;
+}
+
+function getTagLabelFromParam(param) {
+  if (!param || param === "all") return "All";
+  const knownTags = [...(state.site.academicTags || []), ...state.academicItems.flatMap((item) => item.tags || [])];
+  return knownTags.find((tag) => slugify(tag) === param) || param;
+}
+
+function getCurrentArtifact() {
+  if (!currentArtifactSlug) return null;
+  return state.academicItems.find((item) => item.slug === currentArtifactSlug || item.id === currentArtifactSlug) || null;
+}
+
 function attachInteractiveHandlers() {
   document.querySelectorAll("[data-artifact-url]").forEach((card) => {
     card.addEventListener("click", (event) => {
       if (event.target.closest("a, button")) return;
       window.location.href = card.dataset.artifactUrl;
     });
-
     card.addEventListener("keydown", (event) => {
       if (event.key !== "Enter" && event.key !== " ") return;
       event.preventDefault();
@@ -1027,13 +904,7 @@ function renderField(field) {
         ${field.label}
         <select name="${field.name}">
           ${field.options
-            .map(
-              (option) => `
-                <option value="${escapeHtml(option)}" ${option === value ? "selected" : ""}>${escapeHtml(
-                  option
-                )}</option>
-              `
-            )
+            .map((option) => `<option value="${escapeHtml(option)}" ${option === value ? "selected" : ""}>${escapeHtml(option)}</option>`)
             .join("")}
         </select>
       </label>
@@ -1043,9 +914,7 @@ function renderField(field) {
   return `
     <label>
       ${field.label}
-      <input type="${field.type || "text"}" name="${field.name}" value="${escapeHtml(value)}" ${
-        field.required ? "required" : ""
-      } />
+      <input type="${field.type || "text"}" name="${field.name}" value="${escapeHtml(value)}" ${field.required ? "required" : ""} />
     </label>
   `;
 }
@@ -1058,13 +927,7 @@ function buildEditorConfig(type, id, sectionId) {
         { name: "owner", label: "Site owner name", value: state.site.owner, required: true },
         { name: "role", label: "Headline", value: state.site.role, required: true },
         { name: "intro", label: "Intro text", value: state.site.intro, type: "textarea", required: true },
-        {
-          name: "footerMessage",
-          label: "Footer message",
-          value: state.site.footerMessage,
-          type: "textarea",
-          required: true
-        }
+        { name: "footerMessage", label: "Footer message", value: state.site.footerMessage, type: "textarea", required: true }
       ],
       onSave: (data) => {
         Object.assign(state.site, data);
@@ -1091,26 +954,13 @@ function buildEditorConfig(type, id, sectionId) {
       title: "Edit academic page",
       fields: [
         { name: "academicTitle", label: "Page title", value: state.site.academicTitle, required: true },
-        {
-          name: "academicDescription",
-          label: "Page description",
-          value: state.site.academicDescription,
-          type: "textarea",
-          required: true
-        },
-        {
-          name: "academicTags",
-          label: "Selected tags (comma separated)",
-          value: (state.site.academicTags || []).join(", "),
-          required: true
-        }
+        { name: "academicDescription", label: "Page description", value: state.site.academicDescription, type: "textarea", required: true },
+        { name: "academicTags", label: "Selected tags (comma separated)", value: (state.site.academicTags || []).join(", "), required: true }
       ],
       onSave: (data) => {
-        Object.assign(state.site, {
-          academicTitle: data.academicTitle,
-          academicDescription: data.academicDescription,
-          academicTags: ensureAllTag(splitCommaList(data.academicTags))
-        });
+        state.site.academicTitle = data.academicTitle;
+        state.site.academicDescription = data.academicDescription;
+        state.site.academicTags = ensureAllTag(splitCommaList(data.academicTags));
       }
     };
   }
@@ -1121,9 +971,10 @@ function buildEditorConfig(type, id, sectionId) {
         ? state.academicItems.find((item) => item.id === id)
         : {
             slug: "",
+            sortOrder: state.academicItems.length,
             title: "",
             description: "",
-            tags: [],
+            tags: ["All"],
             previewMediaType: "image",
             previewMediaUrl: "",
             sections: []
@@ -1134,26 +985,22 @@ function buildEditorConfig(type, id, sectionId) {
     return {
       title: type === "academic-new" ? "Add academic artifact" : "Edit academic artifact",
       fields: [
-        {
-          name: "slug",
-          label: "Artifact page name (.html-style slug)",
-          value: current.slug,
-          required: true
-        },
+        { name: "slug", label: "Artifact page name (.html-style slug)", value: current.slug, required: true },
+        { name: "sortOrder", label: "Display order", value: String((current.sortOrder ?? 0) + 1), type: "number", required: true },
         { name: "title", label: "Title", value: current.title, required: true },
         { name: "description", label: "Description", value: current.description, type: "textarea", required: true },
         { name: "tags", label: "Tags (comma separated)", value: current.tags.join(", "), required: true },
         { name: "previewMediaUrl", label: "Preview image URL", value: current.previewMediaUrl }
       ],
       onSave: (data) => {
-        const nextSlug = ensureUniqueArtifactSlug(current.id, data.slug || data.title);
         const next = normalizeAcademicItem({
           ...current,
           ...data,
-          slug: nextSlug,
-          previewMediaType: "image",
+          id: current.id || crypto.randomUUID(),
+          slug: ensureUniqueArtifactSlug(current.id, data.slug || data.title),
+          sortOrder: Math.max(0, (Number.parseInt(data.sortOrder, 10) || 1) - 1),
           tags: ensureAllTag(splitCommaList(data.tags)),
-          id: current.id || crypto.randomUUID()
+          previewMediaType: "image"
         });
 
         if (type === "academic-new") {
@@ -1165,15 +1012,17 @@ function buildEditorConfig(type, id, sectionId) {
               body: next.description
             });
           }
-          state.academicItems.unshift(next);
+          state.academicItems = assignAcademicSortOrder([...state.academicItems, next]);
         } else {
-          state.academicItems = state.academicItems.map((item) => (item.id === id ? next : item));
+          state.academicItems = assignAcademicSortOrder(
+            state.academicItems.map((item) => (item.id === id ? next : item))
+          );
         }
       },
       onDelete:
         type === "academic-edit"
           ? () => {
-              state.academicItems = state.academicItems.filter((item) => item.id !== id);
+              state.academicItems = assignAcademicSortOrder(state.academicItems.filter((item) => item.id !== id));
               if (currentPage === "artifact" && currentArtifactSlug === current.slug) {
                 window.location.href = "academic.html";
               }
@@ -1196,14 +1045,8 @@ function buildEditorConfig(type, id, sectionId) {
     return {
       title: type === "artifact-section-new" ? "Add artifact section" : "Edit artifact section",
       fields: [
-        {
-          name: "type",
-          label: "Section type",
-          value: current.type,
-          type: "select",
-          options: ["text", "image", "video", "code", "link"]
-        },
-        { name: "title", label: "Section title", value: current.title, required: true },
+        { name: "type", label: "Section type", value: current.type, type: "select", options: ["text", "image", "video", "code", "link"] },
+        { name: "title", label: "Section title", value: current.title },
         { name: "body", label: "Text or link label", value: current.body, type: "textarea" },
         { name: "url", label: "Media or link URL", value: current.url },
         { name: "code", label: "Code", value: current.code, type: "textarea" }
@@ -1217,16 +1060,11 @@ function buildEditorConfig(type, id, sectionId) {
 
         state.academicItems = state.academicItems.map((item) => {
           if (item.id !== id) return item;
-
           const nextSections =
             type === "artifact-section-new"
               ? [...item.sections, nextSection]
               : item.sections.map((section) => (section.id === sectionId ? nextSection : section));
-
-          return normalizeAcademicItem({
-            ...item,
-            sections: nextSections
-          });
+          return normalizeAcademicItem({ ...item, sections: nextSections });
         });
       },
       onDelete:
@@ -1248,7 +1086,7 @@ function buildEditorConfig(type, id, sectionId) {
     const current =
       type === "timeline-edit"
         ? state.timelineItems.find((item) => item.id === id)
-        : { year: "", role: "", organization: "", summary: "", resumeLink: "" };
+        : { year: "", role: "", organization: "", summary: "" };
 
     if (!current) return null;
 
@@ -1258,11 +1096,10 @@ function buildEditorConfig(type, id, sectionId) {
         { name: "year", label: "Year", value: current.year, required: true },
         { name: "role", label: "Role", value: current.role, required: true },
         { name: "organization", label: "Organization", value: current.organization, required: true },
-        { name: "summary", label: "Summary", value: current.summary, type: "textarea", required: true },
-        { name: "resumeLink", label: "Resume or supporting link", value: current.resumeLink, required: true }
+        { name: "summary", label: "Summary", value: current.summary, type: "textarea", required: true }
       ],
       onSave: (data) => {
-        const next = { ...current, ...data, id: current.id || crypto.randomUUID() };
+        const next = normalizeTimelineItem({ ...current, ...data, id: current.id || crypto.randomUUID() });
         if (type === "timeline-new") {
           state.timelineItems.unshift(next);
         } else {
@@ -1282,7 +1119,7 @@ function buildEditorConfig(type, id, sectionId) {
     const current =
       type === "blog-edit"
         ? state.blogLinks.find((item) => item.id === id)
-        : { title: "", platform: "", description: "", url: "" };
+        : { title: "", platform: "", publishedOn: "", description: "", url: "", imageUrl: "" };
 
     if (!current) return null;
 
@@ -1291,11 +1128,13 @@ function buildEditorConfig(type, id, sectionId) {
       fields: [
         { name: "title", label: "Article title", value: current.title, required: true },
         { name: "platform", label: "Platform", value: current.platform, required: true },
+        { name: "publishedOn", label: "Publication date", value: current.publishedOn, type: "date" },
         { name: "description", label: "Description", value: current.description, type: "textarea", required: true },
-        { name: "url", label: "Article URL", value: current.url, required: true }
+        { name: "url", label: "Article URL", value: current.url, required: true },
+        { name: "imageUrl", label: "Image URL (optional)", value: current.imageUrl }
       ],
       onSave: (data) => {
-        const next = { ...current, ...data, id: current.id || crypto.randomUUID() };
+        const next = normalizeBlogItem({ ...current, ...data, id: current.id || crypto.randomUUID() });
         if (type === "blog-new") {
           state.blogLinks.unshift(next);
         } else {
@@ -1323,19 +1162,22 @@ function splitCommaList(value = "") {
 
 function ensureAllTag(tags = []) {
   const uniqueTags = [];
-
   tags.forEach((tag) => {
     if (!tag) return;
     if (!uniqueTags.some((entry) => entry.toLowerCase() === tag.toLowerCase())) {
       uniqueTags.push(tag);
     }
   });
-
   if (!uniqueTags.some((tag) => tag.toLowerCase() === "all")) {
     uniqueTags.unshift("All");
   }
-
   return uniqueTags;
+}
+
+function assignAcademicSortOrder(items) {
+  return [...items]
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .map((item, index) => ({ ...item, sortOrder: index }));
 }
 
 function truncateWords(text = "", maxWords = 40) {
@@ -1357,30 +1199,53 @@ function ensureUniqueArtifactSlug(currentId, desiredValue) {
   const baseSlug = slugify(desiredValue);
   let nextSlug = baseSlug;
   let suffix = 2;
-
   while (state.academicItems.some((item) => item.id !== currentId && item.slug === nextSlug)) {
     nextSlug = `${baseSlug}-${suffix}`;
     suffix += 1;
   }
-
   return nextSlug;
+}
+
+function formatDisplayDate(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+}
+
+function compareBlogDatesDesc(a, b) {
+  const dateA = Date.parse(a.publishedOn || "");
+  const dateB = Date.parse(b.publishedOn || "");
+  return (Number.isNaN(dateB) ? -Infinity : dateB) - (Number.isNaN(dateA) ? -Infinity : dateA);
+}
+
+function compareTimelineItemsDesc(a, b) {
+  return parseTimelineDateValue(b.year) - parseTimelineDateValue(a.year);
+}
+
+function parseTimelineDateValue(value = "") {
+  const directDate = Date.parse(value);
+  if (!Number.isNaN(directDate)) return directDate;
+  const yearMatch = String(value).match(/\b(19|20)\d{2}\b/);
+  if (yearMatch) return Number(yearMatch[0]);
+  return -Infinity;
 }
 
 function formToObject(formData) {
   return Object.fromEntries([...formData.entries()].map(([key, value]) => [key, value.trim()]));
 }
 
-editToggle.addEventListener("click", ensureEditAccess);
+footerEditToggle?.addEventListener("click", ensureEditAccess);
+dialogCloseButton?.addEventListener("click", (event) => {
+  event.preventDefault();
+  editorDialog.close();
+});
 
 editorForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const submitter = event.submitter?.value;
-
-  if (submitter === "cancel") {
+  if (event.submitter?.value === "cancel") {
     editorDialog.close();
     return;
   }
-
   if (!activeEditor) return;
 
   const data = formToObject(new FormData(editorForm));
@@ -1392,8 +1257,7 @@ editorForm.addEventListener("submit", (event) => {
 
 deleteButton.addEventListener("click", () => {
   if (!activeEditor?.onDelete) return;
-  const confirmed = window.confirm("Delete this item?");
-  if (!confirmed) return;
+  if (!window.confirm("Delete this item?")) return;
   activeEditor.onDelete();
   saveState();
   render();
