@@ -9,7 +9,6 @@ const LOCAL_TRAVEL_AI_VIDEO = "videos/ai-impact-on-the-online-travel-industry.mp
 const LOCAL_TRAVEL_AI_PREVIEW_IMAGE = "images/AI transforming global travel industry.png";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
-
 const seedData = {
   site: {
     owner: "Natalie Halimi",
@@ -25,7 +24,7 @@ const seedData = {
     academicTitle: "Academic artifacts",
     academicDescription:
       "Projects, papers, presentations, prototypes, and discussions developed as part of my studies at the University of Essex.",
-    academicTags: ["All", "Intro to Computing", "Intro to AI"]
+    academicTags: ["All", "Intro to Computing", "Intro to AI", "Numerical analysis"]
   },
   academicItems: [
     {
@@ -116,6 +115,107 @@ const seedData = {
           body: "",
           code: "",
           url: "videos/ai-impact-on-the-online-travel-industry.mp4"
+        }
+      ]
+    },
+    {
+      id: "2fa9f96e-aac3-48c8-8d8c-9a9b067f4062",
+      slug: "practicing-with-r",
+      sortOrder: 4,
+      title: "Practicing with R",
+      description:
+        "A formative numerical analysis exercise using R to inspect, transform, and summarise a COVID-19 dataset from India.",
+      tags: ["All", "Numerical analysis"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/r-numerical-analysis.png",
+      sections: [
+        {
+          id: "28bf53e3-37e4-437e-b0fa-f0eb477cf6d7",
+          type: "code",
+          title: "R formative practice",
+          body: "",
+          code: `#importing a library to allow reading the csv file
+library(readr)
+covid_data <- read.csv("Covid19 India (Jan 20 - Mar 20).csv")
+
+#Unit 1 formative task:
+str(covid_data) #structure of the data
+dim(covid_data) #rows and columns
+names(covid_data) #variable names
+head(covid_data) #first few rows
+summary(covid_data) #basic stats2
+
+#Unit 2 formative task:
+#1. Create a frequency table to count how many daily reports showed recoveries versus no recoveries during this period. Use the table() command.
+names(covid_data) #First we need to figure out which variable refers to 'recoveries'
+unique(covid_data$Cured) #Then see what values are under this variable
+table(covid_data$Cured > 0) #counting the frequency of Cured > 0. '>0' creates a logical vector and then 'table' counts all catrgories in that vector.
+#Results show 215 daily stats showed no recovery and 55 daily stats showed at least one recovery
+#2. Calculate percentages to understand what proportion of daily state reports included recovery cases.
+#3. Create a binary variable called has_recovery that indicates whether any recoveries (cured cases) were reported.
+recovery_counts <- table(covid_data$Cured > 0) #creating a binary variable
+recovery_counts / sum(recovery_counts) * 100 #Results are FALSE: 79.62963 TRUE: 20.37037
+
+sapply(covid_data, class)
+sum(sapply(covid_data, is.character))
+covid_data$Date <- as.Date(covid_data$Date)
+sum(sapply(covid_data, inherits, "Date"))
+summary(covid_data)
+
+#Unit 3
+covid_data$has_deaths <- covid_data$Deaths > 0 #create a logical variable with TRUE for has deaths and FALSE for doesn't have deaths
+table(covid_data$has_deaths) #returns the number of TRUE and FALSE values in the dataset
+#returned: TRUE 245, FALSE 25
+
+#Convert the has_deaths variable to a factor data type and assign labels to its TRUE and FALSE values
+covid_data$has_deaths <-factor(
+  covid_data$has_deaths,
+  levels = c(FALSE, TRUE),
+  labels = c("No Deaths", "Deaths Reported")
+)
+
+#Creating a variable called case_level1, that represents all confirmed cases, both Indian and national
+covid_data$case_level1 <- covid_data$ConfirmedForeignNational + covid_data$ConfirmedIndianNational
+
+#creating a categorical variable called 'case_level' bsed on the total confirmed cases, with the followign ranges:
+#No cases = 0 cases, low cases = 1-5 cases, medium cases = 6-15 cases, high cases = 16+ cases
+covid_data$case_level <- ifelse(
+  covid_data$case_level1==0, "No cases",
+    ifelse(
+      covid_data$case_level1 <=5, "Low cases",
+      ifelse(
+        covid_data$case_level1 <=15, "Medium cases", "High cases"
+      )
+    )
+  )
+#an optional step is to organise the data using factor
+covid_data$case_level <- factor(
+  covid_data$case_level,
+  levels = c("No cases", "Low cases", "Medium cases", "High cases")
+)
+#checking the work we did
+table(covid_data$case_level)
+#got in return
+#No cases    Low cases Medium cases   High cases
+#0          177           61           32
+
+#Creating a frequency table for the state/union territory variable, to see which states had the most frequent reporting
+#identifying the top 10 states with the highest number of daily reports in the dataset
+#The first thing I do is check the states
+table(covid_data$State.UnionTerritory) #I find out that there are some that are duplications, with different spelling
+
+#So first I need to fix the misspellings
+covid_data$State.UnionTerritory [covid_data$State.UnionTerritory == "Chattisgarh"] <- "Chhattisgarh"
+covid_data$State.UnionTerritory [covid_data$State.UnionTerritory == "Pondicherry"] <- "Puducherry"
+covid_data$State.UnionTerritory [covid_data$State.UnionTerritory == "Union Territory of Ladakh"] <- "Ladakh"
+covid_data$State.UnionTerritory [covid_data$State.UnionTerritory == "Union Territory of Jammu and Kashmir"] <- "Jammu and Kashmir"
+covid_data$State.UnionTerritory [covid_data$State.UnionTerritory == "Union Territory of Chandigarh"] <- "Chandigarh"
+
+#Now we create a variable for the frequency table, and another for the sorted version of it
+area_frequency <- table(covid_data$State.UnionTerritory)
+sorted <- sort(area_frequency, decreasing = TRUE)
+sorted`,
+          url: ""
         }
       ]
     }
@@ -262,17 +362,35 @@ function loadState() {
       nextState.site.aboutImage = LOCAL_PROFILE_IMAGE;
     }
 
-    nextState.site.academicTags = ensureAllTag(nextState.site.academicTags || seedData.site.academicTags);
+    nextState.site.academicTags = ensureAllTag([
+      ...(nextState.site.academicTags || []),
+      ...seedData.site.academicTags
+    ]);
     nextState.academicItems = assignAcademicSortOrder((nextState.academicItems || []).map(normalizeAcademicItem));
     nextState.timelineItems = (nextState.timelineItems || []).map(normalizeTimelineItem);
     nextState.blogLinks = (nextState.blogLinks || []).map(normalizeBlogItem);
 
-    if (!nextState.academicItems.some((item) => item.slug === "the-impact-of-artificial-intelligence-on-the-online-travel-industry")) {
-      nextState.academicItems.push(
-        normalizeAcademicItem(seedData.academicItems[2])
-      );
-      nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
-    }
+    [
+      "the-impact-of-artificial-intelligence-on-the-online-travel-industry",
+      "practicing-with-r"
+    ].forEach((slug) => {
+      const seedItem = seedData.academicItems.find((item) => item.slug === slug);
+      if (!nextState.academicItems.some((item) => item.slug === slug)) {
+        if (seedItem) nextState.academicItems.push(normalizeAcademicItem(seedItem));
+      }
+      if (slug === "practicing-with-r" && seedItem) {
+        nextState.academicItems = nextState.academicItems.map((item) =>
+          item.slug === slug
+            ? {
+                ...item,
+                previewMediaType: seedItem.previewMediaType,
+                previewMediaUrl: seedItem.previewMediaUrl
+              }
+            : item
+        );
+      }
+    });
+    nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
 
     return nextState;
   } catch (error) {

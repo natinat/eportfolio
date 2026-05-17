@@ -157,11 +157,14 @@ select {
   flex-direction: column;
   gap: 1.25rem;
   padding: 1.25rem 0;
+  min-width: 0;
 }
 
 .panel {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  min-width: 0;
   padding: clamp(1.25rem, 2vw, 2rem);
   border-radius: var(--radius-xl);
   background: var(--surface);
@@ -555,6 +558,7 @@ body[data-page="professional"] .page-intro .section-copy {
 
 .code-block {
   margin-top: 1rem;
+  max-width: 100%;
   padding: 1rem;
   overflow-x: auto;
   border-radius: var(--radius-md);
@@ -593,10 +597,11 @@ body[data-page="professional"] .page-intro .section-copy {
 .artifact-section-stack {
   display: grid;
   gap: 1.25rem;
+  min-width: 0;
 }
 
 .artifact-section {
-  overflow: visible;
+  overflow: hidden;
 }
 
 .artifact-section-title {
