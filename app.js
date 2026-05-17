@@ -263,7 +263,7 @@ sorted`,
       description:
         "Key takeaways from TechArena Stockholm highlight the importance of clear storytelling, strong domain understanding, and credible scaling paths in startup pitches. Differences between European and US ecosystems also emerged, alongside the growing influence of AI in shaping innovation and investment conversations.",
       url: "https://www.linkedin.com/pulse/my-techarena-stockholm-highlights-natalie-halimi-mzw3e/",
-      imageUrl: "https://media.licdn.com/dms/image/v2/D4E12AQGgO7Uplu7mVw/article-cover_image-shrink_720_1280/B4EZxxomMqJ8AI-/0/1771432994315?e=1777507200&v=beta&t=qWZCftlWnsGT6IFwOosQ4MbZWfEM8lUF6akeJsv50ik"
+      imageUrl: "images/tech-arena.jpeg"
     },
     {
       id: "0943cd5b-a736-44ed-8580-da2f2f43fe11",
@@ -369,6 +369,18 @@ function loadState() {
     nextState.academicItems = assignAcademicSortOrder((nextState.academicItems || []).map(normalizeAcademicItem));
     nextState.timelineItems = (nextState.timelineItems || []).map(normalizeTimelineItem);
     nextState.blogLinks = (nextState.blogLinks || []).map(normalizeBlogItem);
+
+    const techArenaSeed = seedData.blogLinks.find((item) => item.title === "My TechArena Stockholm highlights 🇸🇪");
+    if (techArenaSeed) {
+      nextState.blogLinks = nextState.blogLinks.map((item) =>
+        item.title === techArenaSeed.title
+          ? {
+              ...item,
+              imageUrl: techArenaSeed.imageUrl
+            }
+          : item
+      );
+    }
 
     [
       "the-impact-of-artificial-intelligence-on-the-online-travel-industry",
