@@ -7,6 +7,8 @@ const DEFAULT_ABOUT_IMAGE =
 const LOCAL_PROFILE_IMAGE = "images/natalie-halimi.png";
 const LOCAL_TRAVEL_AI_VIDEO = "videos/ai-impact-on-the-online-travel-industry.mp4";
 const LOCAL_TRAVEL_AI_PREVIEW_IMAGE = "images/AI transforming global travel industry.png";
+const R_PRACTICE_ARTIFACT_ID = "2fa9f96e-aac3-48c8-8d8c-9a9b067f4062";
+const COVID_VISUALISATION_ARTIFACT_ID = "c5162e78-d790-43ec-ab96-bd8c32ca5698";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -218,6 +220,138 @@ sorted`,
           url: ""
         }
       ]
+    },
+    {
+      id: COVID_VISUALISATION_ARTIFACT_ID,
+      slug: "visualising-covid-19-data-in-r",
+      sortOrder: 5,
+      title: "Visualising COVID-19 Data in R",
+      description:
+        "A formative numerical analysis task using R to clean, transform, visualise, and interpret a COVID-19 dataset from India. The work explores regional case totals, severity levels, recovery distributions, and case trends over time through four complementary charts.",
+      tags: ["All", "Numerical analysis"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/r-numerical-analysis.png",
+      sections: [
+        {
+          id: "1aa64469-4c5a-4748-a021-810949c44570",
+          type: "text",
+          title: "Reflection on four data visualisations",
+          body:
+            "## Introduction\nThis formative assessment required the creation and interpretation of four different data visualisations using a COVID-19 dataset from India. The task involved producing a bar chart, pie chart, histogram, and line chart, while demonstrating the ability to manipulate data, create meaningful variables, and interpret graphical outputs. Through completing this exercise, I developed a deeper understanding of data preparation, data cleaning, variable transformation, and visualisation techniques in R. This report reflects on the analytical decisions I made, the challenges encountered, and the skills I developed throughout the process.\n\n## Reflection on Task 1: Bar Chart of COVID-19 Cases by Region\nThe first task required the creation of a bar chart showing the frequency of COVID-19 reports by state or union territory. To achieve this, I first combined the local and international confirmed case counts into a single variable representing total confirmed cases. During the exploratory phase, I identified a large number of unique regional entries, many of which appeared duplicated due to inconsistencies within the dataset. After addressing these duplicates, there were still too many categories to display effectively on a bar chart.\n\nTo improve readability, I created a shortened version of each region name using the first three letters of the state or union territory. This demonstrated the importance of adapting visualisations to the characteristics of the data rather than simply plotting variables directly. Although abbreviating the names improved the chart's appearance, I recognised that this approach may reduce clarity for some users. To compensate, I included the full region names within the legend. The completed chart successfully highlighted substantial differences between regions, with certain states exhibiting significantly higher case numbers than others.\n\nThis task strengthened my understanding of data cleaning and reinforced the importance of balancing detail with readability when designing visualisations.\n\n![Bar chart of COVID-19 cases by region](images/covid-19-by-region.png)\n\n## Reflection on Task 2: Pie Chart of Case Severity Levels\nThe second task required the creation of a pie chart illustrating the distribution of case severity levels based on confirmed cases. Rather than using raw numerical values, I created categorical severity groups to provide a clearer representation of the data. I defined four categories: \"No Cases\", \"Low Range\", \"Medium Range\", and \"High Range\", based on the total number of confirmed cases recorded in each observation.\n\nOne of the key learning outcomes from this task was understanding how continuous numerical data can be transformed into meaningful categorical variables. Creating the severity categories required careful consideration of threshold values and how these would affect the interpretation of results. After generating the categories, I summarised the frequencies within each group and used this new dataset to create the pie chart.\n\nAlthough pie charts can effectively show proportions, this task also highlighted some limitations of the visualisation type. Differences between categories can sometimes be difficult to compare accurately, particularly when proportions are similar in size. Nevertheless, the chart provided a useful overview of the distribution of case severity levels and reinforced my understanding of data aggregation and categorical analysis.\n\n![Pie chart of COVID-19 case severity levels](images/covid19-freq.png)\n\n## Reflection on Task 3: Histogram of Recovery Numbers\nThe third task involved creating a histogram to visualise the distribution of recovery numbers using the \"Cured\" variable. Compared with the previous tasks, the technical implementation was relatively straightforward. However, the interpretive aspect was particularly valuable. The histogram revealed a strongly right-skewed distribution, with the majority of observations reporting either zero or very low numbers of recoveries and only a small number reporting higher recovery counts.\n\nAnalysing the shape of the distribution enabled me to connect statistical patterns with real-world context. Given that the dataset was collected during the early stages of the COVID-19 pandemic in 2020, the low recovery numbers were consistent with expectations, as many patients had not yet completed their recovery process. This task reinforced the importance of interpreting visualisations within their broader contextual setting rather than relying solely on numerical outputs.\n\nFurthermore, I gained greater appreciation for histograms as a tool for understanding data distributions and identifying patterns such as skewness, concentration, and outliers.\n\n![Histogram of COVID-19 recovery numbers](images/cured-histogram.png)\n\n## Reflection on Task 4: Line Chart of Cases Over Time\nThe final task required the creation of a line chart illustrating the trend of confirmed cases over time. This task was the most challenging because it required additional data preparation before visualisation could occur. Initially, I examined the structure of the date variable and discovered that it had been stored as a character string rather than a date object. Consequently, I converted the variable into an appropriate date format before proceeding with the analysis.\n\nI then investigated the number of unique dates within the dataset and found that multiple observations existed for each date. This meant that plotting the raw data would produce an inaccurate representation of overall trends. To resolve this issue, I grouped the data by date and calculated the total confirmed cases for each day. This aggregation process produced a dataset suitable for time-series analysis.\n\nThe resulting line chart demonstrated a clear upward trend in COVID-19 cases, with case numbers remaining relatively low during the early period before increasing rapidly from March onwards. This visualisation effectively illustrated the exponential growth associated with the early stages of the pandemic. Through this task, I improved my understanding of date handling, data aggregation, and time-series visualisation techniques.\n\n![Line chart of COVID-19 cases over time](images/cases-by-date.png)"
+        },
+        {
+          id: "2fa24c30-d69c-47f1-901d-c6fe4065642c",
+          type: "code",
+          title: "R code for the four visualisations",
+          code: `#Data Acticity 4
+#Using the COVID-19 India Dataset (January 2020 - March 2020), perform the following simple plotting activities to learn basic data visualization techniques
+
+#Tasks:
+#Create a bar chart showing the frequency of COVID-19 reports by state/union territory
+#Using variables ConfirmedIndianNational and ConfirmedForeignNational, create a pie chart showing the distribution of case severity levels based on total confirmed cases.
+#Create a histogram showing the distribution of recovery numbers
+#Create a line chart showing the trend of total cases over time
+
+#Importing libraries
+library(ggplot2)
+install.packages("ggplot2")
+library(readr)
+library(dplyr) #allow using %>% to call data into visualisation
+
+#Importing data
+covid_data <- read.csv("Covid19 India (Jan 20 - Mar 20).csv")
+
+View(covid_data)
+length(unique(covid_data$State.UnionTerritory))
+
+#First create a new column that joins the two 'confimed cases' columns
+covid_data$all_confirmed <- covid_data$ConfirmedIndianNational + covid_data$ConfirmedForeignNational
+
+View(covid_data$all_confirmed)
+
+#Creating plot that shows confirmed cases by region
+#Since there are 27 countries, some of which duplicated, I'll first organise the data. This drops the number to 23
+covid_data$State.UnionTerritory[covid_data$State.UnionTerritory == "Union Territory of Jammu and Kashmir"] <- "Jammu and Kashmir"
+covid_data$State.UnionTerritory[covid_data$State.UnionTerritory == "Union Territory of Ladakh"] <- "Ladakh"
+covid_data$State.UnionTerritory[covid_data$State.UnionTerritory == "Union Territory of Chandigarh"] <- "Chandigarh"
+covid_data$State.UnionTerritory[covid_data$State.UnionTerritory == "Union Territory of Chandigarh"] <- "Chandigarh"
+covid_data$State.UnionTerritory[covid_data$State.UnionTerritory == "Chattisgarh"] <- "Chhattisgarh"
+
+#First attempt still generated an unreadable chart,
+#so I'll replace region names with 3 letters and create a legend to help with reading
+covid_data$state_short <- substr(
+  covid_data$State.UnionTerritory, 1,3)
+
+
+covid_data %>%
+  ggplot(aes(x = state_short,
+             y = all_confirmed,
+             fill = State.UnionTerritory))+
+           geom_col(position = "dodge")+
+  labs(fill = "Regions:")+
+  labs(x = "Regions",
+       y ="Covid-19 cases",
+       title="Number of Covid-19 cases by region in India during 2020")+
+  theme_bw()+
+    theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5))
+
+#Pie chart for severity level of all cases
+#We can determine severity by ranages of number of cases in the different regions - e.g. 0 = no cases
+covid_data$case_level <- ifelse(
+  covid_data$all_confirmed == 0, "No cases",
+  ifelse(
+    covid_data$all_confirmed <= 5, "Low range",
+    ifelse(
+      covid_data$all_confirmed <=15, "Medium range", "High Range"
+    )
+  )
+)
+
+#To show the data in a pie chart, I need to store the case level data in a table
+severity_counts <- as.data.frame(table(covid_data$case_level))
+severity_counts
+
+severity_counts %>%
+  ggplot(aes(x = "", y = Freq, fill = Var1))+
+  geom_col()+
+  coord_polar(theta = "y")+
+  labs(title="Distribution of severity level by the number of confirmed Covid-19 cases",
+       fill= "Severity level")+
+  theme_void() #this ensures the y values don't show on the chart
+
+#Creating a histogram showing the distribution of recovery numbers
+covid_data %>%
+  ggplot(aes(x=Cured))+
+  geom_histogram(binwidth = 1)+
+theme_classic()
+
+#Creating a line graph with the number of cases over time
+typeof(covid_data$Date) #check type
+head(covid_data$Date) #check format
+#Convert to Date type
+covid_data$Date <- as.Date(
+  covid_data$Date, format ="%d-%m-%Y"
+)
+class(covid_data$Date) #checking it's a date class
+
+#Checking the number of unique dates
+length(unique(covid_data$Date))
+
+#Creating a new table, grouping covid cases by date
+by_date <- covid_data %>%
+  group_by(Date) %>%
+  summarise(
+    cases_by_date = sum(all_confirmed)
+  )
+
+#Plotting table
+by_date %>%
+  ggplot(aes(x=Date, y=cases_by_date))+
+    geom_line()+
+  theme_bw()`,
+          url: ""
+        }
+      ]
     }
   ],
   timelineItems: [
@@ -382,27 +516,43 @@ function loadState() {
       );
     }
 
+    function restoreSeededAcademicItem(slug, matchesItem) {
+      const seedItem = seedData.academicItems.find((item) => item.slug === slug);
+      if (!seedItem) return;
+
+      const savedItem = nextState.academicItems.find((item) => matchesItem(item, seedItem));
+      nextState.academicItems = nextState.academicItems.filter((item) => !matchesItem(item, seedItem));
+      nextState.academicItems.push(
+        normalizeAcademicItem({
+          ...seedItem,
+          sortOrder: savedItem?.sortOrder ?? seedItem.sortOrder
+        })
+      );
+    }
+
     [
-      "the-impact-of-artificial-intelligence-on-the-online-travel-industry",
-      "practicing-with-r"
+      "the-impact-of-artificial-intelligence-on-the-online-travel-industry"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
-      if (!nextState.academicItems.some((item) => item.slug === slug)) {
-        if (seedItem) nextState.academicItems.push(normalizeAcademicItem(seedItem));
-      }
-      if (slug === "practicing-with-r" && seedItem) {
-        nextState.academicItems = nextState.academicItems.map((item) =>
-          item.slug === slug
-            ? {
-                ...item,
-                previewMediaType: seedItem.previewMediaType,
-                previewMediaUrl: seedItem.previewMediaUrl
-              }
-            : item
-        );
+      if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
+        nextState.academicItems.push(normalizeAcademicItem(seedItem));
       }
     });
+
+    restoreSeededAcademicItem(
+      "practicing-with-r",
+      (item) => item.id === R_PRACTICE_ARTIFACT_ID || item.slug === "practicing-with-r"
+    );
+    restoreSeededAcademicItem(
+      "visualising-covid-19-data-in-r",
+      (item, seedItem) =>
+        item.id === COVID_VISUALISATION_ARTIFACT_ID ||
+        item.slug === "visualising-covid-19-data-in-r" ||
+        item.title === seedItem.title
+    );
+
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(nextState));
 
     return nextState;
   } catch (error) {
@@ -895,6 +1045,16 @@ function renderFormattedBlock(block) {
   }
 
   lines.forEach(({ raw, trimmed }) => {
+    const imageMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imageMatch) {
+      flushList();
+      flushParagraph();
+      fragments.push(
+        `<div class="media-frame artifact-inline-media"><img src="${escapeHtml(normalizeRenderableUrl(imageMatch[2]))}" alt="${escapeHtml(imageMatch[1] || "Artifact chart")}" /></div>`
+      );
+      return;
+    }
+
     if (/^\s*-\s+/.test(raw)) {
       flushParagraph();
       listItems.push({

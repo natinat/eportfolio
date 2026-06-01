@@ -655,6 +655,10 @@ body[data-page="professional"] .page-intro .section-copy {
   margin-top: 1rem;
 }
 
+.artifact-inline-media {
+  margin: 1.25rem 0;
+}
+
 .artifact-link {
   display: inline-flex;
   margin-top: 1rem;
