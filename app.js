@@ -9,6 +9,10 @@ const LOCAL_TRAVEL_AI_VIDEO = "videos/ai-impact-on-the-online-travel-industry.mp
 const LOCAL_TRAVEL_AI_PREVIEW_IMAGE = "images/AI transforming global travel industry.png";
 const R_PRACTICE_ARTIFACT_ID = "2fa9f96e-aac3-48c8-8d8c-9a9b067f4062";
 const COVID_VISUALISATION_ARTIFACT_ID = "c5162e78-d790-43ec-ab96-bd8c32ca5698";
+const HEALTH_STATISTICS_ARTIFACT_ID = "f8a420a6-4a0f-4a66-a1f2-25e4b85d4f91";
+const TRAINING_VENDOR_ARTIFACT_ID = "986a28e1-25f9-42c3-9823-5c3e9a94e4ec";
+const SALES_STATISTICS_ARTIFACT_ID = "032390bb-e5c7-427f-8686-510100fe5cda";
+const NOTTINGHAMSHIRE_VISUALISATION_ARTIFACT_ID = "db7faad3-6be4-46a1-95d4-17f7f35df55a";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -26,7 +30,7 @@ const seedData = {
     academicTitle: "Academic artifacts",
     academicDescription:
       "Projects, papers, presentations, prototypes, and discussions developed as part of my studies at the University of Essex.",
-    academicTags: ["All", "Intro to Computing", "Intro to AI", "Numerical analysis"]
+    academicTags: ["All", "Intro to Computing", "Intro to AI", "Numerical analysis", "Statistics", "R", "Data visualisation"]
   },
   academicItems: [
     {
@@ -352,6 +356,894 @@ by_date %>%
           url: ""
         }
       ]
+    },
+    {
+      id: HEALTH_STATISTICS_ARTIFACT_ID,
+      slug: "descriptive-and-inferential-statistics-health-data",
+      sortOrder: 6,
+      title: "Descriptive and Inferential Statistics - Health Data",
+      description:
+        "A numerical analysis exercise using R to explore descriptive statistics and hypothesis testing on a health dataset, including age summaries, diabetic status comparisons, and blood pressure analysis across occupational groups.",
+      tags: ["All", "Numerical analysis", "Statistics", "R"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/r-numerical-analysis.png",
+      sections: [
+        {
+          id: "f027eb01-1c28-4ee1-83b9-f0b1dcc480de",
+          type: "html",
+          title: "",
+          body: `<h2>Task</h2>
+
+<p>
+  Using the 
+  <a href="https://www.my-course.co.uk/pluginfile.php/1551922/mod_page/content/8/Health%20Data.sav" alt="Health_Data">
+    Health Data
+  </a>, please perform the following functions in R:
+</p>
+
+<ul>
+  <li>Find out the mean, median and mode of the <strong>age</strong> variable.</li>
+  <li>Find out whether median diastolic blood pressure is the same among diabetic and non-diabetic participants.</li>
+  <li>Find out whether systolic BP is different across occupational groups.</li>
+</ul>
+
+<h2>Reflection</h2>
+
+<h3>Descriptive Statistics</h3>
+
+<p>
+  In the first exercise, I was tasked with performing a descriptive analysis of the variable Age by identifying its mean, median, and mode.
+</p>
+
+<p>
+  To obtain the mean and median, I used the <code>summary()</code> function, which provides several descriptive statistics, including the mean and median values.
+</p>
+
+<p>
+  R does not provide a built-in function for calculating the statistical mode. Therefore, I created a custom function that generated a frequency table of age values, sorted the frequencies in descending order, and returned the age value with the highest frequency. This value represents the mode of the distribution.
+</p>
+
+<p><em>[See code in the code section]</em></p>
+
+<h3>Inferential Statistics</h3>
+
+<h4>Task 1: Comparing DBP between Diabetic and Non-Diabetic Participants</h4>
+
+<p>
+  The first inferential task was to determine whether the median diastolic blood pressure (DBP) differs between diabetic and non-diabetic participants.
+</p>
+
+<p>The hypotheses were:</p>
+
+<p>
+  H<sub>0</sub>: Location shift between groups = 0<br>
+  H<sub>a</sub>: Location shift between groups &ne; 0
+</p>
+
+<p>
+  DBP is a continuous numerical variable, while diabetes status is a binary categorical variable. Before selecting an appropriate statistical test, I assessed the normality of the DBP distribution using the Shapiro-Wilk test (Bader &amp; Leuzinger, 2024).
+</p>
+
+<p>
+  The test returned a p-value of 0.0002204, which is less than the significance level of 0.05. Therefore, the null hypothesis of normality was rejected, indicating that the DBP data are not normally distributed.
+</p>
+
+<p>
+  Although an independent-samples t-test could still be considered due to the relatively large sample size and the robustness provided by the Central Limit Theorem (CLT), I chose to use the Wilcoxon rank-sum test as a non-parametric alternative for practice purposes (Bader &amp; Leuzinger, 2024).
+</p>
+
+<p>
+  The Wilcoxon test returned a p-value greater than 0.05. Therefore, I failed to reject the null hypothesis and concluded that there is insufficient evidence to suggest a difference in the central location, commonly interpreted as the median, of DBP between diabetic and non-diabetic participants.
+</p>
+
+<h4>Task 2: Comparing SBP across Occupational Groups</h4>
+
+<p>
+  The second inferential task was to determine whether systolic blood pressure (SBP) differs across occupational groups.
+</p>
+
+<p>The hypotheses were:</p>
+
+<p>
+  H<sub>0</sub>: SBP and occupational variables are independent, or 
+  &mu;<sub>1</sub> = &mu;<sub>2</sub> = &mu;<sub>3</sub> = &hellip;<br>
+  H<sub>a</sub>: At least one occupational group has a different mean SBP.
+</p>
+
+<p>
+  SBP is a continuous numerical variable, while occupation is a categorical variable consisting of four groups.
+</p>
+
+<p>
+  As before, I first assessed normality using the Shapiro-Wilk test. The test returned a p-value of 3.345e-06, indicating that the SBP data are not normally distributed. Despite this result, the sample size was relatively large, and ANOVA is generally considered robust to moderate violations of normality under the Central Limit Theorem (Vrbin, 2022). Therefore, I decided to perform both a parametric and a non-parametric analysis:
+</p>
+
+<ul>
+  <li>One-way ANOVA (parametric)</li>
+  <li>Kruskal-Wallis test (non-parametric)</li>
+</ul>
+
+<p>
+  Before running these tests, I examined the occupation variable and found that it had been imported from SPSS as a haven-labelled variable rather than a factor. Since both ANOVA and Kruskal-Wallis require a categorical grouping variable, I imported the haven package and converted the occupation variable to a factor.
+</p>
+
+<p>
+  After performing the analyses, both the ANOVA and Kruskal-Wallis tests produced very similar results, with p-values of approximately 0.873 and 0.855, respectively. Since both p-values exceeded the significance level of 0.05, I failed to reject the null hypothesis.
+</p>
+
+<p>
+  Therefore, I concluded that there is insufficient evidence to suggest that mean SBP differs across occupational groups.
+</p>
+
+<p>
+  In conclusion, this exercise demonstrated how R can be used to efficiently perform both descriptive and inferential statistical analyses, enabling rapid exploration of data and evidence-based conclusions. The descriptive analysis provided a straightforward summary of the Age variable, while the inferential analyses illustrated a structured approach to hypothesis testing. As highlighted by Bader and Leuzinger (2024), the appropriate sequence for inferential statistics is to first define the research question, formulate the null and alternative hypotheses, identify the variable types and their distributions, and then select the most suitable statistical test. The exercise also reinforced the importance of correctly identifying variable types, as categorical variables imported from SPSS required conversion before analysis could be performed correctly. Finally, the comparison of parametric and non-parametric methods on non-normally distributed data produced consistent conclusions, supporting the robustness of parametric tests in larger samples as described by the Central Limit Theorem. Overall, the exercise provided valuable practical experience in selecting, applying, and interpreting statistical methods using R.
+</p>`
+        },
+        {
+          id: "f6f4dbff-5730-456a-ae6b-3c697df58b67",
+          type: "code",
+          title: "R code for descriptive and inferential statistics",
+          code: `#Scale parameters - find mean, median and mode of 'age'
+#1. This gives median and mean
+summary(health_data$age)
+
+#Output:
+#Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#6.00   21.00   27.00   26.51   32.00   45.00 
+
+#2. R doesn't have a built in function for mode, but we can create our own function for it:
+as.numeric(
+  names(
+    sort(-table(health_data$age), decreasing = TRUE)
+    )[1]
+  )
+#Output: 10
+
+#Find out if the median of dbp is the ssame among diabetic and non-diabetic participants
+#To decide if we need a parametric or nonparametric test, we first run the shapiro test on the numerical variable - dbp
+shapiro.test(health_data$dbp)
+
+#Output:
+#Shapiro-Wilk normality test
+#data:  health_data$sbp
+#W = 0.95474, p-value = 3.345e-06
+#So we learn that the data isn't normally distributed, given p-value is much smaller than 0.05
+
+#Given that, we continue with a nonparametric test:
+wilcox.test(dbp ~ diabetes, data = health_data)
+#Output: 
+#Wilcoxon rank sum test with continuity correction
+#data:  dbp by diabetes
+#W = 3804.5, p-value = 0.7999
+#alternative hypothesis: true location shift is not equal to 0
+#Interpretation: We fail to reject the null hypothesis; 
+#there is insufficient evidence that DBP differs in location/median between diabetic and non-diabetic participants.
+
+#------------------------#
+#If we would want to compare means between 2 groups of continuous numerical data, we could use the t-test
+t.test(dbp ~ diabetes, data = health_data)
+#Output:
+#Welch Two Sample t-test
+# data:  dbp by diabetes
+#t = -0.16649, df = 82.075, p-value = 0.8682
+#alternative hypothesis: true difference in means between group 1 and group 2 is not equal to 0
+#95 percent confidence interval:
+#  -3.845226  3.251287
+#sample estimates:
+#  mean in group 1 mean in group 2 
+#82.53333        82.83030 
+#Which means we failed to find evidence that the dbp mean differ between groups
+
+#----------------------------------#
+#Moving to the next task, we need to find out whether sbp differ across occupational groups
+#Looking at the data we learn that sbp is a continuous numerical variable and Occupation is a categorical variable
+
+
+#To help determine which type of test we need, we start with a normality test
+shapiro.test(health_data$sbp)
+
+#The Shapiro test showed sbp isn't normally distributed
+#For comparison purposes, we'll run both parametric nonparametric tests
+
+#Investigating the categorical variable - Occupation - to dermine which tests to run
+class(health_data$occupation)
+unique(health_data$occupation)
+
+#Output: "haven_labelled" "vctrs_vctr"     "double" and 4 groups, which means we expect df value = 3
+#Given we have more than 2 groups, and we're comparing them to a continuous numerical variable,
+#we'll use the ANOVA (parametric) and Kruskal (nonparametric) tests
+#We first ensure the categorical variable matches the expected class of these tests
+
+library(haven)
+health_data$occupation <- as.factor(health_data$occupation)
+
+#Next, we run the ANOVA test
+res <- aov(sbp ~ occupation, data = health_data)
+summary(res)
+
+#Output:
+#            Df    Sum Sq.  Mean Sq  F value  Pr(>F)
+#occupation  3     285      94.9     0.233    0.873
+#Residuals   206   83800    406.8    
+#Since the p-value is 0.617, which is greater than 0.05, we fail to reject the null hypothesis. 
+#There is insufficient evidence that mean SBP differs across occupation groups.
+
+
+#Next, we run the Kruskal test
+kruskal.test(sbp ~ occupation, data = health_data)
+
+#Output:
+#Kruskal-Wallis rank sum test
+#data:  sbp by occupation
+#Kruskal-Wallis chi-squared = 0.77906, df = 3, p-value = 0.8545
+#The p-value of the Kruskal test is very similar to the ANOVA one, supporting the same earlier conclusion`,
+          url: ""
+        },
+        {
+          id: "4df3806e-eb70-4bec-8957-2acfd657a493",
+          type: "link",
+          title: "Code file",
+          body: "units-7-8-activities.R",
+          url: "assets/units-7-8-activities.R"
+        }
+      ]
+    },
+    {
+      id: TRAINING_VENDOR_ARTIFACT_ID,
+      slug: "r-for-inferential-statistics-training-vendors-comparison",
+      sortOrder: 7,
+      title: "R for Inferential Statistics - Training Vendors Comparison",
+      description:
+        "An exercise aimed to practice inferential statistics using RStudio.",
+      tags: ["All", "Numerical analysis", "Statistics", "R"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/r-numerical-analysis.png",
+      sections: [
+        {
+          id: "87a7071a-1492-4cb9-8f1a-5f23852bf533",
+          type: "html",
+          title: "",
+          body: `<h2>Task</h2>
+
+<p>
+  An HR organisation wishes to introduce a new set of training programs to increase the work efficiency of their employees. To do this, the organisation hires 3 vendors such that each vendor will train a group of employees with a one-week program. It is assumed that the employees across the three groups have same work efficiencies before the start of the program. The following table summarises the scores obtained post the one-week training. Each group has 8 employees.
+</p>
+
+<p>
+  Now, find out the mean efficiency of each vendor and determine which vendor shows a higher significance of improvement in employee efficiency statistically at the 95% level.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group 1 scores (Vendor 1)</th>
+      <th>Group 2 scores (Vendor 2)</th>
+      <th>Group 3 scores (Vendor 3)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>45</td><td>61</td><td>35</td></tr>
+    <tr><td>29</td><td>53</td><td>21</td></tr>
+    <tr><td>56</td><td>41</td><td>33</td></tr>
+    <tr><td>52</td><td>58</td><td>27</td></tr>
+    <tr><td>45</td><td>53</td><td>22</td></tr>
+    <tr><td>45</td><td>47</td><td>26</td></tr>
+    <tr><td>41</td><td>44</td><td>30</td></tr>
+  </tbody>
+</table>
+
+<p>
+  Adapted from: Rakshir, S. (2019). <em>R for Beginners</em>. India: McGraw Hill.
+</p>
+
+<h2>Reflection</h2>
+
+<p>
+  In this exercise, I was tasked with supporting an HR decision regarding the selection of a training vendor. Three vendors were evaluated based on the efficiency scores achieved by participants following training. The objective was to determine whether there were statistically significant differences in mean efficiency between the vendors and, if so, identify which vendor performed best. The hypotheses were:
+</p>
+
+<p>
+  H<sub>0</sub>: &mu;<sub>1</sub> = &mu;<sub>2</sub> = &mu;<sub>3</sub><br>
+  H<sub>1</sub>: At least one vendor has a different mean efficiency.
+</p>
+
+<p>
+  The analysis was conducted at a 95% confidence level (&alpha; = 0.05).
+</p>
+
+<p>
+  After importing the data into R, I observed that the efficiency scores appeared approximately normally distributed. Because the response variable, efficiency, was continuous and the comparison involved three independent groups, a one-way ANOVA was selected as the appropriate statistical test. A Tukey HSD post-hoc test was planned as a follow-up analysis in the event that the ANOVA indicated significant differences between the vendor means.
+</p>
+
+<p>
+  The data were initially arranged in a wide format, with each vendor represented by a separate column. Since ANOVA in R requires a single numerical response variable and a categorical grouping variable, the data were converted into a long format consisting of two columns: efficiency and vendor. This structure allowed the ANOVA model to be specified correctly.
+</p>
+
+<p>
+  The ANOVA test returned a p-value of 2.98e-05, which is substantially smaller than the significance level of 0.05. Therefore, the null hypothesis was rejected, providing strong evidence that at least one vendor's mean efficiency differs from the others. As a result, a Tukey HSD post-hoc test was conducted to identify which specific vendor comparisons were statistically significant.
+</p>
+
+<p>
+  The output received via the <code>TukeyHSD()</code> function in R was:
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comparison</th>
+      <th>diff</th>
+      <th>lwr</th>
+      <th>upr</th>
+      <th>p adj</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Vendor2 - Vendor1</td>
+      <td>6.29</td>
+      <td>-3.52</td>
+      <td>16.10</td>
+      <td>0.257</td>
+    </tr>
+    <tr>
+      <td>Vendor3 - Vendor1</td>
+      <td>-17.00</td>
+      <td>-26.81</td>
+      <td>-7.19</td>
+      <td>0.000913</td>
+    </tr>
+    <tr>
+      <td>Vendor3 - Vendor2</td>
+      <td>-23.29</td>
+      <td>-33.10</td>
+      <td>-13.48</td>
+      <td>0.000029</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  To help interpret this table, I used R to get the approximate mean of each vendor:
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vendor</th>
+      <th>Efficiency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Vendor1</td><td>44.71429</td></tr>
+    <tr><td>Vendor2</td><td>51.00000</td></tr>
+    <tr><td>Vendor3</td><td>27.71429</td></tr>
+  </tbody>
+</table>
+
+<h3>Analysis</h3>
+
+<p>
+  The above results show that Vendor 2 has the highest mean. However, when compared to Vendor 1 in the post-hoc test, we see a difference of 6.29 and lower and upper bounds of (-3.52, 16.10), having 0 within that range. Because the confidence interval includes 0, a true difference of zero is a plausible value. Given the p-value of 0.257 and the fact that the confidence interval includes 0, there is insufficient evidence to conclude that the difference between Vendor 2 and Vendor 1 is statistically significant.
+</p>
+
+<p>
+  Moving to the next row, we see that Vendor 3's mean efficiency is 17 units lower than Vendor 1's mean efficiency, with the lower and upper bounds between (-26.81, -7.19). Given the adjusted p-value of 0.000913 and the fact that the confidence interval does not include 0, there is sufficient evidence to conclude that Vendor 3's mean efficiency is significantly lower than Vendor 1's.
+</p>
+
+<p>
+  Lastly, when comparing Vendor 3 and Vendor 2, we see Vendor 3 is lower by 23.29, with a lower and upper range of (-33.10, -13.48). Given the adjusted p-value of 0.000029 and the fact that the confidence interval does not include 0, there is sufficient evidence to conclude that Vendor 3's mean efficiency is significantly lower than Vendor 2's.
+</p>
+
+<p>
+  In conclusion, Vendor 1 and Vendor 2 have the highest mean efficiency scores, and there is insufficient statistical evidence to conclude that their mean efficiencies differ significantly. In contrast, Vendor 3 has a significantly lower mean efficiency than both Vendor 1 and Vendor 2. Therefore, while Vendor 2 achieved the highest observed mean efficiency, it cannot be considered statistically superior to Vendor 1 based on the available data.
+</p>`
+        },
+        {
+          id: "09c3b39d-3f42-4a9a-94b5-130b0c0f1db4",
+          type: "code",
+          title: "R code for training vendor comparison",
+          code: `#Scenario-Based Excercise - 95% Confidence Interval
+#Finding the mean efficiency of each training vendor to 
+#determine which of them shows the heiger signifivance of imporvement in employee efficiency statistically
+#at a 95% level.
+
+#First we uploaded the data. Since it's small, we'll do it directly here
+df <- data.frame(
+  Vendor1 = c(45,29,56,52,45,45,41),
+  Vendor2 = c(61,53,41,58,53,47,44),
+  Vendor3 = c(35,21,33,27,22,26,30)
+)
+
+View(df)
+
+#I can see the data is normally distributed and a quick Shapiro test on one of these groups confirmed it.
+#Given that, and given there are 3 groups, we'll use the ANOVA test to prove there is a difference of mean between groups
+#We'll then use a post-hoc test to find which is the best performing with a 95% condfidence
+
+#Since ANOVA expect a long format, with one column with values and another with the categorical data, 
+efficiency <-c(df$Vendor1, df$Vendor2, df$Vendor3)
+vendor <-factor(rep(
+  c("Vendor1", "Vendor2", "Vendor3"),
+  each = 7
+))
+long_df <- data.frame(efficiency, vendor)
+View(long_df)
+
+#Now we can run the ANOVA test
+res <-aov(efficiency ~ vendor, data = long_df)
+summary(res)
+
+#Output:
+#             Df Sum Sq   Mean Sq   F value   Pr(>F)    
+#vendor       2  2031.7   1015.9    19.64     2.98e-05 ***
+#Residuals   18  930.9    51.7                     
+#---
+#  Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+#A p-value of 2.98e-05 wutg *** shows that we can reject the null hypothesis with a 99% confidence level
+
+#Next we run the post-hoc test
+TukeyHSD(res)
+
+#Getting the approximate means of each vendor
+aggregate(efficiency ~vendor, data = long_df, mean)`,
+          url: ""
+        }
+      ]
+    },
+    {
+      id: SALES_STATISTICS_ARTIFACT_ID,
+      slug: "inferential-statistics-sales-dataset",
+      sortOrder: 8,
+      title: "Inferential Statistics - Sales Dataset",
+      description:
+        "An inferential statistics artifact using a sales forecasting dataset to compare paired category spending and independent customer segment sales with t-tests in R.",
+      tags: ["All", "Numerical analysis", "Statistics", "R"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/r-numerical-analysis.png",
+      sections: [
+        {
+          id: "eb63e9fe-daf8-4b75-bded-6efc98d81313",
+          type: "html",
+          title: "",
+          body: `<h2>Task</h2>
+
+<p>
+  Using this sales forecasting dataset, perform the following activities:
+</p>
+
+<ul>
+  <li>
+    Conduct a Paired t-test for customers who purchased from both Technology and Furniture categories to assess if there is a significant difference in their average spending between these two categories.
+  </li>
+  <li>
+    Conduct an independent t-test to assess if there is a significant difference in mean sales between Consumer and Corporate customer segments in the Superstore dataset.
+  </li>
+</ul>
+
+<h2>Reflection</h2>
+
+<h3>Paired T-Test</h3>
+
+<p>
+  Working with the sales forecasting dataset, the first task required assessing whether customers who purchased from both categories spent different amounts on average in the Technology and Furniture categories.
+</p>
+
+<p>
+  The hypotheses are therefore:
+</p>
+
+<p>
+  H<sub>0</sub>: &mu;<sub>1</sub> - &mu;<sub>2</sub> = 0<br>
+  H<sub>a</sub>: &mu;<sub>1</sub> - &mu;<sub>2</sub> &ne; 0
+</p>
+
+<p>
+  To test these hypotheses, I first needed to create a new table from the original dataset, which included three columns: customer ID, technology spend, and furniture spend, with the total sales amount for each customer in each category. To ensure that only customers who purchased products in both categories were included in the analysis, I used the <code>na.omit()</code> function to remove rows containing missing values in either spending column.
+</p>
+
+<p>
+  Once I had the right data structure, I ran the paired t-test and received the following output:
+</p>
+
+<pre style="font-family: 'Courier New', Courier, monospace;">
+Paired t-test
+
+data: overlapping$Furniture and overlapping$Technology
+t = -1.5705, df = 614, p-value = 0.1168
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -306.62345   34.12048
+
+sample estimates:
+mean difference
+      -136.2515
+</pre>
+
+<h4>Conclusions</h4>
+
+<p>
+  The upper and lower bounds at a 95% confidence level are (-306.623, 34.12), having 0 within that range. Given that, a true difference of 0 is a plausible value. Together with the fact that the p-value of 0.1168 is greater than 0.05, we fail to reject the null hypothesis that the mean difference in spending between the two categories is zero. Although the sample mean difference suggests that customers spent approximately $136 less on Furniture than on Technology, the difference was not statistically significant.
+</p>
+
+<h3>Independent T-Test</h3>
+
+<p>
+  The next task was to conduct an independent t-test between a Consumer and a Corporate customer segment and compare their mean spending.
+</p>
+
+<p>
+  The hypotheses are therefore:
+</p>
+
+<p>
+  H<sub>0</sub>: &mu;<sub>1</sub> = &mu;<sub>2</sub><br>
+  H<sub>a</sub>: &mu;<sub>1</sub> &ne; &mu;<sub>2</sub>
+</p>
+
+<p>
+  To conduct this test, since the original dataset contains three categories under <code>Segment</code>, I first needed to create a new table that included only the two specified segments. After that, I was able to run the independent t-test and received this output:
+</p>
+
+<pre style="font-family: 'Courier New', Courier, monospace;">
+Welch Two Sample t-test
+
+data: Sales by Segment
+t = -0.58662, df = 6069.3, p-value = 0.5575
+
+alternative hypothesis:
+true difference in means between group Consumer and group Corporate
+is not equal to 0
+
+95 percent confidence interval:
+ -35.10304  18.93315
+
+sample estimates:
+ mean in group Consumer   mean in group Corporate
+               225.0658                 233.1507
+</pre>
+
+<h4>Conclusions</h4>
+
+<p>
+  From the output we learn that the lower and upper bounds are (-35.1, 18.9), with 0 contained within the confidence interval. This indicates that a difference of 0 between means is a plausible value. Together with a p-value of 0.5575, which is higher than 0.05, we fail to reject the null hypothesis. We therefore conclude that there is insufficient evidence to suggest a statistically significant difference in mean spending between Consumer and Corporate customer segments.
+</p>
+
+<p>
+  To summarise, both analyses produced non-significant results, indicating that the observed differences in average spending could plausibly be explained by sampling variation. This exercise reinforced the importance of selecting the appropriate statistical test based on the study design, the relationship between observations, and the structure of the underlying data.
+</p>`
+        },
+        {
+          id: "f9f35442-8d28-4714-b378-cb97e5535fda",
+          type: "code",
+          title: "R code for sales dataset t-tests",
+          code: `library(readr) #To import csv
+library(dplyr) #To use the pipe operator
+
+read_csv("train.csv")
+df <- data.frame(read_csv("train.csv"))
+head(df)
+
+#I have created a minimised version of the datset with Furniture and Technology under the category column, 
+#I then group the Category data by Customer ID and summarise by the sum of Sales
+filtered_sales <- df %>%
+  filter(Category %in% c("Furniture", "Technology")) %>%
+  group_by(Customer.ID, Category) %>%
+  summarise(Sales= sum(Sales), .groups = "drop")
+         
+#We use the tidyr library and pivote_wider to organise the data in a table with 3 columns
+library(tidyr)
+
+overlapping <- filtered_sales %>%
+  pivot_wider(
+    names_from = Category,
+    values_from = Sales
+  )
+
+#To make sure we only take customers with products purchased in both categories, we run this
+overlapping <- na.omit(overlapping)
+
+#Now we can run the paired t-test
+t.test(
+  overlapping$Furniture,
+  overlapping$Technology,
+  paired=TRUE
+)
+
+
+t.test(Sales ~ Category, data = filtered_sales)
+
+#Next we need to compare the mean of spend beteeen two customer segments - customer, corporate
+unique(df$Segment) #checking if we need to filter the data
+#Filtering the data
+filtered_segment <- df %>%
+  filter(Segment %in% c("Corporate", "Consumer")) %>%
+  select(Segment, Sales)
+
+head(filtered_segment) #validating the data was built correctly
+
+#Running the t-test
+t.test(Sales ~ Segment, data = filtered_segment)`,
+          url: ""
+        }
+      ]
+    },
+    {
+      id: NOTTINGHAMSHIRE_VISUALISATION_ARTIFACT_ID,
+      slug: "data-visualisation-with-r-nottinghamshire-research",
+      sortOrder: 9,
+      title: "Data Visualisation with R - Nottinghamshire Research",
+      description:
+        "A reflective post summary for a formative discussion on the topic of data visualisation using RStudio",
+      tags: ["All", "Numerical analysis", "Data visualisation", "R"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/more-care.png",
+      sections: [
+        {
+          id: "090fb7dc-918c-4bda-ad24-fd84e06d6297",
+          type: "html",
+          title: "",
+          body: `<h2>Reflection</h2>
+
+<p>
+  In my initial post, I agreed with the editor’s argument that Table II (Brown, 1994) was too dense and approached improving readability through a process of filtering, grouping, and visualisation. My focus was on helping readers identify the main patterns in the data more easily. Feedback from my peers led me to reconsider several assumptions about simplification and visualisation.
+</p>
+
+<p>
+  First, several comments highlighted a lack of transparency in my explanation of the simplification methods used. For example, I used the term ‘merged’ when I actually meant that a representative statement was selected where similar response distributions existed across related items. This discussion reinforced the importance of being explicit about what has been represented, excluded, or consolidated, as well as the rationale behind those decisions. Simplification is not only a design choice but also an analytical decision that can affect interpretation.
+</p>
+
+<p>
+  Second, a discussion on the use of diverging stacked bar charts versus conventional bar and stacked bar charts led me to reflect on how audience characteristics influence visualisation choices. While I agreed that diverging stacked bar charts provide a more rigorous representation of Likert-scale responses (Heiberger and Robbins, 2014), I argued that their structure may be less intuitive for some audiences. This aligns with Franconeri et al. (2021), who emphasise that effective visual communication depends on matching the presentation to the audience and their goals. I therefore argue that there is not necessarily a universally “best” chart type. Suitability depends on both audience and purpose.
+</p>
+
+<p>
+  Lastly, feedback on my visualisations prompted me to consider how prioritisation within charts and tables can influence interpretation, shape the narrative, and potentially introduce bias. Alternative categorisations used in peers’ posts, as well as those proposed in feedback, further demonstrated how analytical choices influence which insights become visible.
+</p>
+
+<p>
+  Overall, the discussion shifted my perspective from viewing visualisation primarily as a tool for simplification to seeing it as a series of analytical decisions that must balance clarity, accuracy, accessibility, and the risk of bias.
+</p>
+
+<h2>References</h2>
+
+<p>
+  Brown, D.J. (1994) Opinions of general practitioners in Nottinghamshire about provision of intrapartum care. <em>BMJ</em>, 309(6957), pp. 777–779. <a href="https://doi.org/10.1136/bmj.309.6957.777">https://doi.org/10.1136/bmj.309.6957.777</a>
+</p>
+
+<p>
+  Franconeri, S.L. et al. (2021) The science of visual data communication: What works. <em>Psychological Science in the Public Interest</em>, 22(3), pp. 110–161. <a href="https://doi.org/10.1177/15291006211051956">https://doi.org/10.1177/15291006211051956</a>
+</p>
+
+<p>
+  Heiberger, R.M. and Robbins, N.B. (2014) Design of diverging stacked bar charts for Likert scales and other applications. <em>Journal of Statistical Software</em>, 57(5), pp. 1–32. <a href="https://doi.org/10.18637/jss.v057.i05">https://doi.org/10.18637/jss.v057.i05</a>
+</p>
+
+<h2>Bibliography</h2>
+
+<p>
+  Bader, M. and Leuzinger, S. (2025) <em>R-ticulate: A Beginner’s Guide to Data Analysis for Natural Scientists</em>. 1st edn. Hoboken: Wiley.
+</p>
+
+<p>
+  Balan, S. (2024) ‘A systematic review of data visualization’, <em>Journal of Strategic Innovation and Sustainability</em>, 19(3). doi: 10.33423/jsis.v19i3.7375.
+</p>
+
+<p>
+  ChatGPT (2026) Used as tutor and a soundboard for processing study and discussing the forum assignment. Available at: <a href="https://chatgpt.com/share/6a197f48-7490-83eb-b122-f9ba5b922e50">https://chatgpt.com/share/6a197f48-7490-83eb-b122-f9ba5b922e50</a> (Accessed: 25 May 2026).
+</p>
+
+<p>
+  R Programming 101 (2021) ggplot for plots and graphs. An introduction to data visualization using R programming. YouTube video, added by R Programming 101 [Online]. Available at: <a href="https://www.youtube.com/watch?v=HPJn1CMvtmI">https://www.youtube.com/watch?v=HPJn1CMvtmI</a> (Accessed: 25 May 2026).
+</p>`
+        },
+        {
+          id: "0d35782a-f203-44f2-b844-0f7a4f935fc5",
+          type: "code",
+          title: "R code for Nottinghamshire visualisations",
+          code: `read.csv("Table2-Nottinghamshire1.csv")
+
+mydata <- read.csv("Table2- Nottinghamshire.csv")
+
+install.packages("ggplot2") #installing the package before starting to work
+library(ggplot2) #load into current session
+install.packages("tidyr")
+library(tidyr)
+library(dplyr) #allow using %<% to call data into visualisation
+library(readr) #Adding so that I can convert the Percent values to numeric values
+
+
+#Before plotting, I'll rearrange the data to make visualisation easier
+notts <- read.csv("Table2-Nottinghamshire1.csv")
+notts_long <- pivot_longer(
+  notts,
+  cols = c("Agree.rate", "Disagre.rate", "No.opinion.rate"),
+  names_to = "Response",
+  values_to = "Percent"
+)
+
+#Ensuring percent is considered a numeric value
+notts_long$Percent <- readr::parse_number(notts_long$Percent)
+
+#Starting with visualisation
+#GP Views on Women’s Demand for Childbirth Choice
+notts_choice <- dplyr::filter(
+  notts_long,
+  Statement.1 %in% c("Choice of birthplace",
+                     "Home birth rights"))
+
+#Controling the order of responses shown in the bars and legend
+notts_choice$Response <-factor(
+  notts_choice$Response, levels = c(
+    "No.opinion.rate", "Disagre.rate", "Agree.rate")
+  )
+notts_choice %>%
+  ggplot(aes(x = Statement.1, 
+             y = Percent,
+             fill = Response))+
+  geom_col(position = "dodge")+
+  labs(fill = "Responses:")+
+   labs(x="", y = "Percentage of responses", title="GP Views on Women’s Choice in Maternity Care",
+        subtitle="Statement: I believe women have a choice on these matters:")+
+   scale_fill_manual(values = c("Agree.rate" = "#75E6DA", 
+                                "Disagre.rate" = "#87B0E2", 
+                                "No.opinion.rate" = "#D1E2F4"),
+                     labels = c("Agree.rate"="Agree", "Disagre.rate"="Disagree", "No.opinion.rate"="No opinion"))+
+   scale_x_discrete(labels = c("Choice of birthplace" = "Birthplace", "Home birth rights"="Home birth"))+
+   theme_bw()+
+     theme(
+       axis.title.x = element_text(
+         size = 12,
+         face = "bold",
+         margin = margin(t=10)
+       ),
+       plot.title = element_text(
+         size = 14, face = "bold", hjust = 0.5
+       ),
+       plot.subtitle = element_text(
+         size = 12, hjust = 0.5
+       )
+     )
+ 
+ #Reasons GPs Hesitate to Commit to Intrapartum Care
+ notts_barriers <- dplyr::filter(
+   notts_long,
+   Statement.1 %in% c("Lack of confidence",
+                      "Fear of litigation",
+                      "Personal life disruption",
+                      "Current workload")
+ )
+ 
+ #Controling the order of responses shown in the bars and legend
+ notts_barriers$Response <-factor(
+   notts_barriers$Response, levels = c(
+     "No.opinion.rate", "Disagre.rate", "Agree.rate")
+ )
+ 
+ notts_barriers %>%
+   ggplot(aes(x = Statement.1,
+              y = Percent,
+              fill = Response,
+              group = Response))+
+   geom_col(position = position_dodge(width=0.9))+
+   labs(fill = "Responses:")+
+   labs(x="", y = "Percentage of responses", 
+        title = "Factors Discouraging GPs From Performing More Intrapartum Care",
+        subtitle = "Statement: I see this as a barrier:")+
+   scale_fill_manual(values = c("No.opinion.rate" = "#D1E2F4", 
+                                "Disagre.rate" = "#87B0E2", 
+                                "Agree.rate" = "#75E6DA"),
+                     labels = c("No.opinion.rate"="No opinion", "Disagre.rate"="Disagree", "Agree.rate"="Agree"))+
+   theme_bw()+
+   theme(
+     axis.title.x = element_text(
+       size = 12,
+       face = "bold",
+       margin = margin(t=10)
+     ),
+     plot.title = element_text(
+       size = 14, face = "bold", hjust = 0.5
+     ),
+     plot.subtitle = element_text(
+       size = 12, hjust = 0.5
+     )
+   )
+ 
+ #Plotting the rate between want to participate more in intrapartum care vs. don't want to
+ notts_commit <- dplyr::filter(
+   notts_long,
+   Statement.1 %in% c("Perform more intrapartum care")
+ )
+ 
+ #Controling the order of responses shown in the bars and legend
+ notts_commit$Response <-factor(
+   notts_commit$Response, levels = c(
+     "No.opinion.rate", "Disagre.rate", "Agree.rate")
+ )
+ 
+ notts_commit %>%
+   ggplot(aes(x = Statement.1,
+               y = Percent,
+               fill = Response,
+               group = Response))+
+    geom_col(position = "dodge")+
+      labs(fill = "Responses:")+
+      labs(x="", y = "Percentage of responses", 
+           title = "GP Interest in Providing More Intrapartum Care",
+           subtitle = "Statement: I would like to provide more intrapartum care")+
+   scale_fill_manual(values = c("No.opinion.rate" = "#D1E2F4", 
+                                "Disagre.rate" = "#87B0E2", 
+                                "Agree.rate" = "#75E6DA"),
+                     labels = c("No.opinion.rate"="No opinion", "Disagre.rate"="Disagree", "Agree.rate"="Agree"))+
+   scale_x_discrete(labels = c("Perform more intrapartum care" = 
+                                 ""))+
+   theme_bw()+
+   theme(
+     plot.subtitle = element_text(
+       size = 12, hjust = 0.5
+     ),
+     plot.title = element_text(
+       size = 14, face = "bold", hjust = 0.5
+     )
+   )
+ 
+ #An alternative approach to the 'care' plot - one with 'wish' and 'fill confident'
+ notts_commit2 <- dplyr::filter(
+   notts_long,
+   Statement.1 %in% c("Perform more intrapartum care", "Obstetric competence")
+ )
+ 
+ notts_commit2$Response <-factor(
+   notts_commit2$Response, levels = c(
+     "No.opinion.rate", "Disagre.rate", "Agree.rate")
+ )
+ 
+ notts_commit2 %>%
+   ggplot(aes(x = Statement.1,
+              y = Percent,
+              fill = Response,
+              group = Response)) +
+   geom_col(position = "dodge") +
+   labs(fill = "Responses:") +
+   labs(x = "", y = "Percentage of responses", 
+        title = "GPs and Intrapartum Care") +
+   scale_fill_manual(values = c("No.opinion.rate" = "#D1E2F4", 
+                                "Disagre.rate" = "#87B0E2", 
+                                "Agree.rate" = "#75E6DA"),
+                     labels = c("No.opinion.rate"="No opinion", "Disagre.rate"="Disagree", "Agree.rate"="Agree"))+
+   scale_x_discrete(labels = c(
+     "Perform more intrapartum care" = "Wish to perform more care",
+     "Obstetric competence" = "Feel competent"
+   )) +
+   theme_bw() +
+   theme(
+     axis.title.x = element_text(
+       size = 12,
+       face = "bold",
+       margin = margin(t = 10)
+     ),
+     plot.title = element_text(
+       size = 14,
+       face = "bold",
+       hjust = 0.5
+     )
+   )`,
+          url: ""
+        },
+        {
+          id: "e01f0d25-1c65-41a7-9449-78c5a1e8c7d5",
+          type: "html",
+          title: "",
+          body: `<h2>Graphs and Tables Included in the Initial Post</h2>
+
+<img src="images/more-care-table.png" alt="More Care Table">
+<img src="images/barriers-table.png" alt="Barriers Table">
+<img src="images/women-choice-table.png" alt="Women's Choice Table">
+
+<img src="images/more-care.png" alt="More Care Chart">
+<img src="images/barriers.png" alt="Barriers Chart">
+<img src="images/women-choice.png" alt="Women's Choice Chart">`
+        }
+      ]
     }
   ],
   timelineItems: [
@@ -531,7 +1423,11 @@ function loadState() {
     }
 
     [
-      "the-impact-of-artificial-intelligence-on-the-online-travel-industry"
+      "the-impact-of-artificial-intelligence-on-the-online-travel-industry",
+      "descriptive-and-inferential-statistics-health-data",
+      "r-for-inferential-statistics-training-vendors-comparison",
+      "inferential-statistics-sales-dataset",
+      "data-visualisation-with-r-nottinghamshire-research"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -549,6 +1445,24 @@ function loadState() {
         item.id === COVID_VISUALISATION_ARTIFACT_ID ||
         item.slug === "visualising-covid-19-data-in-r" ||
         item.title === seedItem.title
+    );
+    restoreSeededAcademicItem(
+      "descriptive-and-inferential-statistics-health-data",
+      (item) => item.id === HEALTH_STATISTICS_ARTIFACT_ID || item.slug === "descriptive-and-inferential-statistics-health-data"
+    );
+    restoreSeededAcademicItem(
+      "r-for-inferential-statistics-training-vendors-comparison",
+      (item) => item.id === TRAINING_VENDOR_ARTIFACT_ID || item.slug === "r-for-inferential-statistics-training-vendors-comparison"
+    );
+    restoreSeededAcademicItem(
+      "inferential-statistics-sales-dataset",
+      (item) => item.id === SALES_STATISTICS_ARTIFACT_ID || item.slug === "inferential-statistics-sales-dataset"
+    );
+    restoreSeededAcademicItem(
+      "data-visualisation-with-r-nottinghamshire-research",
+      (item) =>
+        item.id === NOTTINGHAMSHIRE_VISUALISATION_ARTIFACT_ID ||
+        item.slug === "data-visualisation-with-r-nottinghamshire-research"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
@@ -876,6 +1790,7 @@ function renderArtifactSection(artifact, section) {
 
 function renderSectionBody(section) {
   if (section.type === "text") return renderFormattedText(section.body);
+  if (section.type === "html") return `<div class="artifact-html">${section.body}</div>`;
   if (section.type === "image") {
     return `<div class="media-frame artifact-media"><img src="${escapeHtml(normalizeRenderableUrl(section.url))}" alt="${escapeHtml(section.title || "Artifact image")}" /></div>`;
   }
@@ -1044,7 +1959,22 @@ function renderFormattedBlock(block) {
     listItems = [];
   }
 
-  lines.forEach(({ raw, trimmed }) => {
+  for (let index = 0; index < lines.length; index += 1) {
+    const { raw, trimmed } = lines[index];
+
+    if (isMarkdownTableStart(lines, index)) {
+      flushList();
+      flushParagraph();
+      const tableLines = [];
+      while (lines[index] && isMarkdownTableLine(lines[index].trimmed)) {
+        tableLines.push(lines[index].trimmed);
+        index += 1;
+      }
+      index -= 1;
+      fragments.push(renderMarkdownTable(tableLines));
+      continue;
+    }
+
     const imageMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
     if (imageMatch) {
       flushList();
@@ -1088,11 +2018,45 @@ function renderFormattedBlock(block) {
     }
 
     paragraphLines.push(trimmed);
-  });
+  }
 
   flushList();
   flushParagraph();
   return fragments.join("");
+}
+
+function isMarkdownTableStart(lines, index) {
+  return isMarkdownTableLine(lines[index]?.trimmed) && /^\|\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(lines[index + 1]?.trimmed || "");
+}
+
+function isMarkdownTableLine(line = "") {
+  return line.startsWith("|") && line.includes("|", 1);
+}
+
+function parseMarkdownTableRow(line = "") {
+  return line
+    .replace(/^\|/, "")
+    .replace(/\|$/, "")
+    .split("|")
+    .map((cell) => cell.trim());
+}
+
+function renderMarkdownTable(tableLines) {
+  const headerCells = parseMarkdownTableRow(tableLines[0]);
+  const bodyRows = tableLines.slice(2).map(parseMarkdownTableRow);
+
+  return `
+    <div class="artifact-table-wrap">
+      <table class="artifact-table">
+        <thead>
+          <tr>${headerCells.map((cell) => `<th>${formatInlineText(cell)}</th>`).join("")}</tr>
+        </thead>
+        <tbody>
+          ${bodyRows.map((row) => `<tr>${row.map((cell) => `<td>${formatInlineText(cell)}</td>`).join("")}</tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
 }
 
 function renderNestedList(items) {
