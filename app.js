@@ -13,6 +13,8 @@ const HEALTH_STATISTICS_ARTIFACT_ID = "f8a420a6-4a0f-4a66-a1f2-25e4b85d4f91";
 const TRAINING_VENDOR_ARTIFACT_ID = "986a28e1-25f9-42c3-9823-5c3e9a94e4ec";
 const SALES_STATISTICS_ARTIFACT_ID = "032390bb-e5c7-427f-8686-510100fe5cda";
 const NOTTINGHAMSHIRE_VISUALISATION_ARTIFACT_ID = "db7faad3-6be4-46a1-95d4-17f7f35df55a";
+const CORRELATION_REGRESSION_ARTIFACT_ID = "9f5f6e83-09bb-48e5-9a3d-79c345f38916";
+const INDUSTRY_DATA_INTEGRITY_ARTIFACT_ID = "ad52934b-9dfc-4a2e-a43e-20fe6cce54ef";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -30,7 +32,7 @@ const seedData = {
     academicTitle: "Academic artifacts",
     academicDescription:
       "Projects, papers, presentations, prototypes, and discussions developed as part of my studies at the University of Essex.",
-    academicTags: ["All", "Intro to Computing", "Intro to AI", "Numerical analysis", "Statistics", "R", "Data visualisation"]
+    academicTags: ["All", "Intro to Computing", "Intro to AI", "Numerical analysis", "Statistics", "R", "Data visualisation", "Machine Learning"]
   },
   academicItems: [
     {
@@ -125,9 +127,154 @@ const seedData = {
       ]
     },
     {
+      id: CORRELATION_REGRESSION_ARTIFACT_ID,
+      slug: "correlation-and-regression",
+      sortOrder: 4,
+      title: "Correlation and Regression",
+      description:
+        "A reflective academic artifact exploring covariance, Pearson correlation, linear regression, multiple linear regression, and polynomial regression through Python experiments and supporting notebook files.",
+      tags: ["All", "Machine Learning", "Statistics", "Numerical analysis"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "80d879e1-8e4a-4190-b566-017d3ba0f20f",
+          type: "html",
+          title: "",
+          body: `<p>The <span class="math">4</span> experiment files have helped me improve my understanding of correlation and regression.</p>
+
+<h2>File 1 – Covariance Pearson Correlation</h2>
+<p>The file (<a href="#appendix-a">Appendix A</a>) is using Python randomly generated synthetic data to examine a linear relationship between two variables (data1, data2).</p>
+<p>To measure the strength and direction of the linear relationship, we use Pearson's correlation coefficient (<span class="math">r</span>).</p>
+<p>To interpret the results we follow this rule of thumb (Lecturecast – Correlation and Regression, no date):</p>
+<ul>
+  <li><span class="math">r=0</span> means no linear correlation</li>
+  <li><span class="math">r=+0.5</span> means moderate positive linear correlation</li>
+  <li><span class="math">r=+1</span> means perfect positive linear correlation</li>
+  <li><span class="math">r=−0.5</span> means moderate negative linear correlation</li>
+  <li><span class="math">r=−1</span> means perfect negative linear correlation</li>
+</ul>
+<p>The first example in the file shows a high, positive Pearson’s correlation at <span class="math">0.88</span>.</p>
+<p>To validate the above rule of thumb, I ran <span class="math">2</span> manipulations on the data to see how it impacts the correlation score. The first manipulation changed the relationship by multiplying data1 by <span class="math">−1</span> when generating the new variable.</p>
+<p>The second manipulation was increasing random noise, this led to a positive low correlation, and an increase in the standard deviation from <span class="math">22.35</span> to <span class="math">102.86</span>.</p>
+<p>These experiments highlighted how Pearson’s score changes with each of these manipulations, confirming my initial understanding of it via the interpretation rule of thumb.</p>
+
+<h2>File 2 – Linear Regression</h2>
+<p>This file (<a href="#appendix-b">Appendix B</a>) shows how we can find the slope, intercept, <span class="math">r</span>, p value and standard error of the slope for a linear regression using Python. We then use the slope and intercept to manually predict <span class="math">Y</span> for a given <span class="math">X</span>. The <span class="math">r</span>, p-value and standard error provide information about the strength, statistical significance and uncertainty of the estimated relationship.</p>
+<p>When fitting a linear regression model in Python, the model estimates the slope and intercept in the background. The fitted model can then be used to generate predictions.</p>
+<p>To understand how a fitted linear regression model changes based on different inputs, I ran two manipulations on the data.</p>
+<p>The first one introduced more extreme outliers. This led to the linear line being more horizontal, as it tries to fit the outlier values. It also led to a larger standard error (from <span class="math">0.45</span> to <span class="math">3.637</span>), as expected. Lastly, the p-value increased to <span class="math">0.35</span>, which meant there isn’t sufficient evidence to reject the null hypothesis that the true slope is zero.</p>
+<p>The second manipulation added noise, by changing the Y values to more random ones. Here too, the regression line becomes flatter as it minimises the sum of squared residuals across all observations. The points are widely scattered around the line with no strong linear pattern.</p>
+<p>The standard error is <span class="math">1.8</span>, which is less than the one we got with the big outliers, but more than the original set of values. Lastly <span class="math">p=0.179&gt;α=0.05</span>, so the linear relationship is no longer statistically significant. This means we don't have sufficient evidence to reject the null hypothesis that there is no linear relationship.</p>
+<p>The third and last manipulation was changing the <span class="math">Y</span> values so that they consistently decrease as <span class="math">X</span> increases. This produced a perfect linear line, with all dots fitted on it, and a Pearson’s correlation score at <span class="math">-1</span>. The residuals and standard error of the slope were zero, as expected. And lastly, p-value was extremely close to zero, indicating a very strong evidence against the null hypothesis of no linear relationship.</p>
+
+<h2>File 3 – Multiple Linear Regression</h2>
+<p>In this file (<a href="#appendix-c">Appendix C</a>) we experimented with multiple predictors: Weight and Volume, to predict <span class="math">CO2</span>.</p>
+<p>We use <code>regr.coef_</code> to examine the coefficients learned by the model. Each coefficient tells us how much predicted <span class="math">CO₂</span> changes for a one-unit increase in that predictor, while holding the other predictor constant.</p>
+<p>A result of Weight: <span class="math">0.00755095</span> Volume: <span class="math">0.00780526</span>, tells us by how much <span class="math">CO2</span> emission increases with each unit increase of Weight or Volume.</p>
+<p>In the file, a prediction was generated with weight being increased by <span class="math">1000</span> units (<span class="math">1000kg</span>):</p>
+<pre><code class="language-python">predictedCO2 = regr.predict([[3300, 1300]])
+print(predictedCO2)</code></pre>
+<p>As expected it followed the coefficient values:</p>
+<p><span class="math">107.2087328 + (1000 × 0.00755095) = 114.75968</span></p>
+<p>In my experimentation I wanted to check this correlation on a larger dataset, with a split on train and test datasets. The original dataset contained only <span class="math">36</span> observations (<a href="#appendix-d">Appendix D</a>). I retained those <span class="math">36</span> and generated <span class="math">64</span> synthetic observations to reach <span class="math">100</span> (<a href="#appendix-e">Appendix E</a>).</p>
+<p>I then split the observations into train/test, and fitted a linear regression model.</p>
+<p>Comparing the performance, I learned that:</p>
+<ul>
+  <li>Within this synthetic dataset, the relatively low <span class="math">R²</span> suggests that Volume and Weight provide limited explanatory power for <span class="math">CO₂</span>.</li>
+  <li>Interestingly, test <span class="math">R²</span> is slightly higher than train <span class="math">R²</span>. This can happen, particularly with a small test set, because of variation in which observations are selected.</li>
+  <li>MAE is higher on the test set (<span class="math">6.34</span>) than the training set (<span class="math">4.65</span>), meaning that predictions for unseen observations are further from the actual <span class="math">CO₂</span> values on average.</li>
+  <li>Overall, the relatively low <span class="math">R²</span> suggests that Volume and Weight alone provide limited explanatory power for <span class="math">CO₂</span>, and there may be room to improve the model by including additional relevant predictors.</li>
+</ul>
+
+<h2>File 4 – Polynomial Regression</h2>
+<p>This file (<a href="#appendix-f">Appendix F</a>) contained the modelling of a non-linear relationship between <span class="math">X</span> and <span class="math">Y</span>, where <span class="math">X = time of day</span>, and <span class="math">Y = car speed</span>.</p>
+<p>From the curve we receive we learn that at the very early morning and late evening and night hours of the day, the speed is high, and in between the speed is lower, with the lowest point being around <span class="math">6AM</span>. This might reflect the different traffic states that impact how fast cars can drive.</p>
+<p>Since the relationship is not well represented by a straight line, the example fits a degree-3 polynomial regression:</p>
+<pre><code class="language-python">mymodel = numpy.poly1d(numpy.polyfit(x, y, 3))</code></pre>
+<p><span class="math">R²</span> is used to evaluate how well the fitted polynomial model explains variations in <span class="math">Y</span> (Bishop, <span class="math">2006</span>, Chapter <span class="math">3</span>).</p>
+<p>To interpret the results we follow this rule of thumb (Lecturecast – Correlation and Regression, no date):</p>
+<ul>
+  <li><span class="math">R²=0</span> means the model explains <span class="math">0%</span> of the variation in <span class="math">Y</span></li>
+  <li><span class="math">R²=0.5</span> means the model explains <span class="math">50%</span> of the variation in <span class="math">Y</span></li>
+  <li><span class="math">R²=1</span> means the model explains <span class="math">100%</span> of the variation in <span class="math">Y</span></li>
+</ul>
+<p>The result received is <span class="math">0.943</span>, which is very close to <span class="math">1</span>, and therefore indicates the fitted model can explain variations in <span class="math">Y</span> quite well.</p>
+<p>To experiment, I fitted different degrees of a polynomial regression, from <span class="math">1</span> to <span class="math">5</span>, skipping <span class="math">3</span>, which was already fitted in the example.</p>
+<table class="compact-artifact-table">
+  <thead>
+    <tr><th>Degree</th><th><span class="math">R²</span></th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="math">1</span></td><td><span class="math">0.18231625879420665</span></td></tr>
+    <tr><td><span class="math">2</span></td><td><span class="math">0.7597771601895889</span></td></tr>
+    <tr><td><span class="math">3</span></td><td><span class="math">0.943</span> (original example)</td></tr>
+    <tr><td><span class="math">4</span></td><td><span class="math">0.9542030834699506</span></td></tr>
+    <tr><td><span class="math">5</span></td><td><span class="math">0.9568460139893517</span></td></tr>
+  </tbody>
+</table>
+<p>This indicated that for this dataset lower degrees of polynomial (<span class="math">1</span> and <span class="math">2</span>) produce a lower <span class="math">R²</span> score (<span class="math">0.18</span>, <span class="math">0.75</span> respectively), while higher ones (<span class="math">4</span>, <span class="math">5</span>), produce higher <span class="math">R²</span> scores (<span class="math">0.954</span>, <span class="math">0.956</span> respectively). This suggests that the relationship between <span class="math">X</span> and <span class="math">Y</span> is non-linear and requires a more flexible curve to represent it well.</p>
+<p>Lastly, increasing the degree from <span class="math">3</span> to <span class="math">5</span> improves <span class="math">R²</span> from <span class="math">0.943</span> to <span class="math">0.957</span>—an increase of only about <span class="math">0.014</span> (<span class="math">1.4</span> percentage points of explained variance)—which raises the question of whether the additional model complexity is justified.</p>
+
+<h2>Appendix</h2>
+<ul>
+  <li id="appendix-a">Appendix A – <a href="/assets/Unit03 Ex1 covariance_pearson_correlation.ipynb">Unit 03 Exercise 1 – Covariance Pearson Correlation</a></li>
+  <li id="appendix-b">Appendix B – <a href="/assets/Unit03 Ex2 linear_regression.ipynb">Unit 03 Exercise 2 – Linear Regression</a></li>
+  <li id="appendix-c">Appendix C – <a href="/assets/Unit03 Ex3 multiple_linear_regression.ipynb">Unit 03 Exercise 3 – Multiple Linear Regression</a></li>
+  <li id="appendix-d">Appendix D – <a href="/assets/cars.csv">Original Cars Dataset</a></li>
+  <li id="appendix-e">Appendix E – <a href="/assets/cars_100_observations.csv">Expanded 100-Observation Cars Dataset</a></li>
+  <li id="appendix-f">Appendix F – <a href="/assets/Unit03 Ex4 polynomial_regression.ipynb">Unit 03 Exercise 4 – Polynomial Regression</a></li>
+</ul>
+
+<h2>References</h2>
+<p>Bishop, C.M. (2006) <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf" target="_blank" rel="noreferrer">Pattern recognition and machine learning</a>. New York: Springer. Available at: https://www.microsoft.com/en-us/research/wp-content/uploads/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf (Accessed: 18 August 2026).</p>
+<p>Lecturecast – Correlation and Regression (no date) [Lecturecast]. <em>Machine Learning</em>, Unit 3. University online learning environment (Accessed: 10 August 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: INDUSTRY_DATA_INTEGRITY_ARTIFACT_ID,
+      slug: "data-integrity-industry-5-ai-systems",
+      sortOrder: 5,
+      title: "Collaborative Discussion 1: The 4th Industrial Revolution",
+      description:
+        "A reflective discussion on data integrity as a challenge for increasingly data-dependent AI systems, considering human-generated and synthetic data, misinformation, governance, and the transition from Industry 4.0 to Industry 5.0.",
+      tags: ["All", "Machine Learning", "Discussion"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "d46e21ef-7c94-48cc-ad3b-4e85c12374b9",
+          type: "html",
+          title: "",
+          body: `<p>One challenge that arises out of Industry 4.0 is the validity and quality of data that is used to train increasingly data-dependent AI systems, especially generative ones. Industry 5.0 seeks to advance the use of these technologies while placing greater emphasis on human-centricity, resilience and sustainability (Metcalf, 2024).</p>
+
+<p>In my first post, I have argued that one key challenge for this ambition is maintaining the integrity of data. My initial argument highlighted the dangers of large language models (LLMs) being trained with AI-generated content, and the negative impact it has on their performance. One peer response highlighted that even human-generated content presents a challenge, as it does not guarantee quality or accuracy, potentially containing geographic and cultural bias (Bender et al., 2021; Espinosa Rifel, 2026). In my response, I’ve agreed with this and also added the challenges around deliberate misinformation, known as ‘fake news’, that has been a problem in the online environment even before the widespread use of generative AI (Lazer et al., 2018).</p>
+
+<p>While potential solutions include human oversight and internationally agreed AI governance standards, both have limitations. As mentioned in a peer response, the scale of LLM training data makes complete human review impractical (Penedo et al., 2024, cited in Espinosa Rifel, 2026), and international AI management system standards such as ISO/IEC 42001 (International Organization for Standardization, 2023) are only as effective as the authority and mechanisms applied around them.</p>
+
+<p>My initial focus was on preserving human-generated data alongside synthetic data. However, the discussion has demonstrated that the distinction between human and synthetic data alone is insufficient. Achieving resilient AI will require mechanisms for assessing the quality, provenance and representativeness of both.</p>
+
+<p>Academic and public literature therefore suggest that the challenge of data integrity has not yet been solved. Further research, governance and practical mechanisms will be required to ensure that increasingly data-dependent AI systems reflect the human-centric, resilient and sustainable principles associated with the transition from Industry 4.0 to Industry 5.0.</p>
+
+<h2>References</h2>
+
+<p>Bender, E.M. et al. (2021) ‘On the dangers of stochastic parrots: Can language models be too big? 🦜’, in <em>Proceedings of the 2021 ACM FAccT Conference</em>. Virtual Event: ACM, pp. 610–623. Available at: <a href="https://doi.org/10.1145/3442188.3445922" target="_blank" rel="noreferrer">https://doi.org/10.1145/3442188.3445922</a></p>
+
+<p>Espinosa Rifel, J. (2026) ‘Collaborative Discussion 1: The 4th Industrial Revolution’, peer response in online discussion forum, 3 August. Personal communication.</p>
+
+<p>International Organization for Standardization (2023) ISO/IEC 42001:2023 <em>Information technology — Artificial intelligence — Management system</em>. Geneva: ISO.</p>
+
+<p>Lazer, D.M.J. et al. (2018) ‘The science of fake news’, Science, 359(6380), pp. 1094–1096. Available at: <a href="https://doi.org/10.1126/science.aao2998" target="_blank" rel="noreferrer">https://doi.org/10.1126/science.aao2998</a></p>
+
+<p>Metcalf, G.S. (2024) ‘An introduction to Industry 5.0: History, foundations, and futures’, in Nousala, S., Metcalf, G. and Ing, D. (eds.) <em>Industry 4.0 to Industry 5.0. Translational Systems Sciences</em>. Vol. 41. Singapore: Springer.</p>`
+        }
+      ]
+    },
+    {
       id: "2fa9f96e-aac3-48c8-8d8c-9a9b067f4062",
       slug: "practicing-with-r",
-      sortOrder: 4,
+      sortOrder: 6,
       title: "Practicing with R",
       description:
         "A formative numerical analysis exercise using R to inspect, transform, and summarise a COVID-19 dataset from India.",
@@ -228,7 +375,7 @@ sorted`,
     {
       id: COVID_VISUALISATION_ARTIFACT_ID,
       slug: "visualising-covid-19-data-in-r",
-      sortOrder: 5,
+      sortOrder: 7,
       title: "Visualising COVID-19 Data in R",
       description:
         "A formative numerical analysis task using R to clean, transform, visualise, and interpret a COVID-19 dataset from India. The work explores regional case totals, severity levels, recovery distributions, and case trends over time through four complementary charts.",
@@ -360,7 +507,7 @@ by_date %>%
     {
       id: HEALTH_STATISTICS_ARTIFACT_ID,
       slug: "descriptive-and-inferential-statistics-health-data",
-      sortOrder: 6,
+      sortOrder: 8,
       title: "Descriptive and Inferential Statistics - Health Data",
       description:
         "A numerical analysis exercise using R to explore descriptive statistics and hypothesis testing on a health dataset, including age summaries, diabetic status comparisons, and blood pressure analysis across occupational groups.",
@@ -591,7 +738,7 @@ kruskal.test(sbp ~ occupation, data = health_data)
     {
       id: TRAINING_VENDOR_ARTIFACT_ID,
       slug: "r-for-inferential-statistics-training-vendors-comparison",
-      sortOrder: 7,
+      sortOrder: 9,
       title: "R for Inferential Statistics - Training Vendors Comparison",
       description:
         "An exercise aimed to practice inferential statistics using RStudio.",
@@ -793,7 +940,7 @@ aggregate(efficiency ~vendor, data = long_df, mean)`,
     {
       id: SALES_STATISTICS_ARTIFACT_ID,
       slug: "inferential-statistics-sales-dataset",
-      sortOrder: 8,
+      sortOrder: 10,
       title: "Inferential Statistics - Sales Dataset",
       description:
         "An inferential statistics artifact using a sales forecasting dataset to compare paired category spending and independent customer segment sales with t-tests in R.",
@@ -970,7 +1117,7 @@ t.test(Sales ~ Segment, data = filtered_segment)`,
     {
       id: NOTTINGHAMSHIRE_VISUALISATION_ARTIFACT_ID,
       slug: "data-visualisation-with-r-nottinghamshire-research",
-      sortOrder: 9,
+      sortOrder: 11,
       title: "Data Visualisation with R - Nottinghamshire Research",
       description:
         "A reflective post summary for a formative discussion on the topic of data visualisation using RStudio",
@@ -1427,7 +1574,9 @@ function loadState() {
       "descriptive-and-inferential-statistics-health-data",
       "r-for-inferential-statistics-training-vendors-comparison",
       "inferential-statistics-sales-dataset",
-      "data-visualisation-with-r-nottinghamshire-research"
+      "data-visualisation-with-r-nottinghamshire-research",
+      "correlation-and-regression",
+      "data-integrity-industry-5-ai-systems"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -1463,6 +1612,14 @@ function loadState() {
       (item) =>
         item.id === NOTTINGHAMSHIRE_VISUALISATION_ARTIFACT_ID ||
         item.slug === "data-visualisation-with-r-nottinghamshire-research"
+    );
+    restoreSeededAcademicItem(
+      "correlation-and-regression",
+      (item) => item.id === CORRELATION_REGRESSION_ARTIFACT_ID || item.slug === "correlation-and-regression"
+    );
+    restoreSeededAcademicItem(
+      "data-integrity-industry-5-ai-systems",
+      (item) => item.id === INDUSTRY_DATA_INTEGRITY_ARTIFACT_ID || item.slug === "data-integrity-industry-5-ai-systems"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);

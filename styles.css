@@ -675,6 +675,30 @@ body[data-page="professional"] .page-intro .section-copy {
   line-height: 1.6;
 }
 
+.artifact-html pre code {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.artifact-html .math {
+  font-family: "Cambria Math", "STIX Two Math", "Times New Roman", serif;
+  font-size: 1.04em;
+}
+
+.artifact-html table.compact-artifact-table {
+  display: inline-table;
+  width: auto;
+  min-width: 0;
+}
+
+.artifact-html table.compact-artifact-table th,
+.artifact-html table.compact-artifact-table td {
+  min-width: 7rem;
+  white-space: nowrap;
+}
+
 .artifact-html img {
   display: block;
   width: min(70%, 100%);
