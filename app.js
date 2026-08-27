@@ -15,6 +15,7 @@ const SALES_STATISTICS_ARTIFACT_ID = "032390bb-e5c7-427f-8686-510100fe5cda";
 const NOTTINGHAMSHIRE_VISUALISATION_ARTIFACT_ID = "db7faad3-6be4-46a1-95d4-17f7f35df55a";
 const CORRELATION_REGRESSION_ARTIFACT_ID = "9f5f6e83-09bb-48e5-9a3d-79c345f38916";
 const INDUSTRY_DATA_INTEGRITY_ARTIFACT_ID = "ad52934b-9dfc-4a2e-a43e-20fe6cce54ef";
+const JACCARD_DISTANCE_ARTIFACT_ID = "6c0e7983-7b6d-4af0-9c83-2c257c345383";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -272,9 +273,130 @@ print(predictedCO2)</code></pre>
       ]
     },
     {
+      id: JACCARD_DISTANCE_ARTIFACT_ID,
+      slug: "jaccard-distance-dissimilarity-calculations-exercise",
+      sortOrder: 6,
+      title: "Jaccard Distance/Dissimilarity Calculations Exercise",
+      description:
+        "An article-style machine learning exercise calculating Jaccard distance between individuals' pathological test results, with interpretation guidance and a reflection on categorical data and PII considerations.",
+      tags: ["All", "Machine Learning", "Statistics"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "eb280528-9292-4527-a230-3d7d07e70739",
+          type: "html",
+          title: "",
+          body: `<p>We have this table with pathological test results of individuals.</p>
+
+<table class="compact-artifact-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Fever</th>
+      <th>Cough</th>
+      <th>Test-1</th>
+      <th>Test-2</th>
+      <th>Test-3</th>
+      <th>Test-4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Jack</th>
+      <td>M</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>P</td>
+      <td>N</td>
+      <td>N</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>Mary</th>
+      <td>F</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>P</td>
+      <td>A</td>
+      <td>P</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>Jim</th>
+      <td>M</td>
+      <td>Y</td>
+      <td>P</td>
+      <td>N</td>
+      <td>N</td>
+      <td>N</td>
+      <td>A</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We need to calculate the Jaccard distance/dissimilarity for the following pairs:</p>
+
+<p>(Jack, Mary)<br>Similar: Fever, Cough, Test-1</p>
+
+<p>(Jack, Jim)<br>Similar: Gender, Fever, Cough, Test-1</p>
+
+<p>(Jim, Mary)<br>Similar: Fever</p>
+
+<p>Total values: 7</p>
+
+<p><strong>Calculations:</strong></p>
+
+<p>D(Jack, Mary) = 1 - 3/7 = 0.571</p>
+<p>D(Jack, Jim) = 1 - 4/7 = 0.43</p>
+<p>D(Jim, Mary) = 1 - 1/7 = 0.86</p>
+
+<h3>From this exercise we learn the following rule of thumb:</h3>
+
+<table class="compact-artifact-table">
+  <thead>
+    <tr>
+      <th>Jaccard distance</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Identical sets</td>
+    </tr>
+    <tr>
+      <td>Close to 0</td>
+      <td>Very similar</td>
+    </tr>
+    <tr>
+      <td>Close to 1</td>
+      <td>Very different</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Nothing in common</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This Jaccard exercise teaches how to measure similarity/dissimilarity between observations containing categorical/binary attributes, and how to interpret the results.</p>
+
+<p>Jaccard distance can be a useful alternative to Euclidean distance, which requires numerical differences to have meaning. When categorical data is numerically encoded, the resulting distances may not meaningfully represent the original categories. Jaccard addresses this specifically for binary presence/absence variables (e.g., fever: Jack = Yes, Mary = No) by measuring the proportion of <strong>shared positive attributes relative to attributes present in either instance</strong>.</p>
+
+<p>This exercise also highlights the ethical implications of working with personally identifiable information (PII). The example contains individuals' names alongside their medical test results. While only first names are provided, individuals may still be identifiable to someone familiar with the test subjects. Under the EU General Data Protection Regulation (GDPR), health data is considered a special category of personal data and is subject to additional protections. Processing such data therefore requires an appropriate lawful basis and safeguards, such as explicit consent where applicable (European Parliament and Council of the European Union, 2016).</p>
+
+<h3>Reference:</h3>
+
+<p>European Parliament and Council of the European Union (2016) <em>Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 (General Data Protection Regulation)</em>. <em>Official Journal of the European Union</em>, L119, pp. 1–88.</p>`
+        }
+      ]
+    },
+    {
       id: "2fa9f96e-aac3-48c8-8d8c-9a9b067f4062",
       slug: "practicing-with-r",
-      sortOrder: 6,
+      sortOrder: 7,
       title: "Practicing with R",
       description:
         "A formative numerical analysis exercise using R to inspect, transform, and summarise a COVID-19 dataset from India.",
@@ -375,7 +497,7 @@ sorted`,
     {
       id: COVID_VISUALISATION_ARTIFACT_ID,
       slug: "visualising-covid-19-data-in-r",
-      sortOrder: 7,
+      sortOrder: 8,
       title: "Visualising COVID-19 Data in R",
       description:
         "A formative numerical analysis task using R to clean, transform, visualise, and interpret a COVID-19 dataset from India. The work explores regional case totals, severity levels, recovery distributions, and case trends over time through four complementary charts.",
@@ -507,7 +629,7 @@ by_date %>%
     {
       id: HEALTH_STATISTICS_ARTIFACT_ID,
       slug: "descriptive-and-inferential-statistics-health-data",
-      sortOrder: 8,
+      sortOrder: 9,
       title: "Descriptive and Inferential Statistics - Health Data",
       description:
         "A numerical analysis exercise using R to explore descriptive statistics and hypothesis testing on a health dataset, including age summaries, diabetic status comparisons, and blood pressure analysis across occupational groups.",
@@ -738,7 +860,7 @@ kruskal.test(sbp ~ occupation, data = health_data)
     {
       id: TRAINING_VENDOR_ARTIFACT_ID,
       slug: "r-for-inferential-statistics-training-vendors-comparison",
-      sortOrder: 9,
+      sortOrder: 10,
       title: "R for Inferential Statistics - Training Vendors Comparison",
       description:
         "An exercise aimed to practice inferential statistics using RStudio.",
@@ -940,7 +1062,7 @@ aggregate(efficiency ~vendor, data = long_df, mean)`,
     {
       id: SALES_STATISTICS_ARTIFACT_ID,
       slug: "inferential-statistics-sales-dataset",
-      sortOrder: 10,
+      sortOrder: 11,
       title: "Inferential Statistics - Sales Dataset",
       description:
         "An inferential statistics artifact using a sales forecasting dataset to compare paired category spending and independent customer segment sales with t-tests in R.",
@@ -1117,7 +1239,7 @@ t.test(Sales ~ Segment, data = filtered_segment)`,
     {
       id: NOTTINGHAMSHIRE_VISUALISATION_ARTIFACT_ID,
       slug: "data-visualisation-with-r-nottinghamshire-research",
-      sortOrder: 11,
+      sortOrder: 12,
       title: "Data Visualisation with R - Nottinghamshire Research",
       description:
         "A reflective post summary for a formative discussion on the topic of data visualisation using RStudio",
@@ -1576,7 +1698,8 @@ function loadState() {
       "inferential-statistics-sales-dataset",
       "data-visualisation-with-r-nottinghamshire-research",
       "correlation-and-regression",
-      "data-integrity-industry-5-ai-systems"
+      "data-integrity-industry-5-ai-systems",
+      "jaccard-distance-dissimilarity-calculations-exercise"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -1620,6 +1743,10 @@ function loadState() {
     restoreSeededAcademicItem(
       "data-integrity-industry-5-ai-systems",
       (item) => item.id === INDUSTRY_DATA_INTEGRITY_ARTIFACT_ID || item.slug === "data-integrity-industry-5-ai-systems"
+    );
+    restoreSeededAcademicItem(
+      "jaccard-distance-dissimilarity-calculations-exercise",
+      (item) => item.id === JACCARD_DISTANCE_ARTIFACT_ID || item.slug === "jaccard-distance-dissimilarity-calculations-exercise"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
