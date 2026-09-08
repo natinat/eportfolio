@@ -17,6 +17,7 @@ const CORRELATION_REGRESSION_ARTIFACT_ID = "9f5f6e83-09bb-48e5-9a3d-79c345f38916
 const INDUSTRY_DATA_INTEGRITY_ARTIFACT_ID = "ad52934b-9dfc-4a2e-a43e-20fe6cce54ef";
 const JACCARD_DISTANCE_ARTIFACT_ID = "6c0e7983-7b6d-4af0-9c83-2c257c345383";
 const PERCEPTRON_ACTIVITIES_ARTIFACT_ID = "f3db9717-ae01-459d-b8e3-e271c339e6b8";
+const KMEANS_CLUSTERING_ARTIFACT_ID = "0f8f6214-7501-4073-8658-324620e50498";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -403,7 +404,7 @@ print(predictedCO2)</code></pre>
         "A reflective machine learning artifact reviewing perceptron activities that demonstrate ANN mechanics, forward propagation, backpropagation, neuron weights, activation functions, and multi-layer perceptron structure.",
       tags: ["All", "Machine Learning", "Experiment"],
       previewMediaType: "image",
-      previewMediaUrl: "images/ann-figure1.png",
+      previewMediaUrl: "images/ann-figure1-updated.png",
       sections: [
         {
           id: "5ea6a61a-e83e-4fe7-a9e2-a57ad436116f",
@@ -428,8 +429,8 @@ print(predictedCO2)</code></pre>
 <p>At its core, an ANN model is built from inputs, weights and neurons. There could be multiple layers of neurons, each layer having a different number of neurons. Neurons in adjacent layers are connected, and each connection has a weight. The weight represents the strength of the connection. The output of one layer is the input of the next layer, as illustrated in Figure 1.</p>
 
 <figure>
-  <img src="images/ann-figure1.png" alt="Artificial neural network layers and weighted connections" />
-  <figcaption>Figure 1. Artificial neural network layers and weighted connections.</figcaption>
+  <img src="images/ann-figure1-updated.png" alt="Artificial neural network layers and weighted connections" />
+  <figcaption><strong><em>Figure 1. Artificial neural network layers and weighted connections. Author’s own work, 2026</em></strong></figcaption>
 </figure>
 
 <p>The sigmoid activation function transforms each neuron's weighted sum into an output between 0 and 1. During backpropagation, the sigmoid derivative helps determine how the weights should be adjusted to reduce the error.</p>
@@ -449,9 +450,74 @@ print(predictedCO2)</code></pre>
       ]
     },
     {
+      id: KMEANS_CLUSTERING_ARTIFACT_ID,
+      slug: "k-means-clustering-unit-6-practical-tasks",
+      sortOrder: 8,
+      title: "K-Means Clustering – Unit 6 Practical Tasks",
+      description:
+        "A reflective machine learning artifact applying K-Means clustering to the Iris, Wine and Weather AUS datasets, exploring how different values of K affect the patterns discovered in feature space.",
+      tags: ["All", "Machine Learning", "Experiment"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "ad9074a2-a5db-4aa7-8bc9-7f12a170a10b",
+          type: "html",
+          title: "",
+          body: `<p>In this activity, I applied K-Means clustering to three different datasets: Iris, Wine and Weather AUS. Experimenting with different values of K helped me understand an important characteristic of unsupervised learning: the clusters identified by an algorithm represent patterns in the feature space and do not necessarily correspond to labels that already exist in the data.</p>
+
+<h2>Task 1 – Iris Dataset</h2>
+
+<p>The Iris dataset (Fisher, 1936), contains 150 observations across three species: Setosa, Versicolour and Virginica. When K-Means was fitted with K=3, matching the number of known species, Setosa was perfectly separated, while Versicolour was almost perfectly clustered. There was greater overlap between Versicolour and Virginica.</p>
+
+<p>Changing K demonstrated the importance of selecting an appropriate number of clusters. With K=5, K-Means divided Versicolour and Virginica into smaller subgroups, while Setosa remained distinct. With K=2, Setosa again formed a largely independent cluster, while Versicolour and Virginica were mostly grouped together.</p>
+
+<p>This demonstrated that increasing K does not necessarily produce a better representation of known groups. A K that is too small can hide meaningful differences, while a K that is too large can divide meaningful groups into smaller subgroups.</p>
+
+<h2>Task 2 – Wine Dataset</h2>
+
+<p>The Wine dataset (Aeberhard and Forina, 1992) contains 178 observations with 13 predictive features and three known wine classes. Before clustering, I checked for missing values and correlations between features. No missing values or sufficiently strong correlations were identified to justify removing features. The features were also scaled before fitting K-Means so that differences in measurement scales would not dominate the distance calculations.</p>
+
+<p>As with Iris, experimenting with different values of K showed that the natural clusters identified by K-Means can provide information beyond simply reproducing the known labels. In particular, the experiments indicated that Wine #2 shares characteristics with both Wine #1 and Wine #3 rather than being completely separated from them.</p>
+
+<h2>Task 3 – Weather AUS Dataset</h2>
+
+<p>The Weather AUS dataset (Kerneler, no date) provided a significantly larger and more complex clustering problem, containing over 145,000 observations and a target variable indicating whether it would rain the following day.</p>
+
+<p>Before clustering, I examined missing values and correlations between predictive features. Highly correlated features were removed, while missing values in retained features were handled through median imputation.</p>
+
+<p>I initially expected K=2 to produce some alignment with the two RainTomorrow labels, Yes and No. However, both labels were distributed almost evenly across the two clusters. This demonstrated that the natural groups identified from the weather features did not correspond directly to whether it would rain the following day.</p>
+
+<p>Increasing the model to K=6 produced a more interesting result. Instead of simply separating rainy and non-rainy observations, K-Means identified different weather profiles with varying associations with rainfall. For example, one cluster contained a much greater proportion of observations associated with rain than another.</p>
+
+<p>I also used Principal Component Analysis (PCA) to reduce the features to two dimensions and visualise the clusters. The plots showed that some clusters occupied recognisable regions, while others overlapped substantially. This reinforced that K-Means can impose cluster boundaries even where groups are not completely separated.</p>
+
+<p>Code for the 3 tasks above can be found here: <a href="/assets/unit-6-tasks.ipynb">unit-6-tasks.ipynb</a></p>
+
+<h2>Reflection</h2>
+
+<p>The three experiments changed how I think about evaluating clustering models. Initially, I tended to compare the clusters directly with the known labels and interpret closer agreement as better performance. However, this is not necessarily the objective of unsupervised learning.</p>
+
+<p>The Iris and Wine datasets demonstrated that K-Means can recover structures that resemble known classes when those classes are reflected strongly in the selected features. The Weather AUS experiment showed the opposite: even though the dataset contained a binary target, the natural structure discovered by K-Means represented different weather profiles rather than simply reproducing RainTomorrow.</p>
+
+<p>I therefore learned that selecting K should not be based solely on the number of known labels. The appropriate number of clusters depends on the underlying structure of the feature space and the purpose of the analysis. Equally important are the preparation of the data, including feature scaling, handling missing values and considering strongly correlated features.</p>
+
+<p>Overall, these tasks helped me understand clustering less as a method for reproducing classifications and more as an exploratory technique for discovering patterns and structures that may not already be represented by predefined labels.</p>
+
+<h3>References:</h3>
+
+<p>Aeberhard, S. and Forina, M. (1992) Wine [Dataset]. UCI Machine Learning Repository. Available at: <a href="https://doi.org/10.24432/C5PC7J" target="_blank" rel="noreferrer">https://doi.org/10.24432/C5PC7J</a></p>
+
+<p>Fisher, R.A. (1936) Iris [Dataset]. UCI Machine Learning Repository. Available at: <a href="https://doi.org/10.24432/C56C76" target="_blank" rel="noreferrer">https://doi.org/10.24432/C56C76</a></p>
+
+<p>Kerneler (no date) Starter: weatherAUS 536c1115-4 [Kaggle notebook]. Kaggle. Available at: <a href="https://www.kaggle.com/code/kerneler/starter-weatheraus-536c1115-4/notebook" target="_blank" rel="noreferrer">https://www.kaggle.com/code/kerneler/starter-weatheraus-536c1115-4/notebook</a> (Accessed: 8 September 2026).</p>`
+        }
+      ]
+    },
+    {
       id: "2fa9f96e-aac3-48c8-8d8c-9a9b067f4062",
       slug: "practicing-with-r",
-      sortOrder: 8,
+      sortOrder: 9,
       title: "Practicing with R",
       description:
         "A formative numerical analysis exercise using R to inspect, transform, and summarise a COVID-19 dataset from India.",
@@ -552,7 +618,7 @@ sorted`,
     {
       id: COVID_VISUALISATION_ARTIFACT_ID,
       slug: "visualising-covid-19-data-in-r",
-      sortOrder: 9,
+      sortOrder: 10,
       title: "Visualising COVID-19 Data in R",
       description:
         "A formative numerical analysis task using R to clean, transform, visualise, and interpret a COVID-19 dataset from India. The work explores regional case totals, severity levels, recovery distributions, and case trends over time through four complementary charts.",
@@ -684,7 +750,7 @@ by_date %>%
     {
       id: HEALTH_STATISTICS_ARTIFACT_ID,
       slug: "descriptive-and-inferential-statistics-health-data",
-      sortOrder: 10,
+      sortOrder: 11,
       title: "Descriptive and Inferential Statistics - Health Data",
       description:
         "A numerical analysis exercise using R to explore descriptive statistics and hypothesis testing on a health dataset, including age summaries, diabetic status comparisons, and blood pressure analysis across occupational groups.",
@@ -915,7 +981,7 @@ kruskal.test(sbp ~ occupation, data = health_data)
     {
       id: TRAINING_VENDOR_ARTIFACT_ID,
       slug: "r-for-inferential-statistics-training-vendors-comparison",
-      sortOrder: 11,
+      sortOrder: 12,
       title: "R for Inferential Statistics - Training Vendors Comparison",
       description:
         "An exercise aimed to practice inferential statistics using RStudio.",
@@ -1117,7 +1183,7 @@ aggregate(efficiency ~vendor, data = long_df, mean)`,
     {
       id: SALES_STATISTICS_ARTIFACT_ID,
       slug: "inferential-statistics-sales-dataset",
-      sortOrder: 12,
+      sortOrder: 13,
       title: "Inferential Statistics - Sales Dataset",
       description:
         "An inferential statistics artifact using a sales forecasting dataset to compare paired category spending and independent customer segment sales with t-tests in R.",
@@ -1294,7 +1360,7 @@ t.test(Sales ~ Segment, data = filtered_segment)`,
     {
       id: NOTTINGHAMSHIRE_VISUALISATION_ARTIFACT_ID,
       slug: "data-visualisation-with-r-nottinghamshire-research",
-      sortOrder: 13,
+      sortOrder: 14,
       title: "Data Visualisation with R - Nottinghamshire Research",
       description:
         "A reflective post summary for a formative discussion on the topic of data visualisation using RStudio",
@@ -1755,7 +1821,8 @@ function loadState() {
       "correlation-and-regression",
       "data-integrity-industry-5-ai-systems",
       "jaccard-distance-dissimilarity-calculations-exercise",
-      "perceptron-activities"
+      "perceptron-activities",
+      "k-means-clustering-unit-6-practical-tasks"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -1807,6 +1874,10 @@ function loadState() {
     restoreSeededAcademicItem(
       "perceptron-activities",
       (item) => item.id === PERCEPTRON_ACTIVITIES_ARTIFACT_ID || item.slug === "perceptron-activities"
+    );
+    restoreSeededAcademicItem(
+      "k-means-clustering-unit-6-practical-tasks",
+      (item) => item.id === KMEANS_CLUSTERING_ARTIFACT_ID || item.slug === "k-means-clustering-unit-6-practical-tasks"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);

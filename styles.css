@@ -709,6 +709,15 @@ body[data-page="professional"] .page-intro .section-copy {
   background: var(--surface-strong);
 }
 
+.artifact-html figcaption {
+  width: min(70%, 100%);
+  margin: 0.75rem auto 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .artifact-html table {
   display: block;
   width: 100%;
