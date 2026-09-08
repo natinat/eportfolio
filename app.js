@@ -16,6 +16,7 @@ const NOTTINGHAMSHIRE_VISUALISATION_ARTIFACT_ID = "db7faad3-6be4-46a1-95d4-17f7f
 const CORRELATION_REGRESSION_ARTIFACT_ID = "9f5f6e83-09bb-48e5-9a3d-79c345f38916";
 const INDUSTRY_DATA_INTEGRITY_ARTIFACT_ID = "ad52934b-9dfc-4a2e-a43e-20fe6cce54ef";
 const JACCARD_DISTANCE_ARTIFACT_ID = "6c0e7983-7b6d-4af0-9c83-2c257c345383";
+const PERCEPTRON_ACTIVITIES_ARTIFACT_ID = "f3db9717-ae01-459d-b8e3-e271c339e6b8";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -394,9 +395,63 @@ print(predictedCO2)</code></pre>
       ]
     },
     {
+      id: PERCEPTRON_ACTIVITIES_ARTIFACT_ID,
+      slug: "perceptron-activities",
+      sortOrder: 7,
+      title: "E-Portfolio Activity: Perceptron Activities",
+      description:
+        "A reflective machine learning artifact reviewing perceptron activities that demonstrate ANN mechanics, forward propagation, backpropagation, neuron weights, activation functions, and multi-layer perceptron structure.",
+      tags: ["All", "Machine Learning", "Experiment"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/ann-figure1.png",
+      sections: [
+        {
+          id: "5ea6a61a-e83e-4fe7-a9e2-a57ad436116f",
+          type: "html",
+          title: "",
+          body: `<p>In this activity, we review three Python files (Lakoju, no date) that demonstrate the mechanisms behind ANN models, progressing from a simple perceptron, through training a perceptron to model an AND operator, to a multi-layer perceptron.</p>
+
+<p>To help understand the mechanics behind an ANN model, we use the Numpy library to create functions that simulate the way the perceptron works in an ANN.</p>
+
+<p>The main idea behind these exercises is that an ANN model works as follows:</p>
+
+<p><strong>Forward:</strong></p>
+
+<p>Inputs &gt; Hidden Layer &gt; Output Layer &gt; Prediction &gt; Compare with actual &gt; Produce Error</p>
+
+<p><strong>Backwards:</strong></p>
+
+<p>Error &gt; Output Weights adjusted &gt; Hidden Weights adjusted</p>
+
+<p>This is where the concept of backpropagation comes from (Géron, 2025).</p>
+
+<p>At its core, an ANN model is built from inputs, weights and neurons. There could be multiple layers of neurons, each layer having a different number of neurons. Neurons in adjacent layers are connected, and each connection has a weight. The weight represents the strength of the connection. The output of one layer is the input of the next layer, as illustrated in Figure 1.</p>
+
+<figure>
+  <img src="images/ann-figure1.png" alt="Artificial neural network layers and weighted connections" />
+  <figcaption>Figure 1. Artificial neural network layers and weighted connections.</figcaption>
+</figure>
+
+<p>The sigmoid activation function transforms each neuron's weighted sum into an output between 0 and 1. During backpropagation, the sigmoid derivative helps determine how the weights should be adjusted to reduce the error.</p>
+
+<p>If simplified, a neuron essentially acts as a calculator: it receives inputs, multiplies them by their respective weights, calculates their sum and applies an activation function to produce an output. Each neuron receives multiple weighted inputs but produces one output, which becomes an input to the next layer. During training, the weights are repeatedly adjusted to reduce the error between the model's predictions and the actual outputs.</p>
+
+<h2>References</h2>
+
+<p>Géron, A. (2025) <em>Hands-on machine learning with Scikit-Learn and PyTorch</em>. O’Reilly Media. Available at: <a href="https://learning.oreilly.com/library/view/hands-on-machine-learning/9798341607972/" target="_blank" rel="noreferrer">https://learning.oreilly.com/library/view/hands-on-machine-learning/9798341607972/</a> (Accessed: 8 September 2026).</p>
+
+<p>Lakoju, M. (no date) <em>Simple perceptron</em> [Python file]. Cardiff Metropolitan University. Available via: University of Essex Online, <em>Machine Learning</em>, <a href="https://github.com/natinat/eportfolio/blob/main/assets/Unit07%20Ex1%20simple_perceptron.ipynb" target="_blank" rel="noreferrer">Unit07 Ex1 simple_perceptron.ipynb</a>, Unit 7 (Accessed: 8 September, 2026).</p>
+
+<p>Lakoju, M. (no date) <em>Perceptron AND operator</em> [Python notebook]. Cardiff Metropolitan University. Available via: University of Essex Online, <em>Machine Learning</em>, <a href="https://github.com/natinat/eportfolio/blob/main/assets/Unit07%20Ex2%20perceptron_AND_operator.ipynb" target="_blank" rel="noreferrer">Unit07 Ex2 perceptron_AND_operator.ipynb</a>, Unit 7 (Accessed: 8 September, 2026).</p>
+
+<p>Lakoju, M. (no date) <em>Multi-layer perceptron</em> [Python notebook]. Cardiff Metropolitan University. Available via: University of Essex Online, <em>Machine Learning</em>, <a href="https://github.com/natinat/eportfolio/blob/main/assets/Unit07%20Ex3%20multi-layer%20Perceptron.ipynb" target="_blank" rel="noreferrer">Unit07 Ex3 multi-layer Perceptron.ipynb</a>, Unit 7 (Accessed: 8 September, 2026).</p>`
+        }
+      ]
+    },
+    {
       id: "2fa9f96e-aac3-48c8-8d8c-9a9b067f4062",
       slug: "practicing-with-r",
-      sortOrder: 7,
+      sortOrder: 8,
       title: "Practicing with R",
       description:
         "A formative numerical analysis exercise using R to inspect, transform, and summarise a COVID-19 dataset from India.",
@@ -497,7 +552,7 @@ sorted`,
     {
       id: COVID_VISUALISATION_ARTIFACT_ID,
       slug: "visualising-covid-19-data-in-r",
-      sortOrder: 8,
+      sortOrder: 9,
       title: "Visualising COVID-19 Data in R",
       description:
         "A formative numerical analysis task using R to clean, transform, visualise, and interpret a COVID-19 dataset from India. The work explores regional case totals, severity levels, recovery distributions, and case trends over time through four complementary charts.",
@@ -629,7 +684,7 @@ by_date %>%
     {
       id: HEALTH_STATISTICS_ARTIFACT_ID,
       slug: "descriptive-and-inferential-statistics-health-data",
-      sortOrder: 9,
+      sortOrder: 10,
       title: "Descriptive and Inferential Statistics - Health Data",
       description:
         "A numerical analysis exercise using R to explore descriptive statistics and hypothesis testing on a health dataset, including age summaries, diabetic status comparisons, and blood pressure analysis across occupational groups.",
@@ -860,7 +915,7 @@ kruskal.test(sbp ~ occupation, data = health_data)
     {
       id: TRAINING_VENDOR_ARTIFACT_ID,
       slug: "r-for-inferential-statistics-training-vendors-comparison",
-      sortOrder: 10,
+      sortOrder: 11,
       title: "R for Inferential Statistics - Training Vendors Comparison",
       description:
         "An exercise aimed to practice inferential statistics using RStudio.",
@@ -1062,7 +1117,7 @@ aggregate(efficiency ~vendor, data = long_df, mean)`,
     {
       id: SALES_STATISTICS_ARTIFACT_ID,
       slug: "inferential-statistics-sales-dataset",
-      sortOrder: 11,
+      sortOrder: 12,
       title: "Inferential Statistics - Sales Dataset",
       description:
         "An inferential statistics artifact using a sales forecasting dataset to compare paired category spending and independent customer segment sales with t-tests in R.",
@@ -1239,7 +1294,7 @@ t.test(Sales ~ Segment, data = filtered_segment)`,
     {
       id: NOTTINGHAMSHIRE_VISUALISATION_ARTIFACT_ID,
       slug: "data-visualisation-with-r-nottinghamshire-research",
-      sortOrder: 12,
+      sortOrder: 13,
       title: "Data Visualisation with R - Nottinghamshire Research",
       description:
         "A reflective post summary for a formative discussion on the topic of data visualisation using RStudio",
@@ -1699,7 +1754,8 @@ function loadState() {
       "data-visualisation-with-r-nottinghamshire-research",
       "correlation-and-regression",
       "data-integrity-industry-5-ai-systems",
-      "jaccard-distance-dissimilarity-calculations-exercise"
+      "jaccard-distance-dissimilarity-calculations-exercise",
+      "perceptron-activities"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -1747,6 +1803,10 @@ function loadState() {
     restoreSeededAcademicItem(
       "jaccard-distance-dissimilarity-calculations-exercise",
       (item) => item.id === JACCARD_DISTANCE_ARTIFACT_ID || item.slug === "jaccard-distance-dissimilarity-calculations-exercise"
+    );
+    restoreSeededAcademicItem(
+      "perceptron-activities",
+      (item) => item.id === PERCEPTRON_ACTIVITIES_ARTIFACT_ID || item.slug === "perceptron-activities"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
