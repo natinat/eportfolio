@@ -18,6 +18,7 @@ const INDUSTRY_DATA_INTEGRITY_ARTIFACT_ID = "ad52934b-9dfc-4a2e-a43e-20fe6cce54e
 const JACCARD_DISTANCE_ARTIFACT_ID = "6c0e7983-7b6d-4af0-9c83-2c257c345383";
 const PERCEPTRON_ACTIVITIES_ARTIFACT_ID = "f3db9717-ae01-459d-b8e3-e271c339e6b8";
 const KMEANS_CLUSTERING_ARTIFACT_ID = "0f8f6214-7501-4073-8658-324620e50498";
+const GRADIENT_COST_FUNCTION_ARTIFACT_ID = "47a67c83-46db-4bd2-bf0e-3e4d0be8f3a4";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -511,6 +512,120 @@ print(predictedCO2)</code></pre>
 <p>Fisher, R.A. (1936) Iris [Dataset]. UCI Machine Learning Repository. Available at: <a href="https://doi.org/10.24432/C56C76" target="_blank" rel="noreferrer">https://doi.org/10.24432/C56C76</a></p>
 
 <p>Kerneler (no date) Starter: weatherAUS 536c1115-4 [Kaggle notebook]. Kaggle. Available at: <a href="https://www.kaggle.com/code/kerneler/starter-weatheraus-536c1115-4/notebook" target="_blank" rel="noreferrer">https://www.kaggle.com/code/kerneler/starter-weatheraus-536c1115-4/notebook</a> (Accessed: 8 September 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: GRADIENT_COST_FUNCTION_ARTIFACT_ID,
+      slug: "gradient-cost-function",
+      sortOrder: 9,
+      title: "Eportfolio: Gradient Cost Function",
+      description:
+        "A machine learning experiment using gradient descent on simple linear regression, comparing the impact of learning rate and iteration count on convergence, divergence, and final cost.",
+      tags: ["All", "Machine Learning", "Experiment"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "023d9ddd-5019-410a-955e-2c1c0b59af69",
+          type: "html",
+          title: "",
+          body: `<p>The experiment setup uses gradient descent on a simple linear regression problem, starting from the same initial values of <strong>m = 0</strong> and <strong>b = 0</strong>.</p>
+
+<h2>Experiments</h2>
+
+<p><strong>Baseline:</strong> Iterations = 100, LR = 0.08, Cost = 0.004</p>
+
+<ol>
+  <li>Iterations = 10, LR = 0.08, Cost = 12.0467</li>
+  <li>Iterations = 100, LR = 0.02, Cost = 0.24</li>
+  <li>Iterations = 100, LR = 0.09, Cost = 2,640,508,310,116.111</li>
+  <li>Iterations = 100, LR = 0.06, Cost = 0.016</li>
+  <li>Iterations = 100, LR = 0.05, Cost = 0.032</li>
+  <li>Iterations = 100, LR = 0.04, Cost = 0.063</li>
+  <li>Iterations = 90, LR = 0.08, Cost = 0.007</li>
+  <li>Iterations = 25, LR = 0.07, Cost = 0.29</li>
+  <li>Iterations = 30, LR = 0.09, Cost = 103,222.667</li>
+  <li>Iterations = 30, LR = 0.08, Cost = 0.31</li>
+  <li>Iterations = 30, LR = 0.06, Cost = 0.28</li>
+  <li>Iterations = 40, LR = 0.08, Cost = 0.12</li>
+  <li>Iterations = 40, LR = 0.05, Cost = 0.24</li>
+  <li>Iterations = 40, LR = 0.04, Cost = 0.32</li>
+  <li>Iterations = 40, LR = 0.03, Cost = 0.42</li>
+</ol>
+
+<h2>Learnings from the Experiments</h2>
+
+<ul>
+  <li>The number of iterations determines how many opportunities gradient descent has to approach the minimum, but more iterations only help when the learning rate allows convergence.</li>
+  <li>A smaller learning rate may converge more slowly, requiring more iterations to reach a low cost.</li>
+  <li>A suitable larger learning rate can reach a low cost faster, but increasing it too far can cause gradient descent to overshoot and diverge. This is consistent with Géron's (2026) explanation that an excessively high learning rate can cause the algorithm to diverge, while a learning rate that is too low results in slow convergence.</li>
+  <li>For this specific problem, the results suggest a stability boundary somewhere between LR 0.08 and 0.09. This is specific to this dataset, model and gradient formulation, rather than a universal LR threshold.</li>
+  <li>Learning rate and number of iterations therefore interact: the goal is not independently maximising iterations or minimising/maximising LR, but finding an LR that converges efficiently and running enough iterations for it to approach the minimum.</li>
+</ul>
+
+<h2>Comparing the Impact of Learning Rate and Number of Iterations</h2>
+
+<p>To better understand the relationship between learning rate and the number of iterations, I compared two controlled series. In the first, the learning rate was held constant while the number of iterations was changed. In the second, the number of iterations was held constant while the learning rate was changed. This allowed me to examine how each independently affected convergence behaviour and the final cost reached.</p>
+
+<h3>Changing the Number of Iterations</h3>
+
+<p>The learning rate was held constant at <strong>0.08</strong>.</p>
+
+<table class="compact-artifact-table">
+  <thead>
+    <tr>
+      <th>Iterations</th>
+      <th>LR</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>10</td><td>0.08</td><td>12.0467</td></tr>
+    <tr><td>30</td><td>0.08</td><td>0.31</td></tr>
+    <tr><td>40</td><td>0.08</td><td>0.12</td></tr>
+    <tr><td>90</td><td>0.08</td><td>0.007</td></tr>
+    <tr><td>100</td><td>0.08</td><td>0.004</td></tr>
+  </tbody>
+</table>
+
+<h3>Changing the Learning Rate</h3>
+
+<p>The number of iterations was held constant at <strong>100</strong>.</p>
+
+<table class="compact-artifact-table">
+  <thead>
+    <tr>
+      <th>Iterations</th>
+      <th>LR</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>100</td><td>0.02</td><td>0.24</td></tr>
+    <tr><td>100</td><td>0.04</td><td>0.063</td></tr>
+    <tr><td>100</td><td>0.05</td><td>0.032</td></tr>
+    <tr><td>100</td><td>0.06</td><td>0.016</td></tr>
+    <tr><td>100</td><td>0.08</td><td>0.004</td></tr>
+    <tr><td>100</td><td>0.09</td><td>2,640,508,310,116</td></tr>
+  </tbody>
+</table>
+
+<h2>Reflection</h2>
+
+<p>Within the tested range, iteration count had a relatively predictable effect when the learning rate supported convergence: more iterations allowed continued convergence, with diminishing improvements as the model approached the minimum.</p>
+
+<p>Learning rate had a much more sensitive and nonlinear effect. Increasing it accelerated convergence considerably within the stable range, but a relatively small increase could cross the stability boundary and completely reverse the behaviour. This reflects the broader importance of learning-rate selection and scheduling in efficient neural network training discussed by Géron (2026).</p>
+
+<p>Therefore, while additional iterations determine how long gradient descent is allowed to optimise, the learning rate determines both the speed of convergence and whether convergence occurs at all.</p>
+
+<p>Python file can be found here: <a href="assets/Unit08%20Ex4%20gradient_descent_cost_function.ipynb" download="Unit08 Ex4 gradient_descent_cost_function.ipynb">Unit08 Ex4 gradient_descent_cost_function.ipynb</a></p>
+
+<h2>Reference</h2>
+
+<p>Codebasics (no date) <em>Codebasics</em>. Available at: <a href="https://codebasics.io/coming-soon" target="_blank" rel="noreferrer">https://codebasics.io/coming-soon</a> (Accessed: 19 September 2026).</p>
+
+<p>Géron, A. (2026) <em>Hands-On Machine Learning with Scikit-Learn and PyTorch</em>. O'Reilly Media.</p>`
         }
       ]
     },
@@ -1822,7 +1937,8 @@ function loadState() {
       "data-integrity-industry-5-ai-systems",
       "jaccard-distance-dissimilarity-calculations-exercise",
       "perceptron-activities",
-      "k-means-clustering-unit-6-practical-tasks"
+      "k-means-clustering-unit-6-practical-tasks",
+      "gradient-cost-function"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -1878,6 +1994,10 @@ function loadState() {
     restoreSeededAcademicItem(
       "k-means-clustering-unit-6-practical-tasks",
       (item) => item.id === KMEANS_CLUSTERING_ARTIFACT_ID || item.slug === "k-means-clustering-unit-6-practical-tasks"
+    );
+    restoreSeededAcademicItem(
+      "gradient-cost-function",
+      (item) => item.id === GRADIENT_COST_FUNCTION_ARTIFACT_ID || item.slug === "gradient-cost-function"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
