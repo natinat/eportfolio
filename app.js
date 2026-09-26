@@ -19,6 +19,8 @@ const JACCARD_DISTANCE_ARTIFACT_ID = "6c0e7983-7b6d-4af0-9c83-2c257c345383";
 const PERCEPTRON_ACTIVITIES_ARTIFACT_ID = "f3db9717-ae01-459d-b8e3-e271c339e6b8";
 const KMEANS_CLUSTERING_ARTIFACT_ID = "0f8f6214-7501-4073-8658-324620e50498";
 const GRADIENT_COST_FUNCTION_ARTIFACT_ID = "47a67c83-46db-4bd2-bf0e-3e4d0be8f3a4";
+const RANKING_MODEL_COMPARISON_ARTIFACT_ID = "0c324961-bc5c-4f70-a9cc-800feef53e85";
+const EXPLAINABILITY_TRUST_AI_ARTIFACT_ID = "a147793d-5db0-49e4-a470-6b4b0e2baa92";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -626,6 +628,78 @@ print(predictedCO2)</code></pre>
 <p>Codebasics (no date) <em>Codebasics</em>. Available at: <a href="https://codebasics.io/coming-soon" target="_blank" rel="noreferrer">https://codebasics.io/coming-soon</a> (Accessed: 19 September 2026).</p>
 
 <p>Géron, A. (2026) <em>Hands-On Machine Learning with Scikit-Learn and PyTorch</em>. O'Reilly Media.</p>`
+        }
+      ]
+    },
+    {
+      id: RANKING_MODEL_COMPARISON_ARTIFACT_ID,
+      slug: "fairly-compare-classical-deep-learning-ranking-models",
+      sortOrder: 10,
+      title: "How to fairly compare classical and deep learning models for ranking problems",
+      description:
+        "A machine learning discussion artifact on comparing classical and deep learning models for recommender ranking problems using shared inputs, prediction targets, held-out data, and consistent ranking metrics.",
+      tags: ["All", "Machine Learning", "Discussion"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "86da5528-3a7f-494b-a69b-422549e7e1e1",
+          type: "html",
+          title: "",
+          body: `<p>In recommender problems, the task is to take a large list of candidates, score it, and rank it based on that score. The objective is to score and rank it in a way that improves the likelihood that each user sees the most relevant content for them, and therefore is more likely to engage with that content (Theobald, 2024). This is a form of personalisation.</p>
+
+<p>There are different approaches for applying recommender systems. One common one is <em>collaborative filtering</em>, which includes making recommendations based on historical preferences of similar users to the current one (&lsquo;others like you like...&rsquo;), or making recommendations based on similar items (&lsquo;you might like this similar item to the one you&rsquo;re currently looking at&rsquo;). There are several other types of recommender approaches, with the main difference between them being the available data. For example, in the online travel industry, users are not frequent visitors, as most people travel only two or three times a year. For this reason, historical data isn&rsquo;t always available. This is where methods such as knowledge-based recommender, which can use explicitly stated preferences, come in (Theobald, 2024).</p>
+
+<p>Irrespective of the chosen recommender approach, the problem usually consists of the same types of variables - an input that includes either current session interactions or past user interactions, and a target (click, book, proceed to the next funnel phase, etc.). Based on these two, scores are assigned to a list of candidates, which are then ranked based on these scores (Adamczak et al., 2020; Flórez et al., 2025; Zaidi, Rincon and Hassantabar, 2026).</p>
+
+<p>If given the same input and output variables, and measured with the same metrics, classical and deep learning models can be compared and assessed fairly, determining which performs better, and looking at other tradeoffs such as computational complexity, processing time, interoperability, and so on. For example, Yu et al. (2024) explain that a single decision tree is relatively easier to interpret because its decisions can be followed through branches and rules. Research on vacation rental recommendations shows that methods using richer representations can improve candidate recall and support properties with limited interaction history, but may increase computational cost (Zaidi, Rincon and Hassantabar, 2026).</p>
+
+<p>Since the objective is to rank the candidate correctly, using labeled data can help evaluate the two model families in the same way. For example, measuring how highly clicked or booked candidates are ranked, using a metric such as NDCG@K (Zaidi, Rincon and Hassantabar, 2026).</p>
+
+<p>To summarise, while Yu et al.&rsquo;s paper (2024) does not discuss ranking systems, its framework for comparing classical and deep learning models can be applied also on ranking problems. It highlights that comparison is best when the models use the same prediction target and are evaluated on the same held-out data with the same metrics.</p>
+
+<h2>References</h2>
+
+<p>Adamczak, J. et al. (2020) &lsquo;Session-based hotel recommendations dataset: As part of the ACM Recommender System Challenge 2019&rsquo;, <em>ACM Transactions on Intelligent Systems and Technology</em>, 12(1), pp. 1-20. Available at: <a href="https://doi.org/10.1145/3412379" target="_blank" rel="noreferrer">https://doi.org/10.1145/3412379</a></p>
+
+<p>Theobald, O. (2024) <em>Machine learning: Make your own recommender system</em>. Packt Publishing. Available at: <a href="https://learning.oreilly.com/library/view/machine-learning-make/9781835882061/" target="_blank" rel="noreferrer">https://learning.oreilly.com/library/view/machine-learning-make/9781835882061/</a> (Accessed: 24 September 2026).</p>
+
+<p>Yu, X. <em>et al.</em> (2024) &lsquo;Comparison of deep and conventional machine learning models for prediction of one supply chain management distribution cost&rsquo;, <em>Scientific Reports</em>, 14, article 24195. doi: 10.1038/s41598-024-75114-9.</p>
+
+<p>Zaidi, S.M.A., Rincon, E. and Hassantabar, S. (2026) &lsquo;A multi-source ensemble approach to candidate generation for alternative vacation rental property recommendations&rsquo;, arXiv, arXiv:2609.05748. Available at: <a href="https://arxiv.org/abs/2609.05748" target="_blank" rel="noreferrer">https://arxiv.org/abs/2609.05748</a> (Accessed: 12 September 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: EXPLAINABILITY_TRUST_AI_ARTIFACT_ID,
+      slug: "explainability-and-trust-in-ai-systems",
+      sortOrder: 11,
+      title: "Explainability and Trust in AI Systems",
+      description:
+        "A machine learning discussion artifact examining how local and global explanations can support trust, troubleshooting, and user understanding in travel recommender systems.",
+      tags: ["All", "Machine Learning", "Discussion"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "987bd7bb-543e-45a4-88d5-bfb1a7ee27c9",
+          type: "html",
+          title: "",
+          body: `<p>In a travel recommender system, a model helps with deciding which properties to show and in what order (Theobald, 2024). In my ranking project, models score accommodation candidates using information such as price, filter match, location and search context, with clicks used as an indicator of relevance (Mahajan, P., 2019). The final choice remains with the user of the online travel platform, but the ranking influences which options they are most likely to notice. This makes explainability relevant to both users and the team responsible for the system.</p>
+
+<p>As a traveller, I might want to understand why a property appears near the top, particularly if it is more expensive or does not seem to match my preferences. If the ranking cannot be explained, it may be difficult to tell whether it reflects my search, a pattern learned from other users, or an unintended bias in the data. For the development team, a good ranking metric alone would not reveal whether the model relies too heavily on a certain feature or is missing important context. Lack of explanation could therefore make troubleshooting harder and reduce confidence in the system. Molnar (2023) distinguishes between explaining an individual prediction and understanding a model&rsquo;s behaviour more generally.</p>
+
+<p>As part of the development team, I would first compare ranking performance across models and then examine why individual properties received their scores. SHAP could show how features contributed to a particular prediction and summarise patterns across many predictions. LIME could provide a simpler, local approximation for one recommendation. Visual explanations, such as feature contribution plots, would help a product manager or analyst discuss unexpected rankings with engineers and decide what to investigate next (Molnar, 2023).</p>
+
+<p>For an end user, I would translate validated findings into clear language, such as &ldquo;This property matches your selected location and price range.&rdquo; I would only show reasons that genuinely reflect the ranking decision. Explanation methods describe aspects of model behaviour; they do not, by themselves, prove that a recommendation is fair or correct. Building trust would also require checking explanations against real examples, testing performance for different types of searches, and giving users control over their preferences.</p>
+
+<h2>References</h2>
+
+<p>Mahajan, P. (2019) <em>Trivago RecSys Challenge Data 2019</em> [Dataset]. Kaggle. Available at: <a href="https://www.kaggle.com/datasets/pranavmahajan725/trivagorecsyschallengedata2019" target="_blank" rel="noreferrer">https://www.kaggle.com/datasets/pranavmahajan725/trivagorecsyschallengedata2019</a> (Accessed: 12 September 2026).</p>
+
+<p>Molnar, C. (2025) <em>Interpretable machine learning: a guide for making black box models explainable</em>. 3rd edn. Chapters 14, 15 and 33. Available at: <a href="https://christophm.github.io/interpretable-ml-book/" target="_blank" rel="noreferrer">https://christophm.github.io/interpretable-ml-book/</a> (Accessed: 25 September 2026).</p>
+
+<p>Theobald, O. (2024) <em>Machine learning: Make your own recommender system</em>. Packt Publishing. Available at: <a href="https://learning.oreilly.com/library/view/machine-learning-make/9781835882061/" target="_blank" rel="noreferrer">https://learning.oreilly.com/library/view/machine-learning-make/9781835882061/</a> (Accessed: 24 September 2026).</p>`
         }
       ]
     },
@@ -1938,7 +2012,9 @@ function loadState() {
       "jaccard-distance-dissimilarity-calculations-exercise",
       "perceptron-activities",
       "k-means-clustering-unit-6-practical-tasks",
-      "gradient-cost-function"
+      "gradient-cost-function",
+      "fairly-compare-classical-deep-learning-ranking-models",
+      "explainability-and-trust-in-ai-systems"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -1998,6 +2074,18 @@ function loadState() {
     restoreSeededAcademicItem(
       "gradient-cost-function",
       (item) => item.id === GRADIENT_COST_FUNCTION_ARTIFACT_ID || item.slug === "gradient-cost-function"
+    );
+    restoreSeededAcademicItem(
+      "fairly-compare-classical-deep-learning-ranking-models",
+      (item) =>
+        item.id === RANKING_MODEL_COMPARISON_ARTIFACT_ID ||
+        item.slug === "fairly-compare-classical-deep-learning-ranking-models"
+    );
+    restoreSeededAcademicItem(
+      "explainability-and-trust-in-ai-systems",
+      (item) =>
+        item.id === EXPLAINABILITY_TRUST_AI_ARTIFACT_ID ||
+        item.slug === "explainability-and-trust-in-ai-systems"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
