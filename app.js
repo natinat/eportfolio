@@ -21,6 +21,7 @@ const KMEANS_CLUSTERING_ARTIFACT_ID = "0f8f6214-7501-4073-8658-324620e50498";
 const GRADIENT_COST_FUNCTION_ARTIFACT_ID = "47a67c83-46db-4bd2-bf0e-3e4d0be8f3a4";
 const RANKING_MODEL_COMPARISON_ARTIFACT_ID = "0c324961-bc5c-4f70-a9cc-800feef53e85";
 const EXPLAINABILITY_TRUST_AI_ARTIFACT_ID = "a147793d-5db0-49e4-a470-6b4b0e2baa92";
+const AI_WRITING_REFLECTION_ARTIFACT_ID = "d7306874-2ec2-4cc5-9a97-c48d7d1a88ef";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -700,6 +701,47 @@ print(predictedCO2)</code></pre>
 <p>Molnar, C. (2025) <em>Interpretable machine learning: a guide for making black box models explainable</em>. 3rd edn. Chapters 14, 15 and 33. Available at: <a href="https://christophm.github.io/interpretable-ml-book/" target="_blank" rel="noreferrer">https://christophm.github.io/interpretable-ml-book/</a> (Accessed: 25 September 2026).</p>
 
 <p>Theobald, O. (2024) <em>Machine learning: Make your own recommender system</em>. Packt Publishing. Available at: <a href="https://learning.oreilly.com/library/view/machine-learning-make/9781835882061/" target="_blank" rel="noreferrer">https://learning.oreilly.com/library/view/machine-learning-make/9781835882061/</a> (Accessed: 24 September 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: AI_WRITING_REFLECTION_ARTIFACT_ID,
+      slug: "reflections-on-ai-tools-for-writing-tasks",
+      sortOrder: 12,
+      title: "Reflections on AI Tools for Writing Tasks",
+      description:
+        "A peer-discussion reflection on selective use of AI writing tools, including accountability, productivity, creative diversity, human review, and practical safeguards.",
+      tags: ["All", "Machine Learning", "Discussion"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "468480db-e451-4353-9636-a2c30ad10965",
+          type: "html",
+          title: "",
+          body: `<p>As part of a peer discussion within a machine model learning model, we&rsquo;ve examined the use of AI tools for writing tasks. Discussions highlighted different perspectives on using AI for writing. The main considerations were the purpose of the output, the division of work between AI and its user, and the quality and accountability associated with the result. In my initial post, I distinguished between using AI to present ideas I have developed and relying on it to produce the substance of the work. Retkowsky, Hafermalz and Huysman (2024) identify drafting and refining text among its uses in knowledge work.</p>
+
+<p>Accountability was another important theme. The Air Canada example demonstrated the consequences of a chatbot providing incorrect policy information that a customer relied on (Sookman, 2024). Peer feedback extended this point by questioning whether warnings about possible inaccuracies provide protection. Lermann Henestrosa and Kimmerle (2025) examined disclaimers&rsquo; effects on readers&rsquo; perceptions, rather than legal liability. This reinforced my view that disclaimers should accompany practical safeguards, rather than replace them.</p>
+
+<p>Other posts prompted me to consider whether time saved generating content outweighs the time spent checking and revising it. Noy and Zhang (2023) demonstrate productivity benefits for the tasks they studied, but I would assess these benefits within each workflow.</p>
+
+<p>The discussion also highlighted a creative trade-off: AI assistance can improve individual stories while reducing diversity across outputs (Doshi and Hauser, 2024). For me, this strengthens the importance of retaining deliberate choices about voice and originality.</p>
+
+<p>Overall, the discussion strengthened my support for selective use of AI writers, while making me more cautious about treating human review alone as sufficient protection. Reviewers can over-rely on automated recommendations (Romeo and Conti, 2026). I would therefore combine review with checks against reliable sources, clear escalation to human assistance and continued monitoring after deployment. My assessment would include productivity, customer impact and creative diversity, alongside the quality of each individual piece of writing.</p>
+
+<h2>References</h2>
+
+<p>Doshi, A.R. and Hauser, O.P. (2024) &lsquo;Generative AI enhances individual creativity but reduces the collective diversity of novel content&rsquo;, <em>Science Advances</em>, 10(28), article eadn5290. Available at: <a href="https://doi.org/10.1126/sciadv.adn5290" target="_blank" rel="noreferrer">https://doi.org/10.1126/sciadv.adn5290</a> (Accessed: 1 October 2026).</p>
+
+<p>Lermann Henestrosa, A. and Kimmerle, J. (2025) &lsquo;&ldquo;Always check important information!&rdquo;: the role of disclaimers in the perception of AI-generated content&rsquo;, <em>Computers in Human Behavior: Artificial Humans</em>, 4, article 100142. Available at: <a href="https://doi.org/10.1016/j.chbah.2025.100142" target="_blank" rel="noreferrer">https://doi.org/10.1016/j.chbah.2025.100142</a> (Accessed: 1 October 2026).</p>
+
+<p>Noy, S. and Zhang, W. (2023) &lsquo;Experimental evidence on the productivity effects of generative artificial intelligence&rsquo;, <em>Science</em>, 381(6654), pp. 187-192. Available at: <a href="https://doi.org/10.1126/science.adh2586" target="_blank" rel="noreferrer">https://doi.org/10.1126/science.adh2586</a> (Accessed: 1 October 2026).</p>
+
+<p>Retkowsky, J., Hafermalz, E. and Huysman, M. (2024) &lsquo;Managing a ChatGPT-empowered workforce: Understanding its affordances and side effects&rsquo;, <em>Business Horizons</em>, 67(5), pp. 511-523. Available at: <a href="https://doi.org/10.1016/j.bushor.2024.04.009" target="_blank" rel="noreferrer">https://doi.org/10.1016/j.bushor.2024.04.009</a> (Accessed: 1 October 2026).</p>
+
+<p>Romeo, G. and Conti, D. (2026) &lsquo;Exploring automation bias in human-AI collaboration: a review and implications for explainable AI&rsquo;, <em>AI &amp; Society</em>, 41, pp. 259-278. Available at: <a href="https://doi.org/10.1007/s00146-025-02422-7" target="_blank" rel="noreferrer">https://doi.org/10.1007/s00146-025-02422-7</a> (Accessed: 1 October 2026).</p>
+
+<p>Sookman, B.B. (2024) &lsquo;Moffatt v. Air Canada: A misrepresentation by an AI chatbot&rsquo;, <em>McCarthy T&eacute;trault</em>, 19 February. Available at: <a href="https://www.mccarthy.ca/en/insights/blogs/techlex/moffatt-v-air-canada-misrepresentation-ai-chatbot" target="_blank" rel="noreferrer">https://www.mccarthy.ca/en/insights/blogs/techlex/moffatt-v-air-canada-misrepresentation-ai-chatbot</a> (Accessed: 1 October 2026).</p>`
         }
       ]
     },
@@ -2014,7 +2056,8 @@ function loadState() {
       "k-means-clustering-unit-6-practical-tasks",
       "gradient-cost-function",
       "fairly-compare-classical-deep-learning-ranking-models",
-      "explainability-and-trust-in-ai-systems"
+      "explainability-and-trust-in-ai-systems",
+      "reflections-on-ai-tools-for-writing-tasks"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -2086,6 +2129,12 @@ function loadState() {
       (item) =>
         item.id === EXPLAINABILITY_TRUST_AI_ARTIFACT_ID ||
         item.slug === "explainability-and-trust-in-ai-systems"
+    );
+    restoreSeededAcademicItem(
+      "reflections-on-ai-tools-for-writing-tasks",
+      (item) =>
+        item.id === AI_WRITING_REFLECTION_ARTIFACT_ID ||
+        item.slug === "reflections-on-ai-tools-for-writing-tasks"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
