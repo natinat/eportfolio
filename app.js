@@ -22,6 +22,8 @@ const GRADIENT_COST_FUNCTION_ARTIFACT_ID = "47a67c83-46db-4bd2-bf0e-3e4d0be8f3a4
 const RANKING_MODEL_COMPARISON_ARTIFACT_ID = "0c324961-bc5c-4f70-a9cc-800feef53e85";
 const EXPLAINABILITY_TRUST_AI_ARTIFACT_ID = "a147793d-5db0-49e4-a470-6b4b0e2baa92";
 const AI_WRITING_REFLECTION_ARTIFACT_ID = "d7306874-2ec2-4cc5-9a97-c48d7d1a88ef";
+const FACIAL_RECOGNITION_ETHICS_ARTIFACT_ID = "4201f565-96f0-4a4c-b1c5-497c17cb96cb";
+const CNN_MODEL_ACTIVITY_ARTIFACT_ID = "5bd29a03-8c27-40af-a0bc-1df4c897eb63";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -742,6 +744,99 @@ print(predictedCO2)</code></pre>
 <p>Romeo, G. and Conti, D. (2026) &lsquo;Exploring automation bias in human-AI collaboration: a review and implications for explainable AI&rsquo;, <em>AI &amp; Society</em>, 41, pp. 259-278. Available at: <a href="https://doi.org/10.1007/s00146-025-02422-7" target="_blank" rel="noreferrer">https://doi.org/10.1007/s00146-025-02422-7</a> (Accessed: 1 October 2026).</p>
 
 <p>Sookman, B.B. (2024) &lsquo;Moffatt v. Air Canada: A misrepresentation by an AI chatbot&rsquo;, <em>McCarthy T&eacute;trault</em>, 19 February. Available at: <a href="https://www.mccarthy.ca/en/insights/blogs/techlex/moffatt-v-air-canada-misrepresentation-ai-chatbot" target="_blank" rel="noreferrer">https://www.mccarthy.ca/en/insights/blogs/techlex/moffatt-v-air-canada-misrepresentation-ai-chatbot</a> (Accessed: 1 October 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: FACIAL_RECOGNITION_ETHICS_ARTIFACT_ID,
+      slug: "ethical-professional-issues-machine-learning-facial-recognition",
+      sortOrder: 13,
+      title: "Reflections on Ethical and Professional Issues in Using Machine Learning for Facial Recognition",
+      description:
+        "A machine learning reflection on facial recognition, exploring deployment context, demographic bias, privacy and consent, accountability, and the professional responsibilities practitioners hold beyond maximising model accuracy.",
+      tags: ["All", "Machine Learning", "Discussion"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "9d11fe07-969d-468e-8e8a-e75d728ae414",
+          type: "html",
+          title: "",
+          body: `<p>The article (Wall, 2019) demonstrates that practitioners have to consider the context in which their developed models are deployed. In addition, it highlights how bias in training data can lead to different model performance across different demographic groups. This becomes critical particularly when the models are used in systems used for high-stakes decisions such as policing and security. In these situations, a false positive can have significantly greater consequences than a misclassification in a low-risk application.</p>
+
+<p>Beyond these considerations, the use of facial recognition also raises legal and social concerns around privacy and consent. Some regulations such as Regulation (EU) 2016/679 provide safeguards against these risks. However, balancing public safety with privacy can remain challenging even where such regulation is in place. In addition to that, there are also discrimination and accountability concerns. For example, who is responsible if an individual is discriminated against and imprisoned because of a false positive facial-recognition result produced by an ML system? Is it the organisation that developed it, the organisation deploying it, or the individuals using it in their work?</p>
+
+<p>From a professional perspective, I think this highlights that ML practitioners have responsibilities beyond maximising model accuracy. As Leslie (2019) points out, there are many design choices that can be made, which will help limit the risk of bias, and apply systematic checks that identify such incidents early, and help practitioners mitigate them. These are choices such as ensuring the data is sufficiently representative for the population, evaluating model performance across different relevant groups, clearly communicating the limitations of the model, and considering the implications of a false prediction before deploying.</p>
+
+<h2>References</h2>
+
+<p>Leslie, D. (2019) <em>Understanding artificial intelligence ethics and safety: A guide for the responsible design and implementation of AI systems in the public sector</em>. The Alan Turing Institute. Available at: <a href="https://doi.org/10.5281/zenodo.3240529" target="_blank" rel="noreferrer">https://doi.org/10.5281/zenodo.3240529</a></p>
+
+<p>Wall, M. (2019) &lsquo;Biased and wrong? Facial recognition tech in the dock&rsquo;, <em>BBC News</em>, 8 July. Available at: <a href="https://www.bbc.com/news/business-48842750" target="_blank" rel="noreferrer">https://www.bbc.com/news/business-48842750</a> (Accessed: 4 October 2026).</p>
+
+<p>Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data (General Data Protection Regulation) [2016] <em>Official Journal of the European Union</em>, L119, pp. 1-88. Available at: <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noreferrer">https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng</a> (Accessed: 28 September 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: CNN_MODEL_ACTIVITY_ARTIFACT_ID,
+      slug: "cnn-model-activity",
+      sortOrder: 14,
+      title: "e-Portfolio Activity: CNN Model Activity",
+      description:
+        "A practical CNN object recognition activity using CIFAR-10, covering exploratory data analysis, preprocessing, model architecture, training, evaluation and overfitting.",
+      tags: ["All", "Machine Learning"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/cnn-model-summary.png",
+      sections: [
+        {
+          id: "76fc3305-bec1-493a-81a8-7a1de4eb8ce3",
+          type: "html",
+          title: "",
+          body: `<p>The CNN-Object Recognition notebook contains a practical learning path for CNN models. It follows the CNN model development framework described by G&eacute;ron (2025). The notebook demonstrates what information is needed during EDA, to help define the model's architecture later on, shows the preprocessing required, and the training, validation and evaluation steps.</p>
+
+<p>In this example the CIFAR-10 dataset is used. This dataset consists of 60,000 32x32 color images belonging to 1 out of 10 classes. The representation per class is even in the dataset, with 6000 images per class. During EDA we learn that the shape of each image is (32, 32, 3), which represents the width and height of the image, and the 3 RGB color channels.</p>
+
+<p>During preprocessing we scale the image values in the train and test data so that the model gets values between 0 and 1, instead of values between 0 and 255. We encode the categorical data, and we create a validation dataset, which will be used during training.</p>
+
+<p>The next step is defining the CNN model's architecture and the training instructions. The first layer is a convolutional layer, which has 32 filters, with each filter learning to detect particular features in the input, a kernel size of 4x4, which means each filter looks at a 4x4 local patch at a time as it moves across the image. This layer produces 32 feature maps. The layer has ReLU as its activation function, which provides the required nonlinearity.</p>
+
+<p>The next layer is a Max Pooling layer, which looks at a 2x2 region of the feature map and keeps its maximum values. This reduces the spatial size and computation, while retaining strong feature activations.</p>
+
+<p>Then there is another convolutional layer with the same configuration, which operates on the feature maps produced by the preceding layers and can therefore learn more developed features. This is followed by another Max Pooling layer. After that comes the Flatten layer, which takes the resulting feature maps and flattens them into a single vector. The following Dense layer takes the flattened input and contains 256 neurons. Each neuron is connected to all 800 values from the Flatten layer, resulting in 205,056 trainable parameters including biases. It sends its output to the final Dense layer, which contains 10 neurons and uses softmax to produce a probability distribution across the 10 classes. So the model's final output is a prediction for each of the 10 classes for a given image, with the predicted class having the highest predicted probability.</p>
+
+<p>The model is then compiled using categorical cross-entropy as the loss function, the Adam optimiser, and accuracy as the evaluation metric, before being trained on the training data.</p>
+
+<p>Figure 1 is the model summary output. It shows how data flows through the layers of the defined CNN model. The shape shrinks with every Max Pooling layer, and we can see which layers have parameters (weights and biases), and which don't. While the model has 225,610 parameters, the vast majority of them (205,056) are in the first Dense layer, where the extracted features are combined before the final classification layer. The model's last shape is (None, 10), matching the required output of 10 class predictions.</p>
+
+<figure>
+  <img src="images/cnn-model-summary.png" alt="CNN model summary showing layer output shapes and 225,610 trainable parameters" width="659" height="345" />
+  <figcaption><em>Figure 1: CNN Model summary (University of Essex, n.a.)</em></figcaption>
+</figure>
+
+<p>Figures 2 and 3 indicate that the model shows signs of overfitting. Training accuracy continues to increase and training loss continues to decrease, while validation accuracy plateaus at around 66&ndash;68% and validation loss stops consistently improving. This creates an increasing gap between training and validation performance.</p>
+
+<figure>
+  <img src="images/cnn-model-loss.png" alt="Training loss decreases while validation loss starts increasing after epoch 3" width="560" height="439" />
+  <figcaption><em>Figure 2: CNN Model Loss plot for training and validation datasets (University of Essex, n.a.)</em></figcaption>
+</figure>
+
+<figure>
+  <img src="images/cnn-model-accuracy.png" alt="Training accuracy increases while validation accuracy plateaus" width="560" height="439" />
+  <figcaption><em>Figure 3: CNN Model Accuracy plot for training and validation datasets (University of Essex, n.a.)</em></figcaption>
+</figure>
+
+<p>At the same time, the close validation and test performance suggests that the model generalises consistently to unseen data drawn from the same distribution. However, it is important to note that this does not demonstrate that it would generalise equally well to substantially different real-world images.</p>
+
+<p>The confusion matrix shows that performance varies across classes. Class 2 (bird) had the lowest recall, with 448 of 1,000 images correctly classified, while class 1 (automobile) had the highest, with 749 correctly classified. Misclassification was particularly evident between visually related animal classes; for example, 320 dog images were incorrectly classified as cats. The model also appears to predict the cat class relatively frequently for several other animal classes.</p>
+
+<p>Lastly, when testing the model with a specific input image, we can see if it is able to correctly predict it. The first example image in the notebook (x_test[16]), is correctly identified as a dog. Manually testing several additional images, including a horse and a truck, also resulted in correct predictions.</p>
+
+<h2>References</h2>
+
+<p>University of Essex (n.a) &lsquo;Convolutional Neural Networks (CNN) - Object Recognition&rsquo;. Available at: <a href="assets/Unit09%20Ex1%20Convolutional%20Neural%20Networks%20(CNN)%20-%20Object%20Recognition.ipynb" download>Convolutional Neural Networks (CNN) - Object Recognition notebook</a> (Accessed: 4 October, 2026).</p>
+
+<p>G&eacute;ron, A. (2025) <em>Hands-On Machine Learning with Scikit-Learn and PyTorch</em>. Sebastopol, CA: O&rsquo;Reilly Media (Accessed: 15 September 2026).</p>`
         }
       ]
     },
@@ -2057,7 +2152,9 @@ function loadState() {
       "gradient-cost-function",
       "fairly-compare-classical-deep-learning-ranking-models",
       "explainability-and-trust-in-ai-systems",
-      "reflections-on-ai-tools-for-writing-tasks"
+      "reflections-on-ai-tools-for-writing-tasks",
+      "ethical-professional-issues-machine-learning-facial-recognition",
+      "cnn-model-activity"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -2135,6 +2232,17 @@ function loadState() {
       (item) =>
         item.id === AI_WRITING_REFLECTION_ARTIFACT_ID ||
         item.slug === "reflections-on-ai-tools-for-writing-tasks"
+    );
+    restoreSeededAcademicItem(
+      "ethical-professional-issues-machine-learning-facial-recognition",
+      (item) =>
+        item.id === FACIAL_RECOGNITION_ETHICS_ARTIFACT_ID ||
+        item.slug === "ethical-professional-issues-machine-learning-facial-recognition"
+    );
+
+    restoreSeededAcademicItem(
+      "cnn-model-activity",
+      (item) => item.id === CNN_MODEL_ACTIVITY_ARTIFACT_ID || item.slug === "cnn-model-activity"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
