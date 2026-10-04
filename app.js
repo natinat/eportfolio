@@ -24,6 +24,7 @@ const EXPLAINABILITY_TRUST_AI_ARTIFACT_ID = "a147793d-5db0-49e4-a470-6b4b0e2baa9
 const AI_WRITING_REFLECTION_ARTIFACT_ID = "d7306874-2ec2-4cc5-9a97-c48d7d1a88ef";
 const FACIAL_RECOGNITION_ETHICS_ARTIFACT_ID = "4201f565-96f0-4a4c-b1c5-497c17cb96cb";
 const CNN_MODEL_ACTIVITY_ARTIFACT_ID = "5bd29a03-8c27-40af-a0bc-1df4c897eb63";
+const MODEL_PERFORMANCE_ARTIFACT_ID = "e77c6633-bf68-45af-bc69-a6dd4826285d";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -710,7 +711,7 @@ print(predictedCO2)</code></pre>
       id: AI_WRITING_REFLECTION_ARTIFACT_ID,
       slug: "reflections-on-ai-tools-for-writing-tasks",
       sortOrder: 12,
-      title: "Reflections on AI Tools for Writing Tasks",
+      title: "Collaborative Discussion 2: Legal and Ethical Views on ANN Applications",
       description:
         "A peer-discussion reflection on selective use of AI writing tools, including accountability, productivity, creative diversity, human review, and practical safeguards.",
       tags: ["All", "Machine Learning", "Discussion"],
@@ -837,6 +838,56 @@ print(predictedCO2)</code></pre>
 <p>University of Essex (n.a) &lsquo;Convolutional Neural Networks (CNN) - Object Recognition&rsquo;. Available at: <a href="assets/Unit09%20Ex1%20Convolutional%20Neural%20Networks%20(CNN)%20-%20Object%20Recognition.ipynb" download>Convolutional Neural Networks (CNN) - Object Recognition notebook</a> (Accessed: 4 October, 2026).</p>
 
 <p>G&eacute;ron, A. (2025) <em>Hands-On Machine Learning with Scikit-Learn and PyTorch</em>. Sebastopol, CA: O&rsquo;Reilly Media (Accessed: 15 September 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: MODEL_PERFORMANCE_ARTIFACT_ID,
+      slug: "model-performance-measurement",
+      sortOrder: 15,
+      title: "e-Portfolio Activity: Model Performance Measurement",
+      description:
+        "An exploration of classification and regression metrics, examining how irrelevant features affect ROC AUC and how prediction errors change R-squared.",
+      tags: ["All", "Machine Learning"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/auc-figure-1.png",
+      sections: [
+        {
+          id: "67d198da-164c-43e1-b582-ce38ff7ad3ac",
+          type: "html",
+          title: "",
+          body: `<p>The notebook (University of Essex, n.a.) demonstrates how different metrics can be used to evaluate machine learning classification and regression models and how changes in predictions or model parameters affect the resulting performance measures.</p>
+
+<p>For classification, it shows the confusion matrix, accuracy, precision, recall, F1-score and Area Under the ROC Curve (AUC). It also demonstrates different approaches to calculating F1, including macro, micro and weighted averages, which is most relevant when evaluating multiclass problems.</p>
+
+<p>The AUC examples demonstrate that different classification thresholds can be used, rather than a single classification outcome. A higher AUC means the model is able to successfully distinguish between classes. The multiclass example extends this using a One-vs-Rest approach, where each class is evaluated against the remaining classes. Changing the data, model configuration or amount of noise can affect the ROC curve and therefore the resulting AUC.</p>
+
+<p>For regression, the notebook demonstrates Mean Squared Error (MSE), Mean Absolute Error (MAE) and R&sup2;. MSE and MAE measure the size of prediction errors, with lower values indicating better predictions, while R&sup2; measures how much of the variation in the target is explained by the model. An R&sup2; value closer to 1 indicates a better fit. Changing the predicted values demonstrates how larger differences between predicted and actual values reduce R&sup2; and increase the error metrics.</p>
+
+<p>The impact of adding irrelevant features to the classification dataset was explored by changing the noise multiplier. With the original multiplier of 200, the model achieved an AUC of 0.79 (Figure 1). Reducing the multiplier to 20 substantially improved the AUC to 0.88 (Figure 2), indicating that the model was better able to distinguish between the classes when less irrelevant information was present. Increasing the multiplier to 1,000 reduced the AUC to 0.53 (Figure 3), which is only slightly above the 0.5 performance expected from random classification. These results demonstrate that introducing a large number of irrelevant features can substantially reduce a classifier's ability to discriminate between classes. They also illustrate why AUC is useful for evaluating classification performance across different decision thresholds.</p>
+
+<figure>
+  <img src="images/auc-figure-1.png" alt="ROC curve with an AUC of 0.79 using a noise multiplier of 200" />
+  <figcaption><em>Figure 1: ABU plot with a multiplier with the value of 200 (University of Essex, n.a.)</em></figcaption>
+</figure>
+
+<figure>
+  <img src="images/auc-figure-2.png" alt="ROC curve with an AUC of 0.88 using a noise multiplier of 20" />
+  <figcaption><em>Figure 2: ABU plot with a multiplier with the value of 20 (University of Essex, n.a.)</em></figcaption>
+</figure>
+
+<figure>
+  <img src="images/auc-figure-3.png" alt="ROC curve with an AUC of 0.53 using a noise multiplier of 1000" />
+  <figcaption><em>Figure 3: ABU plot with a multiplier with the value of 1000 (University of Essex, n.a.)</em></figcaption>
+</figure>
+
+<p>For R&sup2;, the available code in the notebook does not train a regression model or provide model parameters to modify, but instead calculates R&sup2; from predefined actual and predicted values. I therefore changed the predicted values to observe the impact of prediction error on R&sup2;. The original predictions produced an R&sup2; of <strong>0.949</strong>. Moving the predictions closer to the actual values increased R&sup2; to <strong>0.989</strong>, while moving them further away reduced it to <strong>0.683</strong>. This demonstrates that R&sup2; increases towards 1 as predictions better explain the variation in the actual values, while larger prediction errors result in a lower R&sup2; score.</p>
+
+<p>Overall, the exercise highlights that for a complete evaluation of a model, a good practice is to use multiple metrics that answer different questions. When selecting metrics and when examining results, practitioners must consider the type of problem they are solving. For example for classification, metrics such as precision, recall, F1 and AUC provide information that accuracy alone may hide, while regression metrics answer questions about the magnitude of prediction errors and the model's overall explanatory performance. Another important consideration is the consequences of different prediction errors. For example, in some cases a false positive will be more acceptable than a false negative, like in the health industry.</p>
+
+<h2>Reference</h2>
+
+<p>University of Essex (n.a) &lsquo;Model performance measurement&rsquo;. Available at: <a href="assets/Unit11_model_Performance_Measurement.ipynb" download>Model performance measurement notebook</a> (Accessed: 4 October, 2026).</p>`
         }
       ]
     },
@@ -2154,7 +2205,8 @@ function loadState() {
       "explainability-and-trust-in-ai-systems",
       "reflections-on-ai-tools-for-writing-tasks",
       "ethical-professional-issues-machine-learning-facial-recognition",
-      "cnn-model-activity"
+      "cnn-model-activity",
+      "model-performance-measurement"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -2243,6 +2295,11 @@ function loadState() {
     restoreSeededAcademicItem(
       "cnn-model-activity",
       (item) => item.id === CNN_MODEL_ACTIVITY_ARTIFACT_ID || item.slug === "cnn-model-activity"
+    );
+
+    restoreSeededAcademicItem(
+      "model-performance-measurement",
+      (item) => item.id === MODEL_PERFORMANCE_ARTIFACT_ID || item.slug === "model-performance-measurement"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
