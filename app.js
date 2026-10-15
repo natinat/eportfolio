@@ -27,6 +27,7 @@ const CNN_MODEL_ACTIVITY_ARTIFACT_ID = "5bd29a03-8c27-40af-a0bc-1df4c897eb63";
 const MODEL_PERFORMANCE_ARTIFACT_ID = "e77c6633-bf68-45af-bc69-a6dd4826285d";
 const AIRBNB_CONTRIBUTION_ARTIFACT_ID = "8df62713-192b-46a9-a335-177b45903ba2";
 const ACCOMMODATION_RANKING_ARTIFACT_ID = "c12a917e-8dea-4fbd-85ef-b2c518ae5039";
+const INDUSTRY_4_ML_ARTIFACT_ID = "d9a5bbcd-f056-4b9f-907b-b40b3cb10ace";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -953,6 +954,37 @@ print(predictedCO2)</code></pre>
 <p>Mahajan, P. (2019) Trivago RecSys Challenge Data 2019 [Dataset]. Kaggle. Available at: <a href="https://www.kaggle.com/datasets/pranavmahajan725/trivagorecsyschallengedata2019" target="_blank" rel="noreferrer">https://www.kaggle.com/datasets/pranavmahajan725/trivagorecsyschallengedata2019</a> (Accessed: 12 September 2026).</p>
 
 <p>Theobald, O. (2024) Machine learning: Make your own recommender system. Packt Publishing. Available at: <a href="https://learning.oreilly.com/library/view/machine-learning-make/9781835882061/" target="_blank" rel="noreferrer">https://learning.oreilly.com/library/view/machine-learning-make/9781835882061/</a> (Accessed: 24 September 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: INDUSTRY_4_ML_ARTIFACT_ID,
+      slug: "machine-learning-in-industry-4-0",
+      sortOrder: 18,
+      title: "Machine learning in Industry 4.0",
+      description:
+        "A reflection on industrial applications of machine learning, predictive maintenance and the gap between experimental model performance and practical deployment.",
+      tags: ["All", "Machine Learning"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/Glowing-CPU-on-circuit-board.png",
+      sections: [
+        {
+          id: "72758979-405f-4776-89eb-e4244156c0e2",
+          type: "html",
+          title: "",
+          body: `<p>The 2 provided references in unit 12 helped me make a mental connection between classical and deep learning models and their application in industrial environments. It was particularly interesting to learn how sensor data from physical machines can be fed into machine learning (ML) models, in order to offer predictions about potential production failures (Drakaki <em>et al.</em>, 2022). In Zhou <em>et al.</em>'s paper (2023) I learned about additional industrial applications of ML, including defect inspection, warehouse optimisation and robotic assembly.</p>
+
+<p>What stood out to me was what I also experienced in my final submission for this module (Halimi, 2026n), which is the big gap between model development and model deployment. I learned that strong model performance in an experiment does not necessarily establish readiness for deployment, especially when it comes to industrial systems that must also handle changing conditions, computational constraints and integration with existing equipment. Drakaki <em>et al.</em> (2022) highlight the gap between laboratory datasets and real industrial conditions, reinforcing the importance of representative data and validation.</p>
+
+<p>From my perspective as a product manager, these examples show why model evaluation should connect to operational outcomes, such as reduced downtime, alongside prediction accuracy. They also demonstrate how machine learning can support decisions across connected industrial systems, while requiring careful assessment of its practical limitations.</p>
+
+<h2>References</h2>
+
+<p>Drakaki, M., Karnavas, Y.L., Tziafettas, I.A., Linardos, V. and Tzionas, P. (2022) &lsquo;Machine learning and deep learning based methods toward Industry 4.0 predictive maintenance in induction motors: A state of the art survey&rsquo;, <em>Journal of Industrial Engineering and Management</em>, 15(1), pp. 31&ndash;57. Available at: <a href="https://doi.org/10.3926/jiem.3597" target="_blank" rel="noreferrer">https://doi.org/10.3926/jiem.3597</a> (Accessed: 15 October 2026).</p>
+
+<p>Halimi, N. (2026n) <em>Comparative evaluation of machine learning models for accommodation ranking</em>. E-portfolio. Available at: <a href="https://natinat.github.io/eportfolio/artifact.html?artifact=comparative-evaluation-machine-learning-models-accommodation-ranking">https://natinat.github.io/eportfolio/artifact.html?artifact=comparative-evaluation-machine-learning-models-accommodation-ranking</a> (Accessed: 15 October 2026).</p>
+
+<p>Zhou, M., Qiao, Y., Liu, B., Vogel-Heuser, B. and Kim, H. (2023) &lsquo;Machine learning for Industry 4.0&rsquo;, <em>IEEE Robotics &amp; Automation Magazine</em>, 30(2), pp. 8&ndash;9. Available at: <a href="https://doi.org/10.1109/MRA.2023.3266618" target="_blank" rel="noreferrer">https://doi.org/10.1109/MRA.2023.3266618</a> (Accessed: 15 October 2026).</p>`
         }
       ]
     },
@@ -2273,7 +2305,8 @@ function loadState() {
       "cnn-model-activity",
       "model-performance-measurement",
       "individual-contribution-airbnb-group-project",
-      "comparative-evaluation-machine-learning-models-accommodation-ranking"
+      "comparative-evaluation-machine-learning-models-accommodation-ranking",
+      "machine-learning-in-industry-4-0"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -2380,6 +2413,11 @@ function loadState() {
       (item) =>
         item.id === ACCOMMODATION_RANKING_ARTIFACT_ID ||
         item.slug === "comparative-evaluation-machine-learning-models-accommodation-ranking"
+    );
+
+    restoreSeededAcademicItem(
+      "machine-learning-in-industry-4-0",
+      (item) => item.id === INDUSTRY_4_ML_ARTIFACT_ID || item.slug === "machine-learning-in-industry-4-0"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
