@@ -25,6 +25,7 @@ const AI_WRITING_REFLECTION_ARTIFACT_ID = "d7306874-2ec2-4cc5-9a97-c48d7d1a88ef"
 const FACIAL_RECOGNITION_ETHICS_ARTIFACT_ID = "4201f565-96f0-4a4c-b1c5-497c17cb96cb";
 const CNN_MODEL_ACTIVITY_ARTIFACT_ID = "5bd29a03-8c27-40af-a0bc-1df4c897eb63";
 const MODEL_PERFORMANCE_ARTIFACT_ID = "e77c6633-bf68-45af-bc69-a6dd4826285d";
+const AIRBNB_CONTRIBUTION_ARTIFACT_ID = "8df62713-192b-46a9-a335-177b45903ba2";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -882,6 +883,35 @@ print(predictedCO2)</code></pre>
 <h2>Reference</h2>
 
 <p>University of Essex (n.a) &lsquo;Model performance measurement&rsquo;. Available at: <a href="assets/Unit11_model_Performance_Measurement.ipynb" download>Model performance measurement notebook</a> (Accessed: 4 October, 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: AIRBNB_CONTRIBUTION_ARTIFACT_ID,
+      slug: "individual-contribution-airbnb-group-project",
+      sortOrder: 16,
+      title: "Individual contribution to the Airbnb group project",
+      description:
+        "A reflection on my EDA and clustering contributions to an Airbnb host segmentation and price prediction project, including report integration, peer feedback and collaborative working practices.",
+      tags: ["All", "Machine Learning"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "8c9c12ee-fb1f-4366-b5e2-9315bd9199c3",
+          type: "html",
+          title: "",
+          body: `<p>As part of a machine learning (ML) module, I participated in a group project that used clustering for host segmentation and regression for price prediction in an online travel marketplace. As part of my individual contribution, I developed the exploratory data analysis (EDA) and clustering sections. These contributions examined the dataset and supported the investigation of patterns relevant to host segmentation. The code and analyses are available in sections 2 and 4 of the shared Kaggle project (de Jonge-Gryciuk <em>et al.</em>, 2026).</p>
+
+<p>Beyond the coding work, I took an active part in writing and reviewing the report, helping ensure that all sections were connected coherently and that critical analysis was evident. I facilitated group discussions, helping us reach agreement when opinions differed, and provided detailed feedback on other group members&rsquo; work. For example, one piece of critical feedback helped us avoid data leakage: a team member had first fitted K-means to all 48,884 observations and then split each cluster into training and test sets. My feedback helped correct this early on and ensured that we proceeded with a clean split. Another piece of feedback concerned the disproportionate amount of space allocated to competitive analysis and business background, which initially left little room for technical analysis and critical discussion. Similar feedback from the examiner reinforced the importance of this concern, although the changes made following my feedback did not fully resolve the imbalance.</p>
+
+<p>The project received a distinction mark of 76%. The examiner&rsquo;s feedback recognised the report&rsquo;s logical workflow, appropriate methods and clear presentation of clustering results, supporting the quality of my EDA and clustering contributions. However, it identified insufficient interpretation of results and stakeholder implications. This indicates that the analysis needed stronger connections between identified patterns, proposed business actions and measurable outcomes. The feedback concerns the group submission; it does not assess my individual contribution separately.</p>
+
+<p>For the peer evaluation component, I received a distinction mark of 73%. While the examiner did not provide specific comments beyond the score, my own self-evaluation recorded strengths in documentation, initiative and report integration, alongside challenges with communication across time zones and shared working practices. This demonstrates critical consideration of collaboration, including my recognition that taking over others&rsquo; delayed work needed to be complemented by earlier intervention and clearer accountability for each team member&rsquo;s responsibilities.</p>
+
+<h2>Reference</h2>
+
+<p>de Jonge-Gryciuk, A. <em>et al.</em> (2026) Airbnb host-segmentation and price prediction. Kaggle, August. Available at: <a href="https://www.kaggle.com/code/rafacavalcante/airbnb-host-segmentation-and-price-prediction" target="_blank" rel="noreferrer">https://www.kaggle.com/code/rafacavalcante/airbnb-host-segmentation-and-price-prediction</a> (Accessed: 3 September 2026).</p>`
         }
       ]
     },
@@ -2200,7 +2230,8 @@ function loadState() {
       "reflections-on-ai-tools-for-writing-tasks",
       "ethical-professional-issues-machine-learning-facial-recognition",
       "cnn-model-activity",
-      "model-performance-measurement"
+      "model-performance-measurement",
+      "individual-contribution-airbnb-group-project"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -2294,6 +2325,12 @@ function loadState() {
     restoreSeededAcademicItem(
       "model-performance-measurement",
       (item) => item.id === MODEL_PERFORMANCE_ARTIFACT_ID || item.slug === "model-performance-measurement"
+    );
+
+    restoreSeededAcademicItem(
+      "individual-contribution-airbnb-group-project",
+      (item) =>
+        item.id === AIRBNB_CONTRIBUTION_ARTIFACT_ID || item.slug === "individual-contribution-airbnb-group-project"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
