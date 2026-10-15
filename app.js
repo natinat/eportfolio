@@ -26,6 +26,7 @@ const FACIAL_RECOGNITION_ETHICS_ARTIFACT_ID = "4201f565-96f0-4a4c-b1c5-497c17cb9
 const CNN_MODEL_ACTIVITY_ARTIFACT_ID = "5bd29a03-8c27-40af-a0bc-1df4c897eb63";
 const MODEL_PERFORMANCE_ARTIFACT_ID = "e77c6633-bf68-45af-bc69-a6dd4826285d";
 const AIRBNB_CONTRIBUTION_ARTIFACT_ID = "8df62713-192b-46a9-a335-177b45903ba2";
+const ACCOMMODATION_RANKING_ARTIFACT_ID = "c12a917e-8dea-4fbd-85ef-b2c518ae5039";
 const ACADEMIC_PREVIEW_PLACEHOLDER =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'%3E%3Crect width='1200' height='720' fill='%23efe8dd'/%3E%3Ccircle cx='260' cy='210' r='110' fill='%23e0d4c3'/%3E%3Cpath d='M0 620L240 430L420 530L700 310L930 500L1200 300V720H0Z' fill='%23d9c8b1'/%3E%3Crect x='100' y='92' width='330' height='52' rx='26' fill='%23ffffff' fill-opacity='.65'/%3E%3Crect x='100' y='164' width='250' height='22' rx='11' fill='%23d65c31' fill-opacity='.28'/%3E%3Crect x='100' y='520' width='360' height='34' rx='17' fill='%231e1f1b' fill-opacity='.12'/%3E%3Crect x='100' y='570' width='230' height='22' rx='11' fill='%231e1f1b' fill-opacity='.08'/%3E%3C/svg%3E";
 const seedData = {
@@ -912,6 +913,46 @@ print(predictedCO2)</code></pre>
 <h2>Reference</h2>
 
 <p>de Jonge-Gryciuk, A. <em>et al.</em> (2026) Airbnb host-segmentation and price prediction. Kaggle, August. Available at: <a href="https://www.kaggle.com/code/rafacavalcante/airbnb-host-segmentation-and-price-prediction" target="_blank" rel="noreferrer">https://www.kaggle.com/code/rafacavalcante/airbnb-host-segmentation-and-price-prediction</a> (Accessed: 3 September 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: ACCOMMODATION_RANKING_ARTIFACT_ID,
+      slug: "comparative-evaluation-machine-learning-models-accommodation-ranking",
+      sortOrder: 17,
+      title: "Comparative evaluation of machine learning models for accommodation ranking",
+      description:
+        "An individual comparative investigation of classical and deep learning models for accommodation ranking, covering model evaluation, interpretability and practical deployment requirements.",
+      tags: ["All", "Machine Learning"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/AI transforming global travel industry.png",
+      sections: [
+        {
+          id: "a523e874-1d59-4acc-b852-2767938d10e5",
+          type: "html",
+          title: "",
+          body: `<p>As part of my Machine Learning (ML) module I have worked on an individual project that compares classical and deep learning models in an accommodation ranking business problem, using the Trivago dataset (Mahajan, 2019). As part of this work, I have also examined these models&rsquo; predictive performance, interpretability, medical considerations and practical deployment requirements.</p>
+
+<p>Following steps recommended by Theobald (2024) for recommender and ranking systems, I have run supporting exploratory data analysis, preprocessing and feature engineering, as well as completed the full model development and evaluation. The models included logistic regression, LightGBM with LambdaRank, a multilayer perceptron (MLP), and a Wide &amp; Deep neural network. Candidate and session information supported predictions of click relevance, with the resulting scores used to rank properties within each ranking event.</p>
+
+<p>The evaluation used separate training, validation and test sets, with checks to prevent session overlap. Model performance was assessed using ranking metrics, including mean reciprocal rank (MRR). I also used SHAP to investigate feature contributions in the tree-based model and discussed the limitations of using historical clicks as evidence of relevance.</p>
+
+<p>All trained models substantially underperformed Trivago&rsquo;s original ranking. The project therefore did not establish a case for replacing the existing ranking system. In addition, I could not establish a clear advantage for a deep learning model over a classical base model, given this specific business problem and dataset. The final presentation identified the need for further validation and online testing before deployment, alongside requirements for consistent preprocessing, reliable inference and monitoring of performance, latency and data drift.</p>
+
+<p>The submission provides evidence of an end-to-end comparative investigation, including the interpretation of disappointing results and consideration of whether the models were suitable for practical use.</p>
+
+<h2>Supporting evidence</h2>
+
+<ul>
+  <li>Final presentation: <a href="assets/Recommender-system-Presentation-final.pptx" download>Download the final presentation</a></li>
+  <li>Code files and run instructions: <a href="https://github.com/natinat/accommodation-ranking-assignment" target="_blank" rel="noreferrer">https://github.com/natinat/accommodation-ranking-assignment</a></li>
+</ul>
+
+<h2>References</h2>
+
+<p>Mahajan, P. (2019) Trivago RecSys Challenge Data 2019 [Dataset]. Kaggle. Available at: <a href="https://www.kaggle.com/datasets/pranavmahajan725/trivagorecsyschallengedata2019" target="_blank" rel="noreferrer">https://www.kaggle.com/datasets/pranavmahajan725/trivagorecsyschallengedata2019</a> (Accessed: 12 September 2026).</p>
+
+<p>Theobald, O. (2024) Machine learning: Make your own recommender system. Packt Publishing. Available at: <a href="https://learning.oreilly.com/library/view/machine-learning-make/9781835882061/" target="_blank" rel="noreferrer">https://learning.oreilly.com/library/view/machine-learning-make/9781835882061/</a> (Accessed: 24 September 2026).</p>`
         }
       ]
     },
@@ -2231,7 +2272,8 @@ function loadState() {
       "ethical-professional-issues-machine-learning-facial-recognition",
       "cnn-model-activity",
       "model-performance-measurement",
-      "individual-contribution-airbnb-group-project"
+      "individual-contribution-airbnb-group-project",
+      "comparative-evaluation-machine-learning-models-accommodation-ranking"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -2331,6 +2373,13 @@ function loadState() {
       "individual-contribution-airbnb-group-project",
       (item) =>
         item.id === AIRBNB_CONTRIBUTION_ARTIFACT_ID || item.slug === "individual-contribution-airbnb-group-project"
+    );
+
+    restoreSeededAcademicItem(
+      "comparative-evaluation-machine-learning-models-accommodation-ranking",
+      (item) =>
+        item.id === ACCOMMODATION_RANKING_ARTIFACT_ID ||
+        item.slug === "comparative-evaluation-machine-learning-models-accommodation-ranking"
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
