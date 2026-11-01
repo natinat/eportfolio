@@ -45,7 +45,7 @@ const seedData = {
     academicTitle: "Academic artifacts",
     academicDescription:
       "Projects, papers, presentations, prototypes, and discussions developed as part of my studies at the University of Essex.",
-    academicTags: ["All", "Intro to Computing", "Intro to AI", "Numerical analysis", "Statistics", "R", "Data visualisation", "Machine Learning"]
+    academicTags: ["All", "Intro to Computing", "Intro to AI", "Numerical analysis", "Statistics", "R", "Data visualisation", "Machine Learning", "Intelligent Agents"]
   },
   academicItems: [
     {
@@ -985,6 +985,53 @@ print(predictedCO2)</code></pre>
 <p>Halimi, N. (2026n) <em>Comparative evaluation of machine learning models for accommodation ranking</em>. E-portfolio. Available at: <a href="https://natinat.github.io/eportfolio/artifact.html?artifact=comparative-evaluation-machine-learning-models-accommodation-ranking">https://natinat.github.io/eportfolio/artifact.html?artifact=comparative-evaluation-machine-learning-models-accommodation-ranking</a> (Accessed: 15 October 2026).</p>
 
 <p>Zhou, M., Qiao, Y., Liu, B., Vogel-Heuser, B. and Kim, H. (2023) &lsquo;Machine learning for Industry 4.0&rsquo;, <em>IEEE Robotics &amp; Automation Magazine</em>, 30(2), pp. 8&ndash;9. Available at: <a href="https://doi.org/10.1109/MRA.2023.3266618" target="_blank" rel="noreferrer">https://doi.org/10.1109/MRA.2023.3266618</a> (Accessed: 15 October 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: "980f1b06-c6ab-44e8-9a2c-cd82986ec722",
+      slug: "collaborative-discussion-1-agent-based-systems",
+      sortOrder: 19,
+      title: "Collaborative Discussion 1: Agent Based Systems",
+      description:
+        "A reflection on intelligent agent systems, exploring system compatibility, measured value, human oversight, and reactive, deliberative, and hybrid architectural choices.",
+      tags: ["All", "Intelligent Agents", "Discussion"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "8a3b112b-8d35-4f5f-b036-41b8b2ab502a",
+          type: "html",
+          title: "",
+          body: `<p>The discussions in this forum have helped me to expand my understanding of intelligent agents beyond their technical capabilities and historical evolution. Combined with the learning material available in Unit 3, it helped me understand several important considerations when working with intelligent agents, including system compatibility, measured value, automation versus human oversight, and architectural choices.</p>
+
+<p>My initial post focused on the emergence of intelligent agents and their early applications in the industrial space, sharing the ARCHON example and emphasising the system’s ability to integrate with existing systems and the importance of system compatibility when it comes to intelligent agents (Jennings and Wooldridge, 1998).</p>
+
+<p>Through discussions, I have also learned to consider more recent applications of intelligent agents, leveraging large language models (Cavalcante, 2026). This brought up an important point on the tradeoff between early adoption and return on investment (Gartner, 2025; Michalski et al., 2025), and it reinforced the argument by Jennings and Wooldridge (1998) that agent-based approaches should be selected based on their suitability for the problem, rather than simply because the technology is available.</p>
+
+<p>The second important point that came up is the need to balance automation and human intervention. Goodrich and Boer (2000) demonstrate that autonomous intervention is not necessarily beneficial simply because it is technically possible, highlighting the importance of balancing autonomy with human oversight.</p>
+
+<p>Lastly, the learning material in Unit 3 has expanded my knowledge on agent architecture, connecting some of the points that I have discussed in the forum. For example, I have learned that beyond Jennings and Wooldridge (1998) point on when to use intelligent agents, there are many different possible architectures to choose from. For example, Brooks' subsumption architecture demonstrates how intelligent behaviour can emerge from layered reactive mechanisms without centralised planning (Brooks, 1991), and Kaelbling's situated automata illustrates how reasoning can be shifted towards design time to enable efficient runtime decisions (Kaelbling, 1991). I have also learned that these approaches are not mutually exclusive. Hybrid architectures can combine deliberative and reactive components within a system, drawing on the strengths of each approach (Online University of Essex, n.d.).</p>
+
+<p>This discussion has helped me develop an initial understanding of the areas I need to develop further to build and leverage intelligent agent systems. These range from understanding when to use this technology and establishing appropriate measures of success and human oversight, to making more complex architectural choices.</p>
+
+<h2>References</h2>
+
+<p>Brooks, R.A. (1991) ‘Intelligence without representation’, <em>Artificial Intelligence</em>, 47(1–3), pp. 139–159. Available at: <a href="https://doi.org/10.1016/0004-3702(91)90053-M" target="_blank" rel="noreferrer">https://doi.org/10.1016/0004-3702(91)90053-M</a>.</p>
+
+<p>Cavalcante, R. (2026) ‘Initial post’, <em>Collaborative Discussion 1: Agent Based Systems</em>, Intelligent Agents [Online discussion forum]. University of Essex Online, 23 October. (Accessed: 24 October, 2026)</p>
+
+<p>Gartner (2025) <em>Gartner predicts over 40% of agentic AI projects will be canceled by end of 2027</em>. Press release, 25 June. Available at: <a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" target="_blank" rel="noreferrer">https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027</a> (Accessed: 27 October 2026).</p>
+
+<p>Goodrich, M.A. and Boer, E.R. (2000) ‘Designing human-centered automation: Tradeoffs in collision avoidance system design’, <em>IEEE Transactions on Intelligent Transportation Systems</em>, 1(1), pp. 40–54. Available at: <a href="https://doi.org/10.1109/6979.869020" target="_blank" rel="noreferrer">https://doi.org/10.1109/6979.869020</a>.</p>
+
+<p>Jennings, N.R. and Wooldridge, M. (1998) ‘Applications of intelligent agents’, in Jennings, N.R. and Wooldridge, M. (eds) <em>Agent technology: Foundations, applications, and markets</em>. Berlin: Springer, pp. 3–28. (Accessed: 22 October, 2026).</p>
+
+<p>Kaelbling, L.P. (1991) ‘A situated-automata approach to the design of embedded agents’, <em>ACM SIGART Bulletin</em>, 2(4), pp. 85–88. Available at: <a href="https://doi.org/10.1145/122344.122361" target="_blank" rel="noreferrer">https://doi.org/10.1145/122344.122361</a>.</p>
+
+<p>Michalski, J. <em>et al.</em> (2025) <em>AI ROI: The paradox of rising investment and elusive returns</em>. Deloitte, 22 October. Available at: <a href="https://www.deloitte.com/global/en/what-we-do/capabilities/ai/research/ai-roi-the-paradox-of-rising-investment-and-elusive-returns.html" target="_blank" rel="noreferrer">https://www.deloitte.com/global/en/what-we-do/capabilities/ai/research/ai-roi-the-paradox-of-rising-investment-and-elusive-returns.html</a> (Accessed: 27 October 2026).</p>
+
+<p>Online University of Essex (2026) <em>Evolution of agent architectures</em>. Intelligent Agents, Unit 3 lecturecast. University of Essex Online. (Accessed: 29 October 2026).</p>`
         }
       ]
     },
@@ -2306,7 +2353,8 @@ function loadState() {
       "model-performance-measurement",
       "individual-contribution-airbnb-group-project",
       "comparative-evaluation-machine-learning-models-accommodation-ranking",
-      "machine-learning-in-industry-4-0"
+      "machine-learning-in-industry-4-0",
+      "collaborative-discussion-1-agent-based-systems"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -2418,6 +2466,11 @@ function loadState() {
     restoreSeededAcademicItem(
       "machine-learning-in-industry-4-0",
       (item) => item.id === INDUSTRY_4_ML_ARTIFACT_ID || item.slug === "machine-learning-in-industry-4-0"
+    );
+
+    restoreSeededAcademicItem(
+      "collaborative-discussion-1-agent-based-systems",
+      (item, seedItem) => item.id === seedItem.id || item.slug === seedItem.slug
     );
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
