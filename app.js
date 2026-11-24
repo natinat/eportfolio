@@ -7,6 +7,10 @@ const DEFAULT_ABOUT_IMAGE =
 const LOCAL_PROFILE_IMAGE = "images/natalie-halimi.png";
 const LOCAL_TRAVEL_AI_VIDEO = "videos/ai-impact-on-the-online-travel-industry.mp4";
 const LOCAL_TRAVEL_AI_PREVIEW_IMAGE = "images/AI transforming global travel industry.png";
+const AGENT_DIALOGUES_REFERENCE_DOI = "https://doi.org/10.1007/3540608052_77";
+const AGENT_DIALOGUES_REFERENCES = `<h3>References</h3>
+
+<p>Mayfield, J., Labrou, Y. and Finin, T. (1996) ‘Evaluation of KQML as an agent communication language’, in M. Wooldridge, J.P. Müller and M. Tambe (eds.) <em>Intelligent agents II: Agent theories, architectures, and languages</em>. Springer, pp. 347–360. Available at: <strong><a href="${AGENT_DIALOGUES_REFERENCE_DOI}" target="_blank" rel="noreferrer">${AGENT_DIALOGUES_REFERENCE_DOI}</a></strong>.</p>`;
 const R_PRACTICE_ARTIFACT_ID = "2fa9f96e-aac3-48c8-8d8c-9a9b067f4062";
 const COVID_VISUALISATION_ARTIFACT_ID = "c5162e78-d790-43ec-ab96-bd8c32ca5698";
 const HEALTH_STATISTICS_ARTIFACT_ID = "f8a420a6-4a0f-4a66-a1f2-25e4b85d4f91";
@@ -1032,6 +1036,102 @@ print(predictedCO2)</code></pre>
 <p>Michalski, J. <em>et al.</em> (2025) <em>AI ROI: The paradox of rising investment and elusive returns</em>. Deloitte, 22 October. Available at: <a href="https://www.deloitte.com/global/en/what-we-do/capabilities/ai/research/ai-roi-the-paradox-of-rising-investment-and-elusive-returns.html" target="_blank" rel="noreferrer">https://www.deloitte.com/global/en/what-we-do/capabilities/ai/research/ai-roi-the-paradox-of-rising-investment-and-elusive-returns.html</a> (Accessed: 27 October 2026).</p>
 
 <p>Online University of Essex (2026) <em>Evolution of agent architectures</em>. Intelligent Agents, Unit 3 lecturecast. University of Essex Online. (Accessed: 29 October 2026).</p>`
+        }
+      ]
+    },
+    {
+      id: "d08cc109-b12a-4501-b62a-44cf7d99c2cd",
+      slug: "creating-agent-dialogues",
+      sortOrder: 20,
+      title: "ePortfolio assignment: Creating Agent Dialogues",
+      description:
+        "A hotel search exercise using KQML and KIF to exchange messages between two agents and explore how a shared ontology supports semantic interoperability.",
+      tags: ["All", "Intelligent Agents"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/alice-bob-architecture.png",
+      sections: [
+        {
+          id: "689e6cf1-04f4-42a1-aa29-be252bab9619",
+          type: "html",
+          title: "",
+          body: `<p>In this exercise I have written one request and response message exchange using the KQML (knowledge query and manipulation language) and the KIF (knowledge interchange format) language. KQML provides the message formatting and handling protocols. This means it defines how the message should be structured and processed. KIF provides rules around syntax and context (Finin et al., 1994).</p>
+
+<p>In this multi-agent system, Alice is an agent responsible for handling hotel search requests submitted by users through a hotel booking website. Users specify their desired destination and travel dates. Alice then sends a request to Bob to retrieve available hotels and their associated information.</p>
+
+<p>Bob is an agent responsible for retrieving information from two internal data sources: hotel availability and hotel information. It communicates with these sources through API calls and converts the retrieved data into KIF expressions, which are communicated to Alice through KQML messages.</p>
+
+<p>Both agents use a shared <code>hotel-booking</code> ontology, providing an agreed vocabulary and meaning for the information exchanged.</p>`
+        },
+        {
+          id: "98aed1d2-176b-47b2-aa1a-f093977e5096",
+          type: "html",
+          title: "System Architecture",
+          body: `<figure>
+  <img src="images/alice-bob-architecture.png" width="792" height="229" alt="Alice and Bob exchange KQML and KIF messages. Bob connects to hotel availability and hotel information data sources through API calls." />
+  <figcaption>Agent architecture for a multi-agent system that returns hotel availability and records based on user search query (source: Author's own)</figcaption>
+</figure>`
+        },
+        {
+          id: "915b4a56-55f0-4aec-9521-0a24e3af8a6e",
+          type: "code",
+          title: "Message exchange",
+          code: `#Request
+(ask-all
+  :sender Alice
+  :receiver Bob
+  :language KIF
+  :ontology hotel-booking
+  :content
+    (and
+      (hotel-availabe ?hotel "05-11-2027" "10-11-2027" "Amsterdam")
+      (hotel-name ?hotel ?name)
+      (hotel-description ?hotel ?description)
+      (hotel-facilities ?hotel ?facilities)
+    )
+
+#Reply
+(tell
+  :sender Bob
+  :receiver Alice
+  :language KIF
+  :ontology hotel-booking
+  :content
+    (and
+      (hotel-availabe hotelA "05-11-2027" "10-11-2027" "Amsterdam")
+      (hotel-name hotelA "On the Canal")
+      (hotel-description hotelA "A romantic hotel situated directly on a
+        canal")
+      (hotel-facility hotelA "Wifi")
+      (hotel-facility hotelA "parking")
+
+      (hotel-availabe hotelB "05-11-2027" "10-11-2027" "Amsterdam")
+      (hotel-name hotelB "Family fun Amsterdam")
+      (hotel-description hotelB "A family friendly hotel in Amsterdam")
+      (hotel-facility hotelB "Swimming pool")
+      (hotel-facility hotelB "Indoor play area")
+
+      (hotel-availabe"hotelC" "05-11-2027" "10-11-2027" "Amsterdam")
+      (hotel-name hotelC "Budget hotel Amsterdam")
+      (hotel-description hotelC "A low priced hotel at the centre of
+        Amsterdam")
+      (hotel-facility hotelC "Common showers")
+      (hotel-facility hotelC "Common sitting area")
+    )
+)`
+        },
+        {
+          id: "e489dd92-c70d-47d9-8154-41e6cb8c8f31",
+          type: "html",
+          title: "Learnings",
+          body: `<p>The standardised message structure and communicative acts provided by KQML, together with the language syntax and semantics for knowledge understanding that KIF provides, enable the two agents to understand each other, while not having to be aware of each other’s internal implementation. For example, Alice does not need to know that Bob can access two data sources and use API calls to fetch data, while Bob does not need to understand how Alice processes user search queries. They only need to understand the communication convention and agreed ontology.</p>
+
+<p>The shared ontology defines the meaning of predicates such as ‘hotel-available’ to support consistent interpretation between the agents. For example, it can define availability as having rooms to rent in this hotel on specified dates. However, it might not cover every possible use case that exists in the business logic of the individual agents.</p>
+
+<p>For example, Alice may interpret ‘hotel-available’ as requiring the same room for the entire stay duration, while Bob might consider a hotel available even if the guest needs to change rooms during the stay. If this distinction is not covered in the ontology, this will lead to the agents interpreting the same predicate differently.</p>
+
+<p>This highlights one of the biggest challenges of semantic interoperability in multi-agent communication. Although KQML and KIF provide a good foundation for structured communication and knowledge exchange, they do not guarantee agreement on domain-specific meanings. Achieving semantic interoperability also depends on sufficiently precise shared ontologies and their consistent implementation.</p>
+
+${AGENT_DIALOGUES_REFERENCES}`
         }
       ]
     },
@@ -2354,7 +2454,8 @@ function loadState() {
       "individual-contribution-airbnb-group-project",
       "comparative-evaluation-machine-learning-models-accommodation-ranking",
       "machine-learning-in-industry-4-0",
-      "collaborative-discussion-1-agent-based-systems"
+      "collaborative-discussion-1-agent-based-systems",
+      "creating-agent-dialogues"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
       if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
@@ -2472,6 +2573,13 @@ function loadState() {
       "collaborative-discussion-1-agent-based-systems",
       (item, seedItem) => item.id === seedItem.id || item.slug === seedItem.slug
     );
+
+    const agentDialoguesLearnings = nextState.academicItems
+      .find((item) => item.slug === "creating-agent-dialogues")?.sections
+      .find((section) => section.id === "e489dd92-c70d-47d9-8154-41e6cb8c8f31");
+    if (agentDialoguesLearnings?.type === "html" && !agentDialoguesLearnings.body.includes(AGENT_DIALOGUES_REFERENCE_DOI)) {
+      agentDialoguesLearnings.body += `\n\n${AGENT_DIALOGUES_REFERENCES}`;
+    }
 
     nextState.academicItems = assignAcademicSortOrder(nextState.academicItems);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(nextState));
