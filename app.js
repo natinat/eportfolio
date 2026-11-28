@@ -7,6 +7,7 @@ const DEFAULT_ABOUT_IMAGE =
 const LOCAL_PROFILE_IMAGE = "images/natalie-halimi.png";
 const LOCAL_TRAVEL_AI_VIDEO = "videos/ai-impact-on-the-online-travel-industry.mp4";
 const LOCAL_TRAVEL_AI_PREVIEW_IMAGE = "images/AI transforming global travel industry.png";
+const AGENT_COMMUNICATION_TITLE = "Collaborative Discussion 2: Multiagent Communication";
 const AGENT_DIALOGUES_REFERENCE_DOI = "https://doi.org/10.1007/3540608052_77";
 const AGENT_DIALOGUES_REFERENCES = `<h3>References</h3>
 
@@ -1132,6 +1133,53 @@ print(predictedCO2)</code></pre>
 <p>This highlights one of the biggest challenges of semantic interoperability in multi-agent communication. Although KQML and KIF provide a good foundation for structured communication and knowledge exchange, they do not guarantee agreement on domain-specific meanings. Achieving semantic interoperability also depends on sufficiently precise shared ontologies and their consistent implementation.</p>
 
 ${AGENT_DIALOGUES_REFERENCES}`
+        }
+      ]
+    },
+    {
+      id: "8b909a49-7388-4510-8cdd-64a01eb0f8dd",
+      slug: "agent-communication",
+      sortOrder: 27,
+      title: AGENT_COMMUNICATION_TITLE,
+      description:
+        "A reflection on how agent autonomy affects communication and how KQML, shared ontologies, and predefined operations can inform the design of modern LLM-based agent systems.",
+      tags: ["All", "Intelligent Agents", "Discussion"],
+      previewMediaType: "image",
+      previewMediaUrl: "images/tech-discussion-data-science.png",
+      sections: [
+        {
+          id: "be4d0542-924a-46eb-9f30-41a582556b54",
+          type: "html",
+          title: "",
+          body: `<p>The discussion about agent communication has highlighted how complicated this topic is, with several challenges still unresolved even as new technologies emerge. Through this discussion, and alongside the formative activity of writing a KQML message (Halimi, 2026), I have gained a deeper understanding of these challenges. One of the main advantages of intelligent agent systems is the flexibility provided by agents' autonomy to decide when and how to act (Wooldridge, 2009). However, this same capability also introduces challenges in how consistently the agents both interpret and act upon exchanged messages (Chopra et al., 2013).</p>
+
+<p>Over the years, different approaches to agent communication have tried to address these challenges in different ways. These include ACLs, such as KQML (Labrou and Finin, 1997), alongside the use of ontologies to establish shared meaning across agents, including those operating in heterogeneous systems (Payne and Tamma, 2014), and more recent protocols such as A2A that standardise agent-to-agent task-oriented interactions, and MCP that standardise access to tools and contextual resources (Ehtesham et al., 2025). Alongside these approaches, method invocation remains an implementation mechanism based on predefined operations, which can also be extended to incorporate agent-oriented communication principles (Baldoni, Boella and van der Torre, 2007).</p>
+
+<p>The widespread adoption of LLM-based agents in the past few years contributed to the development of modern communication protocols, such as A2A and MCP (Ehtesham et al., 2025). The merger of A2A, developed by Google, and Agent Communication Protocol (ACP), developed by IBM, in August 2025 (Blair and Segal, 2025), perhaps indicates how dynamic this field still is.</p>
+
+<p>LLM-based agents offer greater flexibility in interpreting natural language and reasoning about unfamiliar requests, supported by their ability to use tools and data sources. However, their probabilistic nature means they can make mistakes and introduce possible inconsistencies in interpretations (Ehtesham et al., 2025).</p>
+
+<p>Through my discussions, I have come to believe that modern agent communication can benefit from revisiting earlier literature and principles. Searle's (1969) speech act theory provides a conceptual foundation for communicative intentions, which remains relevant to how LLM-based agents communicate and act. ACL principles, such as explicit communication semantics, alongside shared ontologies (Labrou and Finin, 1997; Payne and Tamma, 2014), could reduce some of the ambiguity introduced by LLM-based agents. Lastly, incorporating predefined operations through method invocation could introduce greater predictability alongside the flexibility of LLM-based agents, building on earlier research into combining object-oriented and agent-oriented communication (Baldoni, Boella and van der Torre, 2007)</p>
+
+<p>It is therefore interesting to see how this field will continue to evolve, especially given the rapid adoption of intelligent agent systems.</p>
+
+<h2>References</h2>
+
+<p>Baldoni, M., Boella, G. and van der Torre, L. (2007) ‘Bridging agent theory and object orientation: Agent-like communication among objects’, in R.H. Bordini et al. (eds.) Programming multi-agent systems. Lecture Notes in Computer Science, vol. 4411. Berlin, Heidelberg: Springer, pp. 149–164. Available at: <a href="https://doi.org/10.1007/978-3-540-71956-4_9" target="_blank" rel="noreferrer">https://doi.org/10.1007/978-3-540-71956-4_9</a></p>
+
+<p>Blair, K. and Segal, T. (2025) ‘ACP joins forces with A2A’, LF AI & Data Community Blog, 29 August. Available at: <a href="https://lfaidata.foundation/communityblog/2025/08/29/acp-joins-forces-with-a2a-under-the-linux-foundations-lf-ai-data/" target="_blank" rel="noreferrer">https://lfaidata.foundation/communityblog/2025/08/29/acp-joins-forces-with-a2a-under-the-linux-foundations-lf-ai-data/</a> (Accessed: 28 November 2026).</p>
+
+<p>Chopra, A.K. et al. (2013) ‘Research directions in agent communication’, ACM Transactions on Intelligent Systems and Technology, 4(2), article 20, pp. 1–23. Available at: <a href="https://doi.org/10.1145/2438653.2438655" target="_blank" rel="noreferrer">https://doi.org/10.1145/2438653.2438655</a></p>
+
+<p>Ehtesham, A., Singh, A., Gupta, G.K. and Kumar, S. (2025) ‘A survey of agent interoperability protocols: Model Context Protocol (MCP), Agent Communication Protocol (ACP), Agent-to-Agent Protocol (A2A), and Agent Network Protocol (ANP)’, arXiv preprint, arXiv:2505.02279. doi:<a href="https://doi.org/10.48550/arXiv.2505.02279" target="_blank" rel="noreferrer">10.48550/arXiv.2505.02279</a></p>
+
+<p>Halimi, N. (2026) ePortfolio assignment: Creating agent dialogues. Available at: <a href="artifact.html?artifact=creating-agent-dialogues">https://natinat.github.io/eportfolio/artifact.html?artifact=creating-agent-dialogues</a> (Accessed: 28 November 2026).</p>
+
+<p>Labrou, Y. and Finin, T. (1997) ‘Semantics and conversations for an agent communication language’, in Proceedings of the Fifteenth International Joint Conference on Artificial Intelligence, pp. 584–590. Available at: <a href="https://ijcai.org/proceedings/1997/86" target="_blank" rel="noreferrer">https://ijcai.org/proceedings/1997/86</a> (Accessed: 20 November 2026).</p>
+
+<p>Payne, T.R. and Tamma, V. (2014) ‘Negotiating over ontological correspondences with asymmetric and incomplete knowledge’, Proceedings of the 13th International Conference on Autonomous Agents and Multiagent Systems (AAMAS 2014). Paris, France, 5–9 May. Richland, SC: International Foundation for Autonomous Agents and Multiagent Systems, pp. 517–524. Available at: <a href="https://doi.org/10.65109/HFJU2681" target="_blank" rel="noreferrer">https://doi.org/10.65109/HFJU2681</a></p>
+
+<p>Wooldridge, M. (2009) An introduction to multiagent systems. 2nd edn. John Wiley & Sons. (Accessed: 26 October 2026)</p>`
         }
       ]
     },
@@ -2455,10 +2503,11 @@ function loadState() {
       "comparative-evaluation-machine-learning-models-accommodation-ranking",
       "machine-learning-in-industry-4-0",
       "collaborative-discussion-1-agent-based-systems",
-      "creating-agent-dialogues"
+      "creating-agent-dialogues",
+      "agent-communication"
     ].forEach((slug) => {
       const seedItem = seedData.academicItems.find((item) => item.slug === slug);
-      if (!nextState.academicItems.some((item) => item.slug === slug) && seedItem) {
+      if (seedItem && !nextState.academicItems.some((item) => item.id === seedItem.id || item.slug === slug)) {
         nextState.academicItems.push(normalizeAcademicItem(seedItem));
       }
     });
@@ -2573,6 +2622,14 @@ function loadState() {
       "collaborative-discussion-1-agent-based-systems",
       (item, seedItem) => item.id === seedItem.id || item.slug === seedItem.slug
     );
+
+    const agentCommunication = nextState.academicItems.find((item) => item.slug === "agent-communication");
+    if (
+      agentCommunication?.title === "Agent Communication" ||
+      agentCommunication?.title === "Collaborative Discussion 2: Agent Communication"
+    ) {
+      agentCommunication.title = AGENT_COMMUNICATION_TITLE;
+    }
 
     const agentDialoguesLearnings = nextState.academicItems
       .find((item) => item.slug === "creating-agent-dialogues")?.sections
